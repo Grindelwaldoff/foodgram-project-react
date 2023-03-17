@@ -6,3 +6,4 @@ from tests.utils import (
     check_pagination,
     invalid_data_for_user_patch_and_creation
 )
+
