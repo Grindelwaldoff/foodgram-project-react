@@ -24,3 +24,15 @@ jobs:
           python -m flake8
           cd backend/foodgram_back
           python manage.py test
+  telegram:
+    runs-on: ubuntu-latest
+    needs: pep8_and_pytest
+    steps:
+      - name: Send Message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRMA_TOKEN }}
+          message: "${{ github.workflow }} запущенный ${{ github.actor }} в репозитории ${{ github.repository }} успешно выполнен! \n
+            Комментарий: ${{ github.event.commits[0].message }} \n
+            https://github.com/${{ github.repository }}/commit/${{github.sha}}"
