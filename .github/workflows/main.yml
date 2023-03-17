@@ -1,1 +1,25 @@
-l
+name: Foodgram-workflow
+
+on: [push]
+
+jobs:
+  pep8_and_pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: action/setup-python@v2
+        with:
+          python-version: 3.7
+      - name: Install Dependencies
+        run: |
+          python -m pip isntall --upgrade pip
+          pip install flake8 pep8-naming flake8-broken-line flake8-return flake8-isort
+      - name: Pytest
+        run: |
+          pytest
+      - name: Pep8 check
+        run: |
+          python -m flake8
+          cd backend/foodgram_back
+          python manage.py test
