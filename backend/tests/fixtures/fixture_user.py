@@ -10,7 +10,7 @@ def admin(django_user_model):
         email='testadmin@yamdb.fake',
         password='1111',
         first_name='Vse',
-        second_name='ryb'
+        last_name='ryb'
     )
 
 
@@ -21,7 +21,7 @@ def user(django_user_model):
         email='testuser@yamdb.fake',
         password='1111',
         first_name='Vse',
-        second_name='ryb'
+        last_name='ryb'
     )
 
 

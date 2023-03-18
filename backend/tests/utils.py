@@ -38,7 +38,7 @@ check_tag_fields_patterns = (
         ),)
     )
 )
-invalid_data_for_username_and_email_fields = [
+invalid_data_for_user_fields = [
     (
         {
             'first_name': 'testname',
@@ -111,7 +111,7 @@ invalid_data_for_username_and_email_fields = [
     )
 ]
 invalid_data_for_user_creation = (
-    invalid_data_for_username_and_email_fields.copy()
+    invalid_data_for_user_fields.copy()
 )
 invalid_data_for_set_password = (
     (

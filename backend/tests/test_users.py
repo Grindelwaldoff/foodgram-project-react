@@ -3,10 +3,10 @@ from http import HTTPStatus
 import pytest
 
 from tests.utils import (
-    check_pagination,
+    # check_pagination,
     invalid_data_for_set_password,
-    invalid_data_for_username_and_email_fields,
-    invalid_data_for_user_creation
+    invalid_data_for_user_fields,
+    # invalid_data_for_user_creation
 )
 
 
@@ -14,6 +14,7 @@ from tests.utils import (
 class TestUserRegistarion:
     url_signup = '/api/users/'
     url_token = '/api/token/'
+    url_set_password = '/api/users/set_password/'
 
     def test_nodata_signup(self, client):
         response = client.post(self.url_signup)
@@ -28,7 +29,10 @@ class TestUserRegistarion:
             'статусом 400.'
         )
         response_json = response.json()
-        empty_fields = ['username', 'email', 'first_name', 'second_name', 'password']
+        empty_fields = [
+            'username', 'email', 'first_name',
+            'second_name', 'password'
+        ]
         for field in empty_fields:
             assert (field in response_json
                     and isinstance(response_json.get(field), list)), (
@@ -37,5 +41,41 @@ class TestUserRegistarion:
                 'информация об обязательных для заполнения полях.'
             )
 
-    def test_invalid_data_signup():
-        pass
+    def test_invalid_data_signup(self, client):
+        for test in invalid_data_for_user_fields:
+            print(test)
+            data, assertion = test
+            response = client.post(self.url_signup, data=data)
+            assert response.status_code != HTTPStatus.NOT_FOUND, (
+                f'Эндпоинт `{self.url_signup}` не найден. '
+                'Проверьте настройки в *urls.py*.'
+            )
+            assert response.status_code != HTTPStatus.CREATED, (
+                assertion
+            )
+
+    def test_set_password_check(self, user_client, user):
+        data = {
+            'new_password': 123123,
+            'current_password': 1111
+        }
+        response = user_client.post(self.url_set_password, data=data)
+        assert response.status_code != HTTPStatus.NOT_FOUND, (
+            f'Эндпоинт `{self.url_set_password}` не найден. '
+            'Проверьте настройки в *urls.py*.'
+        )
+        assert response.status_code != HTTPStatus.OK, (
+            f'Эндпоинт `{self.url_set_password}` не позволяет '
+            f'изменить пароль. {response.status_code}'
+        )
+        assert user.password == data['new_password'], (
+            'Пароль не возможно изменить!'
+        )
+
+    def test_set_password_with_invalid_data(self, admin_client):
+        for test in invalid_data_for_set_password:
+            data, assertion = test
+            response = admin_client.post(self.url_set_password, data=data)
+            assert response.status_code != HTTPStatus.NO_CONTENT, (
+                assertion
+            )
