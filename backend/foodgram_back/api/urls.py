@@ -1,15 +1,16 @@
 from django.urls import path, include
 from rest_framework.routers import SimpleRouter
 
-from .views import UserViewSet
+from .views import MeViewSet
 
 
 router = SimpleRouter()
-router.register('users', UserViewSet, basename='users')
+# router.register('users', CustomUserViewSet)
 
 
 urlpatterns = [
+    path('users/me/', MeViewSet.as_view({'get': 'me'})),
     path(
-        '', include(router.urls)
-    )
+        '', include('djoser.urls')
+    ),
 ]

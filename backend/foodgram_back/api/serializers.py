@@ -1,11 +1,13 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 
+from djoser.serializers import UserSerializer
+
 
 User = get_user_model()
 
 
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(UserSerializer):
     email = serializers.EmailField(required=True, max_length=254)
     first_name = serializers.CharField(required=True, max_length=150)
     second_name = serializers.CharField(
