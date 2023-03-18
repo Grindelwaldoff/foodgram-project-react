@@ -7,3 +7,6 @@ pytest-django==4.4.0
 pytest==6.2.4
 djoser==2.1.0
 python-dotenv==0.21.1
+djangorestframework-simplejwt==4.7.2
+pytest
+django-pytest==0.2.0
