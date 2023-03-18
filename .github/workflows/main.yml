@@ -26,7 +26,6 @@ jobs:
           python manage.py test
   telegram:
     runs-on: ubuntu-latest
-    needs: pep8_and_pytest
     steps:
       - name: Send Message
         uses: appleboy/telegram-action@master
