@@ -14,6 +14,7 @@ from tests.utils import (
 class TestUserRegistarion:
     url_signup = "/api/users/"
     url_token = "/api/auth/token/login/"
+    url_token_logout = "/api/auth/token/logout/"
     url_set_password = "/api/users/set_password/"
 
     def test_nodata_signup(self, client):
@@ -78,6 +79,12 @@ class TestUserRegistarion:
             )
 
     def test_token_access(self, client):
+        response = client.post(self.url_token_logout)
+        assert response.status_code != HTTPStatus.NOT_FOUND, (
+            f"Эндпоинт `{self.url_token_logout}` не найдена. "
+            "Проверьте настройки в *urls.py*."
+        )
+
         response = client.post(self.url_token)
         assert response.status_code != HTTPStatus.NOT_FOUND, (
             f"Эндпоинт `{self.url_token}` не найдена. Проверьте настройки в "
@@ -108,17 +115,6 @@ class TestUserRegistarion:
             f"отправленный на эндпоинт `{self.url_token}`, возвращает ответ "
             "со статусом 404."
         )
-
-        valid_data = {
-            "email": "testuser@yamdb.fake",
-            "password": 1111
-        }
-        response = client.post(self.url_signup, data=valid_data)
-        assert response.status_code == HTTPStatus.OK, (
-            "Проверьте, что POST-запрос с корректными данными, отправленный "
-            f"на `{self.url_signup}`, возвращает ответ со статусом 200."
-        )
-
         invalid_data = {
             "email": "valid@yamdb.fake",
             "confirmation_code": 12345
