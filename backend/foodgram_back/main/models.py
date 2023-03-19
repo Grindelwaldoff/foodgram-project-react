@@ -38,16 +38,27 @@ class Ingredients(models.Model):
     name = models.CharField(
         max_length=150,
     )
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+
+class IngredientsToRecipe(models.Model):
+    ingredient = models.ForeignKey(
+        Ingredients,
+        on_delete=models.DO_NOTHING,
+        related_name='to_recipe'
+    )
     amount = models.IntegerField()
     un_of_me = models.CharField(
         max_length=30,
     )
 
     class Meta:
-        ordering = ['-id']
-
-    def __str__(self):
-        return self.name
+        ordering = ['ingredient']
 
 
 class Recipe(models.Model):
@@ -100,4 +111,13 @@ class Favorites(models.Model):
 
 
 class Subscriptions(models.Model):
-    pass
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='author_sub'
+    )
+    sub = models.ForeignKey(
+        User,
+        on_delete=models.ForeignKey,
+        related_name='sub'
+    )
