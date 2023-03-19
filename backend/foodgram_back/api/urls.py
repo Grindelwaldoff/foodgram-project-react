@@ -10,6 +10,7 @@ router = SimpleRouter()
 
 urlpatterns = [
     path('users/me/', MeViewSet.as_view({'get': 'me'})),
+    path('auth/', include('djoser.urls.authtoken')),
     path(
         '', include('djoser.urls')
     ),

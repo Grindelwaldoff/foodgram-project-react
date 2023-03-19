@@ -19,7 +19,7 @@ def user(django_user_model):
     return django_user_model.objects.create_user(
         username='athUser',
         email='testuser@yamdb.fake',
-        password='1111',
+        password=1111,
         first_name='Vse',
         last_name='ryb'
     )
