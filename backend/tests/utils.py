@@ -136,6 +136,29 @@ invalid_data_for_set_password = (
         ),)
     ),
 )
+recipe_correct_data = {
+    "tags": [
+        {
+            "id": 1,
+            "name": "Завтрак",
+            "color": "#E26C2D",
+            "slug": "breakfast"
+        }
+    ],
+    "ingredients": 
+    [
+        {
+            "id": 1,
+            "name": "Картофель отварной",
+            "measurement_unit": "г",
+            "amount": 1
+        }
+    ],
+    "name": "string",
+    "image": "asdklfjhsdfkhwerhsdoifuyasodiufhwekjlrhsadoifhuwaeoiruuhsadklfyhwier",
+    "text": "string",
+    "cooking_time": 1
+}
 
 
 def check_pagination(url, respons_data, expected_count, post_data=None):
