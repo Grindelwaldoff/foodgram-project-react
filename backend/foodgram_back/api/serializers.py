@@ -1,13 +1,23 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from django.shortcuts import get_object_or_404
 from djoser.serializers import UserSerializer
 
 from main.models import (
-    Tags, Recipe, Ingredients, ToBuyList, Favorites, Subscriptions
+    Tags, Recipe, Ingredients,
+    ToBuyList, Favorites, Subscriptions,
+    IngredientsToRecipe
 )
 
 
 User = get_user_model()
+
+
+class FavoriteSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Favorites
+        fields = ('id', 'name', 'image', 'cooking_time')
 
 
 class CustomUserSerializer(UserSerializer):
@@ -55,16 +65,30 @@ class PasswordSerializer(serializers.ModelSerializer):
 
 
 class IngredientSerializer(serializers.ModelSerializer):
-    measurement_unit = serializers.CharField(source='un_of_me', read_only=True)
-    id = serializers.IntegerField(source='pk', read_only=True)
+    measurement_unit = serializers.CharField(source='un_of_me')
 
     class Meta:
         model = Ingredients
         fields = (
             'id', 'name', 'measurement_unit',
-            'amount'
         )
         read_only_fields = ('name',)
+
+
+class IngredientToRecipeSerializer(serializers.ModelSerializer):
+    name = serializers.SerializerMethodField()
+    measurement_unit = serializers.CharField(source='un_of_me')
+
+    class Meta:
+        model = IngredientsToRecipe
+        fields = ('id', 'name', 'measurement_unit',
+                  'recipe', 'ingredient')
+        write_only_fields = ('recipe', 'ingredient')
+
+    def get_name(self, obj):
+        return IngredientSerializer(
+            Ingredients.to_recipe(name=obj.name),
+        ).data
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -82,7 +106,7 @@ class RecipeSerializer(serializers.ModelSerializer):
     cooking_time = serializers.IntegerField(source='time_to_cook')
     author = CustomUserSerializer(read_only=True)
     text = serializers.CharField(source='description')
-    ingredients = IngredientSerializer(many=True)
+    ingredients = IngredientToRecipeSerializer(many=True)
 
     class Meta:
         model = Recipe
@@ -110,4 +134,14 @@ class RecipeSerializer(serializers.ModelSerializer):
         representation['ingredients'] = self.get_ingredients(
             Recipe.objects.filter(id=instance.id).first()
         )
+        for ingredient in representation['ingredients']:
+            ingredient.update(
+                {
+                    'amount': get_object_or_404(
+                        IngredientsToRecipe,
+                        recipe=instance,
+                        ingredient_id=ingredient['id']
+                    ).amount
+                }
+            )
         return representation

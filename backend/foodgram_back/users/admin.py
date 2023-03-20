@@ -3,7 +3,8 @@ from django.contrib import admin
 from users.models import User
 from main.models import (
     Tags, Recipe, Ingredients,
-    ToBuyList, Favorites, Subscriptions
+    ToBuyList, Favorites, Subscriptions,
+    IngredientsToRecipe
 )
 
 
@@ -14,3 +15,4 @@ admin.site.register(Favorites)
 admin.site.register(ToBuyList)
 admin.site.register(Ingredients)
 admin.site.register(Subscriptions)
+admin.site.register(IngredientsToRecipe)

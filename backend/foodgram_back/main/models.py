@@ -38,27 +38,15 @@ class Ingredients(models.Model):
     name = models.CharField(
         max_length=150,
     )
+    un_of_me = models.CharField(
+        max_length=30,
+    )
 
     class Meta:
         ordering = ['name']
 
     def __str__(self):
         return self.name
-
-
-class IngredientsToRecipe(models.Model):
-    ingredient = models.ForeignKey(
-        Ingredients,
-        on_delete=models.DO_NOTHING,
-        related_name='to_recipe'
-    )
-    amount = models.IntegerField()
-    un_of_me = models.CharField(
-        max_length=30,
-    )
-
-    class Meta:
-        ordering = ['ingredient']
 
 
 class Recipe(models.Model):
@@ -91,6 +79,23 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class IngredientsToRecipe(models.Model):
+    ingredient = models.ForeignKey(
+        Ingredients,
+        on_delete=models.DO_NOTHING,
+        related_name='to_recipe'
+    )
+    amount = models.IntegerField()
+    recipe = models.ForeignKey(
+        Recipe,
+        related_name='ing_amount',
+        on_delete=models.CASCADE
+    )
+
+    class Meta:
+        ordering = ['ingredient']
 
 
 class ToBuyList(models.Model):

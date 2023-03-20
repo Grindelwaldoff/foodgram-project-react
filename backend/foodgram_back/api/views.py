@@ -2,12 +2,13 @@ from django.contrib.auth import get_user_model
 from django.http.response import HttpResponse
 from djoser.views import UserViewSet
 from rest_framework.decorators import api_view
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.viewsets import ModelViewSet, GenericViewSet
+from rest_framework import mixins
 
 from main.models import (
     Tags, Recipe, Ingredients, ToBuyList, Favorites, Subscriptions
 )
-from .serializers import TagSerializer, RecipeSerializer
+from .serializers import TagSerializer, RecipeSerializer, FavoriteSerializer
 
 User = get_user_model()
 
@@ -32,9 +33,16 @@ class RecipeViewSet(ModelViewSet):
     def perform_create(self, serializer):
         return super().perform_create(
             serializer.save(
-                author=self.request.user
+                author=self.request.user,
             )
         )
+
+
+class FavoriteViewSet(mixins.CreateModelMixin,
+                      mixins.DestroyModelMixin,
+                      GenericViewSet):
+    queryset = Favorites.objects.all()
+    serializer_class = FavoriteSerializer
 
 
 # @api_view(['GET'])
