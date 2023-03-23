@@ -3,7 +3,7 @@ from django.shortcuts import get_list_or_404, get_object_or_404
 from django.http.response import HttpResponse
 from rest_framework.response import Response
 from djoser.views import UserViewSet
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, action
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
 from rest_framework import mixins, status
 
@@ -24,19 +24,21 @@ class MeViewSet(UserViewSet):
 class FavoriteViewSet(ModelViewSet):
     queryset = Favorites.objects.all()
     serializer_class = FavoriteSerializer
-    http_method_names = ['get', 'post']
+    http_method_names = ['get', 'post', 'delete']
+
+    @action(detail=False, methods=['DELETE'])
+    def delete(self, request, *args, **kwargs):
+        Favorites.objects.filter(
+            recipe=get_object_or_404(Recipe, id=self.kwargs.get('recipe_id')),
+            user=request.user
+        ).delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
     def perform_create(self, serializer):
         serializer.save(
             recipe=get_object_or_404(Recipe, id=self.kwargs.get('recipe_id')),
             user=self.request.user
         )
-
-    def delete(self):
-        Favorites.objects.get(
-            recipe=get_object_or_404(Recipe, id=self.kwargs.get('recipe_id')),
-            user=self.request.user
-        ).delete()
 
 
 # class TagViewSet(ModelViewSet):

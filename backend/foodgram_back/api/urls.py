@@ -9,13 +9,7 @@ router = SimpleRouter()
 # router.register('recipes', RecipeViewSet, basename='recipes')
 router.register(
     r'recipes/(?P<recipe_id>\d+)/favorite',
-    FavoriteViewSet.as_view(
-        {
-            'delete': 'delete',
-            'get': 'list',
-            'post': 'create'
-        }
-    ),
+    FavoriteViewSet,
     basename='favorites'
 )
 
