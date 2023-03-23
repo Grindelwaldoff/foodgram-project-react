@@ -1,16 +1,21 @@
 from django.urls import path, include
 from rest_framework.routers import SimpleRouter
 
-from .views import MeViewSet, TagViewSet, RecipeViewSet, FavoriteViewSet
-
+from .views import MeViewSet, FavoriteViewSet
 
 router = SimpleRouter()
-# router.register('users', CustomUserViewSet)
-router.register('tags', TagViewSet, basename='tags')
-router.register('recipes', RecipeViewSet, basename='recipes')
+# # router.register('users', CustomUserViewSet)
+# router.register('tags', TagViewSet, basename='tags')
+# router.register('recipes', RecipeViewSet, basename='recipes')
 router.register(
-    r'api/recipes/(?P<recipe_id>\d+)/favorite',
-    FavoriteViewSet,
+    r'recipes/(?P<recipe_id>\d+)/favorite',
+    FavoriteViewSet.as_view(
+        {
+            'delete': 'delete',
+            'get': 'list',
+            'post': 'create'
+        }
+    ),
     basename='favorites'
 )
 

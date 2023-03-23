@@ -137,25 +137,19 @@ invalid_data_for_set_password = (
     ),
 )
 recipe_correct_data = {
-    "tags": [
-        {
-            "id": 1,
-            "name": "Завтрак",
-            "color": "#E26C2D",
-            "slug": "breakfast"
-        }
-    ],
     "ingredients": 
     [
         {
             "id": 1,
-            "name": "Картофель отварной",
-            "measurement_unit": "г",
-            "amount": 1
+            "amount": 10
         }
     ],
+    "tags": 
+        [
+            1
+        ],
+    "image": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAgMAAABieywaAAAACVBMVEUAAAD///9fX1/S0ecCAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAACklEQVQImWNoAAAAggCByxOyYQAAAABJRU5ErkJggg==",
     "name": "string",
-    "image": "asdklfjhsdfkhwerhsdoifuyasodiufhwekjlrhsadoifhuwaeoiruuhsadklfyhwier",
     "text": "string",
     "cooking_time": 1
 }
@@ -215,7 +209,7 @@ def create_recipe(
     text: str, cooking_time: int
 ):
     data = {
-        'ingredients': ingredients, 'tags': tags,
+        'tags': tags,
         'image': image, 'name': name,
         'text': text, 'cooking_time': cooking_time}
     response = client.post(
@@ -224,7 +218,8 @@ def create_recipe(
     assert response.status_code == HTTPStatus.CREATED, (
         'Если POST-запрос авторизованного пользователя к '
         '`/api/recipes/` содержит корректные данные - '
-        'должен вернуться ответ со статусом 201.'
+        'должен вернуться ответ со статусом 201.',
+        response.json()
     )
     return response
 
@@ -241,12 +236,13 @@ def add_recipe(client, recipe_id):
     return response
 
 
-def add_recipe_to_favourites(client, id_1, id_2):
-    response = client.post('/api/recipes/{id_1}/favorite/')
+def add_recipe_to_favorites(client, id_1,):
+    response = client.post(f'/api/recipes/{id_1}/favorite/')
     assert response.status_code == HTTPStatus.CREATED, (
         'Если POST-запрос авторизованного пользователя к '
-        '`/api/recipes/{id_1}/favorite/` '
-        'содержит корректные данные - должен вернуться ответ со статусом 201.'
+        f'`/api/recipes/{id_1}/favorite/` '
+        'содержит корректные данные - должен вернуться ответ со статусом 201.',
+        response.json()
     )
 
 

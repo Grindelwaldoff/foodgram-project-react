@@ -34,19 +34,7 @@ class Tags(models.Model):
 
 class Ingredients(models.Model):
     """Класс модели ингредиентов."""
-
-    name = models.CharField(
-        max_length=150,
-    )
-    un_of_me = models.CharField(
-        max_length=30,
-    )
-
-    class Meta:
-        ordering = ['name']
-
-    def __str__(self):
-        return self.name
+    pass
 
 
 class Recipe(models.Model):
@@ -64,13 +52,10 @@ class Recipe(models.Model):
     description = models.CharField(
         max_length=400,
     )
-    ingredients = models.ManyToManyField(
-        Ingredients,
-        related_name='recipes',
-    )
-    tags = models.ManyToManyField(
+    tags = models.ForeignKey(
         Tags,
         related_name='recipes',
+        on_delete=models.DO_NOTHING
     )
     time_to_cook = models.IntegerField()
 
@@ -82,20 +67,7 @@ class Recipe(models.Model):
 
 
 class IngredientsToRecipe(models.Model):
-    ingredient = models.ForeignKey(
-        Ingredients,
-        on_delete=models.DO_NOTHING,
-        related_name='to_recipe'
-    )
-    amount = models.IntegerField()
-    recipe = models.ForeignKey(
-        Recipe,
-        related_name='ing_amount',
-        on_delete=models.CASCADE
-    )
-
-    class Meta:
-        ordering = ['ingredient']
+    pass
 
 
 class ToBuyList(models.Model):
@@ -108,10 +80,10 @@ class Favorites(models.Model):
         related_name='favorites',
         on_delete=models.CASCADE,
     )
-    user = models.ForeignKey(
+    user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
-        related_name='favorites'
+        related_name='favorites',
     )
 
 

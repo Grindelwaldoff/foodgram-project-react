@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_list_or_404, get_object_or_404
 from djoser.serializers import UserSerializer
 
 from main.models import (
@@ -17,7 +17,17 @@ class FavoriteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Favorites
-        fields = ('id', 'name', 'image', 'cooking_time')
+        fields = ('id',)
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        recipe = get_object_or_404(Favorites, id=representation['id']).recipe
+        representation.update({
+            'name': recipe.name,
+            'image': recipe.img,
+            'cooking_time': recipe.time_to_cook
+        })
+        return representation
 
 
 class CustomUserSerializer(UserSerializer):
@@ -62,86 +72,3 @@ class PasswordSerializer(serializers.ModelSerializer):
         style={'input_type': 'password'},
         max_length=150, required=True
     )
-
-
-class IngredientSerializer(serializers.ModelSerializer):
-    measurement_unit = serializers.CharField(source='un_of_me')
-
-    class Meta:
-        model = Ingredients
-        fields = (
-            'id', 'name', 'measurement_unit',
-        )
-        read_only_fields = ('name',)
-
-
-class IngredientToRecipeSerializer(serializers.ModelSerializer):
-    name = serializers.SerializerMethodField()
-    measurement_unit = serializers.CharField(source='un_of_me')
-
-    class Meta:
-        model = IngredientsToRecipe
-        fields = ('id', 'name', 'measurement_unit',
-                  'recipe', 'ingredient')
-        write_only_fields = ('recipe', 'ingredient')
-
-    def get_name(self, obj):
-        return IngredientSerializer(
-            Ingredients.to_recipe(name=obj.name),
-        ).data
-
-
-class TagSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Tags
-        fields = (
-            'id', 'name',
-            'color', 'slug'
-        )
-
-
-class RecipeSerializer(serializers.ModelSerializer):
-    image = serializers.CharField(source='img')
-    cooking_time = serializers.IntegerField(source='time_to_cook')
-    author = CustomUserSerializer(read_only=True)
-    text = serializers.CharField(source='description')
-    ingredients = IngredientToRecipeSerializer(many=True)
-
-    class Meta:
-        model = Recipe
-        fields = (
-            'id', 'tags',
-            'author', 'ingredients',
-            'name', 'image', 'text', 'cooking_time'
-        )
-
-    def get_ingredients(self, obj):
-        return IngredientSerializer(
-            Ingredients.objects.filter(recipes=obj), many=True
-        ).data
-
-    def get_tags(self, obj):
-        return TagSerializer(
-            Tags.objects.filter(recipes=obj), many=True
-        ).data
-
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation['tags'] = self.get_tags(
-            Recipe.objects.filter(id=instance.id).first()
-        )
-        representation['ingredients'] = self.get_ingredients(
-            Recipe.objects.filter(id=instance.id).first()
-        )
-        for ingredient in representation['ingredients']:
-            ingredient.update(
-                {
-                    'amount': get_object_or_404(
-                        IngredientsToRecipe,
-                        recipe=instance,
-                        ingredient_id=ingredient['id']
-                    ).amount
-                }
-            )
-        return representation
