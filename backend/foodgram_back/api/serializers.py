@@ -83,3 +83,10 @@ class PasswordSerializer(serializers.ModelSerializer):
         style={'input_type': 'password'},
         max_length=150, required=True
     )
+
+
+class SubSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Subscriptions
+        fields = ('author', 'sub')

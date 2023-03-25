@@ -1,16 +1,17 @@
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_list_or_404, get_object_or_404
-from rest_framework.filters import SearchFilter
 from django.http.response import HttpResponse
-from rest_framework.response import Response
 from djoser.views import UserViewSet
+from rest_framework.filters import SearchFilter
+from rest_framework.response import Response
 from rest_framework.decorators import api_view, action
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
+from rest_framework import status, pagination
 
 from main.models import (
     Tags, Recipe, Ingredients, ToBuyList, Favorites, Subscriptions
 )
-from .serializers import FavoriteSerializer, IngredientSerializer
+from .serializers import FavoriteSerializer, IngredientSerializer, SubSerializer
 
 User = get_user_model()
 
@@ -24,6 +25,7 @@ class MeViewSet(UserViewSet):
 class IgredientViewSet(ModelViewSet):
     queryset = Ingredients.objects.all()
     serializer_class = IngredientSerializer
+    pagination_class = None
     http_method_names = ['get']
     filter_backends = (SearchFilter,)
     search_fields = ['^name']
@@ -32,13 +34,17 @@ class IgredientViewSet(ModelViewSet):
 class FavoriteViewSet(ModelViewSet):
     queryset = Favorites.objects.all()
     serializer_class = FavoriteSerializer
-    http_method_names = ['get', 'post', 'delete']
+    pagination_class = None
+    http_method_names = ['post', 'delete']
 
     @action(detail=False, methods=['DELETE'])
     def delete(self, request, *args, **kwargs):
-        Favorites.objects.filter(
-            recipe=get_object_or_404(Recipe, id=self.kwargs.get('recipe_id')),
-            user=request.user
+        print(
+            Recipe.objects.filter(id=self.kwargs.get('recipe_id')).first()
+        )
+        Favorites.objects.get(
+            recipe=Recipe.objects.filter(id=self.kwargs.get('recipe_id')).first(),
+            user=self.request.user
         ).delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
@@ -47,6 +53,12 @@ class FavoriteViewSet(ModelViewSet):
             recipe=get_object_or_404(Recipe, id=self.kwargs.get('recipe_id')),
             user=self.request.user
         )
+
+
+class SubViewSet(ModelViewSet):
+    queryset = Subscriptions.objects.all()
+    serializer_class = SubSerializer
+    pagination_class = pagination.PageNumberPagination
 
 
 # class TagViewSet(ModelViewSet):

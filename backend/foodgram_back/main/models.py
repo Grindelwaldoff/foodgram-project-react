@@ -105,18 +105,21 @@ class Favorites(models.Model):
         related_name='favorites',
         on_delete=models.CASCADE,
     )
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name='favorites',
     )
+
+    class Meta:
+        unique_together = ['recipe', 'user']
 
 
 class Subscriptions(models.Model):
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='author_sub'
+        related_name='author'
     )
     sub = models.ForeignKey(
         User,
