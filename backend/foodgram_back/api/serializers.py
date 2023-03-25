@@ -30,6 +30,17 @@ class FavoriteSerializer(serializers.ModelSerializer):
         return representation
 
 
+class IngredientSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Ingredients
+        fields = (
+            'id',
+            'name',
+            'measurement_unit'
+        )
+
+
 class CustomUserSerializer(UserSerializer):
     email = serializers.EmailField(required=True, max_length=254)
     first_name = serializers.CharField(required=True, max_length=150)

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'main.apps.MainConfig',
     'corsheaders',
+    'django_filters',
     'djoser',
 ]
 

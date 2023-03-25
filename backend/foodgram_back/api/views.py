@@ -1,16 +1,16 @@
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_list_or_404, get_object_or_404
+from rest_framework.filters import SearchFilter
 from django.http.response import HttpResponse
 from rest_framework.response import Response
 from djoser.views import UserViewSet
 from rest_framework.decorators import api_view, action
 from rest_framework.viewsets import ModelViewSet, GenericViewSet
-from rest_framework import mixins, status
 
 from main.models import (
     Tags, Recipe, Ingredients, ToBuyList, Favorites, Subscriptions
 )
-from .serializers import FavoriteSerializer
+from .serializers import FavoriteSerializer, IngredientSerializer
 
 User = get_user_model()
 
@@ -19,6 +19,14 @@ class MeViewSet(UserViewSet):
 
     def me(self, request, *args, **kwargs):
         return super().me(request, *args, **kwargs)
+
+
+class IgredientViewSet(ModelViewSet):
+    queryset = Ingredients.objects.all()
+    serializer_class = IngredientSerializer
+    http_method_names = ['get']
+    filter_backends = (SearchFilter,)
+    search_fields = ['^name']
 
 
 class FavoriteViewSet(ModelViewSet):

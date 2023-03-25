@@ -1,6 +1,3 @@
-import base64
-
-from django.core.files.base import ContentFile
 from django_base64field.fields import Base64Field
 from django.db import models
 from django.contrib.auth import get_user_model
@@ -34,7 +31,20 @@ class Tags(models.Model):
 
 class Ingredients(models.Model):
     """Класс модели ингредиентов."""
-    pass
+
+    name = models.CharField(
+        max_length=150,
+        unique=True,
+    )
+    measurement_unit = models.CharField(
+        max_length=50,
+    )
+
+    class Meta:
+        ordering = ['-id']
+
+    def __str__(self):
+        return self.name
 
 
 class Recipe(models.Model):
@@ -67,7 +77,22 @@ class Recipe(models.Model):
 
 
 class IngredientsToRecipe(models.Model):
-    pass
+    """Класс модели, описывающей кол-во ингредиентов для рецептов."""
+
+    recipe = models.ForeignKey(
+        Recipe,
+        related_name='ingredients',
+        on_delete=models.DO_NOTHING
+    )
+    ingredient = models.ForeignKey(
+        Ingredients,
+        on_delete=models.DO_NOTHING,
+        related_name='recipe'
+    )
+    amount = models.IntegerField()
+
+    def __str__(self):
+        return self.ingredient.name
 
 
 class ToBuyList(models.Model):
