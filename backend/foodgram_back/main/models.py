@@ -126,3 +126,15 @@ class Subscriptions(models.Model):
         on_delete=models.ForeignKey,
         related_name='sub'
     )
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['author', 'sub'],
+                name='unique_follow'
+            ),
+            models.CheckConstraint(
+                check=~models.Q(sub=models.F('author')),
+                name='its_not_allowed_to_follow_on_yourself'
+            )
+        ]

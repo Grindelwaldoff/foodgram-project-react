@@ -58,7 +58,6 @@ class FavoriteViewSet(ModelViewSet):
 class SubViewSet(ModelViewSet):
     queryset = Subscriptions.objects.all()
     serializer_class = SubSerializer
-    pagination_class = pagination.PageNumberPagination
 
 
 # class TagViewSet(ModelViewSet):
