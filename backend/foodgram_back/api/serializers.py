@@ -41,6 +41,22 @@ class IngredientSerializer(serializers.ModelSerializer):
         )
 
 
+
+
+
+class SubRecipeSerializer(serializers.ModelSerializer):
+    cooking_time = serializers.CharField(source='time_to_cook')
+    image = serializers.CharField(source='img')
+
+    class Meta:
+        model = Recipe
+        fields = (
+            'id',
+            'name', 'image',
+            'cooking_time'
+        )
+
+
 class CustomUserSerializer(UserSerializer):
     email = serializers.EmailField(required=True, max_length=254)
     first_name = serializers.CharField(required=True, max_length=150)
@@ -90,3 +106,15 @@ class SubSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subscriptions
         fields = ('author', 'sub')
+        read_only_fields = fields
+
+    def to_representation(self, instance):
+        user_data = CustomUserSerializer(instance=instance.author).data
+        user_data.update({
+            'recipe_count': instance.author.recipes.all().count(),
+            'recipe': SubRecipeSerializer(
+                instance.author.recipes.all(),
+                many=True
+            ).data
+        })
+        return user_data

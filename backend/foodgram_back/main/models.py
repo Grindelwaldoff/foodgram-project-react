@@ -138,3 +138,4 @@ class Subscriptions(models.Model):
                 name='its_not_allowed_to_follow_on_yourself'
             )
         ]
+        ordering = ['-id']

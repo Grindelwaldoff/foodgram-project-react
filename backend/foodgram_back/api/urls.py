@@ -1,13 +1,14 @@
 from django.urls import path, include
 from rest_framework.routers import SimpleRouter
 
-from .views import IgredientViewSet, MeViewSet, FavoriteViewSet, SubViewSet
+from .views import FavoriteViewSet, FollowViewSet, IgredientViewSet, MeViewSet, SubViewSet
 
 router = SimpleRouter()
 router.register('ingredients', IgredientViewSet, basename='ing')
 # # router.register('users', CustomUserViewSet)
 # router.register('tags', TagViewSet, basename='tags')
 # router.register('recipes', RecipeViewSet, basename='recipes')
+router.register(r'users/(?P<user_id>\d+)/subscribe', FollowViewSet, basename='follow')
 router.register(
     r'recipes/(?P<recipe_id>\d+)/favorite',
     FavoriteViewSet,

@@ -39,9 +39,6 @@ class FavoriteViewSet(ModelViewSet):
 
     @action(detail=False, methods=['DELETE'])
     def delete(self, request, *args, **kwargs):
-        print(
-            Recipe.objects.filter(id=self.kwargs.get('recipe_id')).first()
-        )
         Favorites.objects.get(
             recipe=Recipe.objects.filter(id=self.kwargs.get('recipe_id')).first(),
             user=self.request.user
@@ -58,6 +55,25 @@ class FavoriteViewSet(ModelViewSet):
 class SubViewSet(ModelViewSet):
     queryset = Subscriptions.objects.all()
     serializer_class = SubSerializer
+
+
+class FollowViewSet(ModelViewSet):
+    queryset = Subscriptions.objects.all()
+    serializer_class = SubSerializer
+    http_method_names = ['post', 'delete', 'get']
+
+    def perform_create(self, serializer):
+        serializer.save(
+            sub=self.request.user,
+            author=get_object_or_404(User, id=self.kwargs.get('user_id'))
+        )
+
+    def delete(self, request, user_id):
+        Subscriptions.objects.get(
+            sub=request.user,
+            author=get_object_or_404(User, id=user_id)
+        ).delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 
 # class TagViewSet(ModelViewSet):
