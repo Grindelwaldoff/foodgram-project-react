@@ -1,17 +1,18 @@
 from django.contrib.auth import get_user_model
-from django.shortcuts import get_list_or_404, get_object_or_404
-from django.http.response import HttpResponse
+from django.shortcuts import get_object_or_404
 from djoser.views import UserViewSet
 from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
-from rest_framework.decorators import api_view, action
-from rest_framework.viewsets import ModelViewSet, GenericViewSet
+from rest_framework.decorators import action
+from rest_framework.viewsets import ModelViewSet
 from rest_framework import status, pagination
 
 from main.models import (
-    Tags, Recipe, Ingredients, ToBuyList, Favorites, Subscriptions
+    Tags, Recipe, Ingredients, Favorites, Subscriptions
 )
-from .serializers import FavoriteSerializer, IngredientSerializer, SubSerializer
+from .serializers import (
+    FavoriteSerializer, IngredientSerializer, RecipeSerializer,
+    SubSerializer, TagSerializer)
 
 User = get_user_model()
 
@@ -40,7 +41,9 @@ class FavoriteViewSet(ModelViewSet):
     @action(detail=False, methods=['DELETE'])
     def delete(self, request, *args, **kwargs):
         Favorites.objects.get(
-            recipe=Recipe.objects.filter(id=self.kwargs.get('recipe_id')).first(),
+            recipe=Recipe.objects.filter(
+                id=self.kwargs.get('recipe_id')
+            ).first(),
             user=self.request.user
         ).delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
@@ -60,7 +63,13 @@ class SubViewSet(ModelViewSet):
 class FollowViewSet(ModelViewSet):
     queryset = Subscriptions.objects.all()
     serializer_class = SubSerializer
+    pagination_class = pagination.LimitOffsetPagination
     http_method_names = ['post', 'delete', 'get']
+
+    def get_queryset(self):
+        return Subscriptions.objects.filter(
+            sub=self.request.user
+        )
 
     def perform_create(self, serializer):
         serializer.save(
@@ -76,11 +85,16 @@ class FollowViewSet(ModelViewSet):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-# class TagViewSet(ModelViewSet):
-#     queryset = Tags.objects.all()
-#     serializer_class = TagSerializer
-#     http_method_names = ['get']
+class TagViewSet(ModelViewSet):
+    queryset = Tags.objects.all()
+    serializer_class = TagSerializer
+    pagination_class = None
+    http_method_names = ['get']
 
+
+class RecipeViewSet(ModelViewSet):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializer
 
 # class RecipeViewSet(ModelViewSet):
 #     queryset = Recipe.objects.all()
@@ -93,7 +107,8 @@ class FollowViewSet(ModelViewSet):
 #         if serializer.is_valid():
 #             self.perform_create(serializer=serializer)
 #             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#         return Response(
+    #           serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 #     def perform_create(self, serializer):
 #         return serializer.save(

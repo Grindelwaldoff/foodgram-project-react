@@ -1,16 +1,34 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from django.shortcuts import get_list_or_404, get_object_or_404
+from django.shortcuts import get_object_or_404
 from djoser.serializers import UserSerializer
 
 from main.models import (
     Tags, Recipe, Ingredients,
-    ToBuyList, Favorites, Subscriptions,
-    IngredientsToRecipe
+    Favorites, Subscriptions, IngredientsToRecipe
 )
 
 
 User = get_user_model()
+
+
+class IngredientToRecipeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = IngredientsToRecipe
+        fields = ('amount',)
+
+    def create(self, validated_data):
+        return super().create(validated_data)
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation.update({
+            'id': instance.ingredient.id,
+            'name': instance.ingredient.name,
+            'measurement_unit': instance.ingredient.measurement_unit
+        })
+        return representation
 
 
 class FavoriteSerializer(serializers.ModelSerializer):
@@ -39,9 +57,6 @@ class IngredientSerializer(serializers.ModelSerializer):
             'name',
             'measurement_unit'
         )
-
-
-
 
 
 class SubRecipeSerializer(serializers.ModelSerializer):
@@ -109,12 +124,51 @@ class SubSerializer(serializers.ModelSerializer):
         read_only_fields = fields
 
     def to_representation(self, instance):
-        user_data = CustomUserSerializer(instance=instance.author).data
+        user_data = CustomUserSerializer(
+            instance=instance.author
+        ).data
         user_data.update({
             'recipe_count': instance.author.recipes.all().count(),
-            'recipe': SubRecipeSerializer(
+        })
+        recipes = SubRecipeSerializer(
+            instance.author.recipes.all(),
+            many=True
+        ).data
+        if "recipes_limit" in self.context['request'].query_params.keys():
+            recipes = SubRecipeSerializer(
                 instance.author.recipes.all(),
                 many=True
-            ).data
+            ).data[
+                :int(self.context['request'].query_params['recipes_limit'])
+            ]
+        user_data.update({
+            'recipe': recipes
         })
         return user_data
+
+
+class TagSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Tags
+        fields = (
+            'id', 'name',
+            'color',
+            'slug'
+        )
+
+
+class RecipeSerializer(serializers.ModelSerializer):
+    cooking_time = serializers.IntegerField(source='time_to_cook')
+    image = serializers.CharField(source='img')
+    text = serializers.CharField(source='description')
+    ingredients = IngredientToRecipeSerializer(many=True)
+
+    class Meta:
+        model = Recipe
+        fields = (
+            'id', 'tags',
+            'author', 'name',
+            'image', 'text',
+            'cooking_time', 'ingredients'
+        )

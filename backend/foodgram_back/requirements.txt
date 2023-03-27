@@ -12,3 +12,4 @@ pytest-django==4.5.2
 django-base64field==1.0
 django-cors-headers==3.14.0
 django-filter~=22.1
+webcolors==1.13

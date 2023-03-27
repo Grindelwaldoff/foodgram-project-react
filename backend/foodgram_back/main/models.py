@@ -1,3 +1,4 @@
+import webcolors
 from django_base64field.fields import Base64Field
 from django.db import models
 from django.contrib.auth import get_user_model
@@ -21,6 +22,13 @@ class Tags(models.Model):
         max_length=150,
         unique=True
     )
+
+    def save(self, *args, **kwargs) -> None:
+        try:
+            self.color = webcolors.name_to_hex(self.color)
+            super().save(*args, **kwargs)
+        except ValueError:
+            raise Exception('Для такого цвета нет имени HEX.')
 
     class Meta:
         ordering = ['-id']
@@ -65,7 +73,8 @@ class Recipe(models.Model):
     tags = models.ForeignKey(
         Tags,
         related_name='recipes',
-        on_delete=models.DO_NOTHING
+        on_delete=models.SET_NULL,
+        null=True,
     )
     time_to_cook = models.IntegerField()
 
