@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from djoser.views import UserViewSet
 from rest_framework.filters import SearchFilter
@@ -6,14 +7,17 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import status, pagination
+import weasyprint
 
 from main.models import (
     Tags, Recipe, Ingredients,
     Favorites, Subscriptions,
+    Basket
 )
 from .serializers import (
-    FavoriteSerializer, IngredientSerializer, RecipeSerializer,
-    SubSerializer, TagSerializer)
+    BasketSerializer, FavoriteSerializer, IngredientSerializer,
+    RecipeSerializer, SubSerializer, TagSerializer
+)
 
 User = get_user_model()
 
@@ -59,6 +63,7 @@ class FavoriteViewSet(ModelViewSet):
 class SubViewSet(ModelViewSet):
     queryset = Subscriptions.objects.all()
     serializer_class = SubSerializer
+    http_method_names = ['get', 'post', 'delete']
 
 
 class FollowViewSet(ModelViewSet):
@@ -96,53 +101,7 @@ class TagViewSet(ModelViewSet):
 class RecipeViewSet(ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
-
-    # def create(self, request, *args, **kwargs):
-    #     serializer = self.get_serializer(data=request.data)
-    #     try:
-    #         if serializer.is_valid():
-    #             self.perform_create(serializer)
-    #             recipe = get_object_or_404(
-    #                 Recipe,
-    #                 id=serializer.data.get('id')
-    #             )
-    #             self.work_with_tags(request, recipe)
-    #             self.work_with_ingredients(request, recipe)
-    #             return Response(
-    #                 RecipeSerializer(
-    #                     Recipe.objects.get(id=serializer.data.get('id'))
-    #                 ).data,
-    #                 status=status.HTTP_201_CREATED
-    #             )
-    #             d
-    #     except Exception:
-    #         Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
-
-    # def work_with_ingredients(self, request, recipe):
-    #     try:
-    #         for ingredient in request.data.get('ingredients'):
-    #             IngredientsToRecipe.objects.get_or_create(
-    #                 recipe=recipe,
-    #                 ingredient=get_object_or_404(
-    #                     Ingredients, id=ingredient['id'],
-    #                 ),
-    #                 amount=ingredient['amount']
-    #             )
-    #     except Exception:
-    #         raise ValueError(
-    #             '"ingredients" - обязательное поле для заполнения.'
-    #         )
-
-    # def work_with_tags(self, request, recipe):
-    #     try:
-    #         for tag in request.data.get('tags'):
-    #             recipe.tags.add(
-    #                 get_object_or_404(Tags, id=tag)
-    #             )
-    #     except Exception:
-    #         raise ValueError(
-    #             '"tags" - обязательное поле для добавление рецепта.'
-    #         )
+    http_method_names = ['get', 'post', 'patch', 'delete']
 
     def perform_create(self, serializer):
         serializer.save(
@@ -151,9 +110,23 @@ class RecipeViewSet(ModelViewSet):
             )
         )
 
-# @api_view(['GET'])
-# def download_shoplist(request):
-#     with open('./media/buy_list/', 'rb') as pdf:
-#     response = HttpResponse(pdf.read(), content_type='application/pdf')
-#     response['Content-Disposition'] = 'inline;filename=mypdf.pdf'
-#     return response
+
+class BasketViewSet(ModelViewSet):
+    queryset = Basket.objects.all()
+    serializer_class = BasketSerializer
+
+    def download(self, request, recipe_id):
+        return HttpResponse(content_type='application/pdf')
+
+    def perform_create(self, serializer):
+        serializer.save(
+            user=self.request.user,
+            recipe=get_object_or_404(Recipe, id=self.kwargs.get('recipe_id'))
+        )
+
+    def delete(self, request, recipe_id):
+        Basket.objects.get(
+            user=request.user,
+            recipe=get_object_or_404(Recipe, id=recipe_id)
+        ).delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

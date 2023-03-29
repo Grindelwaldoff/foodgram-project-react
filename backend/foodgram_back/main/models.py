@@ -89,7 +89,7 @@ class IngredientsToRecipe(models.Model):
     recipe = models.ForeignKey(
         Recipe,
         related_name='ingredients',
-        on_delete=models.DO_NOTHING
+        on_delete=models.CASCADE
     )
     ingredient = models.ForeignKey(
         Ingredients,
@@ -102,8 +102,23 @@ class IngredientsToRecipe(models.Model):
         return self.ingredient.name
 
 
-class ToBuyList(models.Model):
-    pass
+class Basket(models.Model):
+    recipe = models.ForeignKey(
+        Recipe, on_delete=models.CASCADE,
+        related_name='basket'
+    )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='basket'
+    )
+
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+        unique_together = ['user', 'recipe']
+        ordering = ['-id']
 
 
 class Favorites(models.Model):

@@ -4,12 +4,12 @@ from rest_framework.routers import SimpleRouter
 from .views import (
     FavoriteViewSet, FollowViewSet,
     IgredientViewSet, MeViewSet,
-    RecipeViewSet, SubViewSet, TagViewSet
+    RecipeViewSet, SubViewSet, TagViewSet,
+    BasketViewSet
 )
 
 router = SimpleRouter()
 router.register('ingredients', IgredientViewSet, basename='ing')
-# # router.register('users', CustomUserViewSet)
 router.register('tags', TagViewSet, basename='tags')
 router.register('recipes', RecipeViewSet, basename='recipes')
 router.register(
@@ -31,7 +31,14 @@ router.register(
 urlpatterns = [
     path('users/me/', MeViewSet.as_view({'get': 'me'})),
     path('auth/', include('djoser.urls.authtoken')),
-    # path('recipes/download_shopping_cart/', download_shoplist),
+    path(
+        'recipes/<int:recipe_id>/shopping_cart/',
+        BasketViewSet.as_view({
+            'get': 'download',
+            'post': 'create',
+            'delete': 'delete'
+        })
+    ),
     path(
         '', include(router.urls)
     ),

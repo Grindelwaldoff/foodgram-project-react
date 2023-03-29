@@ -5,7 +5,7 @@ from djoser.serializers import UserSerializer
 
 from main.models import (
     Tags, Recipe, Ingredients,
-    Favorites, Subscriptions, IngredientsToRecipe
+    Favorites, Subscriptions, IngredientsToRecipe, Basket
 )
 
 
@@ -203,39 +203,40 @@ class RecipeSerializer(serializers.ModelSerializer):
         self.set_ing(ingredients, recipe)
         return recipe
 
-    def check_all_ings(self, ingredients, recipe):
-        to_reset_amount = []
-        for ing in ingredients:
-            if ing['amount'] != IngredientsToRecipe.objects.get(
-                    ingredient_id=ing['ingredient_id'],
-                    recipe=recipe).amount:
-                ingredients.pop(ing)
-                to_reset_amount.append(ing)
-            if IngredientsToRecipe.objects.filter(
-                recipe=recipe,
-                ingredient=ing['ingredient_id'],
-                amount=ing['amount']
-            ).exists():
-                ingredients.pop(ing)
-        self.set_amount(to_reset_amount)
-        return ingredients
-
-    def set_amount(self, ingredients):
-        pass
-
     def update(self, instance, validated_data):
-        recipe = instance.id
+        recipe = instance
         if 'ingredients' in validated_data:
-            ingredients = self.check_all_ings(
-                validated_data.pop('ingredients'),
-                recipe
-            )
+            ingredients = validated_data.pop('ingredients')
+            IngredientsToRecipe.objects.filter(recipe=recipe).delete()
             ing_list = []
             for ingredient in ingredients:
                 ing_list.append(
-                    IngredientsToRecipe.objects.get_or_create(
-                        
+                    IngredientsToRecipe.objects.create(
+                        recipe=recipe,
+                        ingredient=Ingredients.objects.get(
+                            id=ingredient['ingredient_id']
+                        ),
+                        amount=ingredient['amount']
                     )
                 )
+            instance.ingredients.set(ing_list)
         instance.save()
-        return instance
+        return super().update(instance, validated_data)
+
+
+class BasketSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Basket
+        fields = (
+            'id',
+        )
+
+    def to_representation(self, instance):
+        repr = super().to_representation(instance)
+        repr.update({
+            'name': instance.recipe.name,
+            'image': instance.recipe.img,
+            'cooking_time': instance.recipe.time_to_cook
+        })
+        return repr
