@@ -70,11 +70,9 @@ class Recipe(models.Model):
     description = models.CharField(
         max_length=400,
     )
-    tags = models.ForeignKey(
+    tags = models.ManyToManyField(
         Tags,
         related_name='recipes',
-        on_delete=models.SET_NULL,
-        null=True,
     )
     time_to_cook = models.IntegerField()
 

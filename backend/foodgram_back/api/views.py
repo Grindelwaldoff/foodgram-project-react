@@ -8,7 +8,8 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework import status, pagination
 
 from main.models import (
-    Tags, Recipe, Ingredients, Favorites, Subscriptions
+    Tags, Recipe, Ingredients, Favorites, Subscriptions,
+    IngredientsToRecipe
 )
 from .serializers import (
     FavoriteSerializer, IngredientSerializer, RecipeSerializer,
@@ -96,25 +97,59 @@ class RecipeViewSet(ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
 
-# class RecipeViewSet(ModelViewSet):
-#     queryset = Recipe.objects.all()
-#     serializer_class = RecipeSerializer
-#     http_method_names = ['get', 'post', 'delete', 'patch']
+    # def create(self, request, *args, **kwargs):
+    #     serializer = self.get_serializer(data=request.data)
+    #     try:
+    #         if serializer.is_valid():
+    #             self.perform_create(serializer)
+    #             recipe = get_object_or_404(
+    #                 Recipe,
+    #                 id=serializer.data.get('id')
+    #             )
+    #             self.work_with_tags(request, recipe)
+    #             self.work_with_ingredients(request, recipe)
+    #             return Response(
+    #                 RecipeSerializer(
+    #                     Recipe.objects.get(id=serializer.data.get('id'))
+    #                 ).data,
+    #                 status=status.HTTP_201_CREATED
+    #             )
+    #             d
+    #     except Exception:
+    #         Response(serializer.error, status=status.HTTP_400_BAD_REQUEST)
 
-#     def create(self, request, *args, **kwargs):
-#         ingredients_data = request.data.get('ingredients')
-#         serializer = RecipeSerializer(data=request.data)
-#         if serializer.is_valid():
-#             self.perform_create(serializer=serializer)
-#             return Response(serializer.data, status=status.HTTP_201_CREATED)
-#         return Response(
-    #           serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # def work_with_ingredients(self, request, recipe):
+    #     try:
+    #         for ingredient in request.data.get('ingredients'):
+    #             IngredientsToRecipe.objects.get_or_create(
+    #                 recipe=recipe,
+    #                 ingredient=get_object_or_404(
+    #                     Ingredients, id=ingredient['id'],
+    #                 ),
+    #                 amount=ingredient['amount']
+    #             )
+    #     except Exception:
+    #         raise ValueError(
+    #             '"ingredients" - обязательное поле для заполнения.'
+    #         )
 
-#     def perform_create(self, serializer):
-#         return serializer.save(
-#             author=self.request.user
-#         )
+    # def work_with_tags(self, request, recipe):
+    #     try:
+    #         for tag in request.data.get('tags'):
+    #             recipe.tags.add(
+    #                 get_object_or_404(Tags, id=tag)
+    #             )
+    #     except Exception:
+    #         raise ValueError(
+    #             '"tags" - обязательное поле для добавление рецепта.'
+    #         )
 
+    def perform_create(self, serializer):
+        serializer.save(
+            author=User.objects.get(
+                username='admin'
+            )
+        )
 
 # @api_view(['GET'])
 # def download_shoplist(request):

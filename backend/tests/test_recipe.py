@@ -17,7 +17,9 @@ class TestRecipe:
                 'id': 1,
                 'amount': 12
             }],
-            tags=[1,],
+            tags=[
+                1,
+            ],
             image='dslfjksdflk',
             name='TestRecipe',
             text='test_desc',

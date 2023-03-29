@@ -156,13 +156,31 @@ class TagSerializer(serializers.ModelSerializer):
             'color',
             'slug'
         )
+        read_only_fields = fields
+
+
+class TagField(serializers.Field):
+    def to_representation(self, value):
+        return TagSerializer(value, many=True).data
+
+    def to_internal_value(self, data):
+        return data
+
+
+class IngredientField(serializers.Field):
+    def to_representation(self, value):
+        return IngredientToRecipeSerializer(value, many=True).data
 
 
 class RecipeSerializer(serializers.ModelSerializer):
     cooking_time = serializers.IntegerField(source='time_to_cook')
     image = serializers.CharField(source='img')
     text = serializers.CharField(source='description')
-    ingredients = IngredientToRecipeSerializer(many=True)
+    ingredients = IngredientToRecipeSerializer(
+        many=True
+    )
+    tags = TagField(required=False)
+    author = CustomUserSerializer(read_only=True)
 
     class Meta:
         model = Recipe
@@ -172,3 +190,6 @@ class RecipeSerializer(serializers.ModelSerializer):
             'image', 'text',
             'cooking_time', 'ingredients'
         )
+
+    def create(self, validated_data):
+        return super().create(validated_data)
