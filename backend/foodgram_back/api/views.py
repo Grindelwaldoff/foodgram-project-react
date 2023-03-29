@@ -8,8 +8,8 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework import status, pagination
 
 from main.models import (
-    Tags, Recipe, Ingredients, Favorites, Subscriptions,
-    IngredientsToRecipe
+    Tags, Recipe, Ingredients,
+    Favorites, Subscriptions,
 )
 from .serializers import (
     FavoriteSerializer, IngredientSerializer, RecipeSerializer,

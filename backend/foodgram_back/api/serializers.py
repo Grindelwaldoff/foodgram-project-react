@@ -13,18 +13,15 @@ User = get_user_model()
 
 
 class IngredientToRecipeSerializer(serializers.ModelSerializer):
+    id = serializers.IntegerField(source='ingredient_id')
 
     class Meta:
         model = IngredientsToRecipe
-        fields = ('amount',)
-
-    def create(self, validated_data):
-        return super().create(validated_data)
+        fields = ('amount', 'id')
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         representation.update({
-            'id': instance.ingredient.id,
             'name': instance.ingredient.name,
             'measurement_unit': instance.ingredient.measurement_unit
         })
@@ -159,14 +156,6 @@ class TagSerializer(serializers.ModelSerializer):
         read_only_fields = fields
 
 
-class TagField(serializers.Field):
-    def to_representation(self, value):
-        return TagSerializer(value, many=True).data
-
-    def to_internal_value(self, data):
-        return data
-
-
 class IngredientField(serializers.Field):
     def to_representation(self, value):
         return IngredientToRecipeSerializer(value, many=True).data
@@ -177,9 +166,12 @@ class RecipeSerializer(serializers.ModelSerializer):
     image = serializers.CharField(source='img')
     text = serializers.CharField(source='description')
     ingredients = IngredientToRecipeSerializer(
-        many=True
+        many=True, required=False
     )
-    tags = TagField(required=False)
+    tags = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=Tags.objects.all()
+    )
     author = CustomUserSerializer(read_only=True)
 
     class Meta:
@@ -191,5 +183,59 @@ class RecipeSerializer(serializers.ModelSerializer):
             'cooking_time', 'ingredients'
         )
 
+    def set_ing(self, ingredients, recipe):
+        for ingredient in ingredients:
+            print(ingredient)
+            IngredientsToRecipe.objects.create(
+                recipe=recipe,
+                ingredient=get_object_or_404(
+                    Ingredients,
+                    id=ingredient['ingredient_id']
+                ),
+                amount=ingredient['amount']
+            )
+
     def create(self, validated_data):
-        return super().create(validated_data)
+        ingredients = validated_data.pop('ingredients')
+        tags = validated_data.pop('tags')
+        recipe = Recipe.objects.create(**validated_data)
+        recipe.tags.set(tags)
+        self.set_ing(ingredients, recipe)
+        return recipe
+
+    def check_all_ings(self, ingredients, recipe):
+        to_reset_amount = []
+        for ing in ingredients:
+            if ing['amount'] != IngredientsToRecipe.objects.get(
+                    ingredient_id=ing['ingredient_id'],
+                    recipe=recipe).amount:
+                ingredients.pop(ing)
+                to_reset_amount.append(ing)
+            if IngredientsToRecipe.objects.filter(
+                recipe=recipe,
+                ingredient=ing['ingredient_id'],
+                amount=ing['amount']
+            ).exists():
+                ingredients.pop(ing)
+        self.set_amount(to_reset_amount)
+        return ingredients
+
+    def set_amount(self, ingredients):
+        pass
+
+    def update(self, instance, validated_data):
+        recipe = instance.id
+        if 'ingredients' in validated_data:
+            ingredients = self.check_all_ings(
+                validated_data.pop('ingredients'),
+                recipe
+            )
+            ing_list = []
+            for ingredient in ingredients:
+                ing_list.append(
+                    IngredientsToRecipe.objects.get_or_create(
+                        
+                    )
+                )
+        instance.save()
+        return instance
