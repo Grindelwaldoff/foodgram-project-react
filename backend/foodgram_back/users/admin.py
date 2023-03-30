@@ -8,6 +8,14 @@ from main.models import (
 )
 
 
+class UserFilter(admin.SimpleListFilter):
+    
+
+
+class User(admin.ModelAdmin):
+    pass
+
+
 admin.site.register(User)
 admin.site.register(Tags)
 admin.site.register(Recipe)
