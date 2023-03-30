@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="msapplication-TileColor" content="#000">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Roboto:wght@100;400&display=swap"
+          rel="stylesheet">
+    <style type="text/css">
+        body {
+            font-family: 'Oswald', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            font-size:20px;
+        }
+        ul {
+            font-family: Oswald;
+            list-style-type: square;
+            font-size:25px;
+            font-weight:bold;
+            }
+        li {
+            padding:5px;
+        }
+        .list-header {
+            font-family: Oswald;
+            font-size:30px;
+            font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+<h4>
+    <p class="list-header"> Список покупок</p>
+</h4>
+<main>
+    <div>
+        <ul>
+            {% for item in shopping_cart %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</main>
+</body>
+</html>

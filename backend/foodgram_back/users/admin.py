@@ -8,19 +8,29 @@ from main.models import (
 )
 
 
-class UserFilter(admin.SimpleListFilter):
-    
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_filter = ('email', 'username')
 
 
-class User(admin.ModelAdmin):
-    pass
+@admin.register(Recipe)
+class RecipeAdmin(admin.ModelAdmin):
+    list_display = ['author', 'name']
+    list_filter = ('author', 'name', 'tags')
+    readonly_fields = ('favorite_count',)
+
+    def favorite_count(self, obj):
+        return obj.favorites.all().count()
 
 
-admin.site.register(User)
+@admin.register(Ingredients)
+class IngredientsAdmin(admin.ModelAdmin):
+    list_filter = ('name',)
+    list_display = ('name', 'measurement_unit')
+
+
 admin.site.register(Tags)
-admin.site.register(Recipe)
 admin.site.register(Favorites)
 admin.site.register(Basket)
-admin.site.register(Ingredients)
 admin.site.register(Subscriptions)
 admin.site.register(IngredientsToRecipe)

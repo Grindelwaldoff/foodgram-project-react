@@ -8,11 +8,10 @@ from rest_framework.decorators import action
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import status, pagination
 
-
 from main.models import (
     Tags, Recipe, Ingredients,
     Favorites, Subscriptions,
-    Basket
+    Basket, IngredientsToRecipe
 )
 from .serializers import (
     BasketSerializer, FavoriteSerializer, IngredientSerializer,
@@ -116,6 +115,7 @@ class BasketViewSet(ModelViewSet):
     serializer_class = BasketSerializer
 
     def download(self, request, recipe_id):
+        
         return HttpResponse(content_type='application/pdf')
 
     def perform_create(self, serializer):
