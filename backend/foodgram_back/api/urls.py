@@ -34,9 +34,13 @@ urlpatterns = [
     path(
         'recipes/<int:recipe_id>/shopping_cart/',
         BasketViewSet.as_view({
-            'get': 'download',
             'post': 'create',
             'delete': 'delete'
+        })
+    ),
+    path('recipes/download_shopping_cart/',
+         BasketViewSet.as_view({
+            'get': 'download'
         })
     ),
     path(

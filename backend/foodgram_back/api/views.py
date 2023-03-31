@@ -1,18 +1,23 @@
+import pdfkit
+import jinja2
 from django.contrib.auth import get_user_model
+from django.conf import settings
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_list_or_404, get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
 from djoser.views import UserViewSet
 from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.viewsets import ModelViewSet
-from rest_framework import status, pagination
+from rest_framework import status, pagination, permissions
 
 from main.models import (
     Tags, Recipe, Ingredients,
     Favorites, Subscriptions,
     Basket, IngredientsToRecipe
 )
+from .filters import RecipeFilter
 from .serializers import (
     BasketSerializer, FavoriteSerializer, IngredientSerializer,
     RecipeSerializer, SubSerializer, TagSerializer
@@ -89,7 +94,6 @@ class FollowViewSet(ModelViewSet):
         ).delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-
 class TagViewSet(ModelViewSet):
     queryset = Tags.objects.all()
     serializer_class = TagSerializer
@@ -101,6 +105,9 @@ class RecipeViewSet(ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
     http_method_names = ['get', 'post', 'patch', 'delete']
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = RecipeFilter
 
     def perform_create(self, serializer):
         serializer.save(
@@ -114,9 +121,31 @@ class BasketViewSet(ModelViewSet):
     queryset = Basket.objects.all()
     serializer_class = BasketSerializer
 
-    def download(self, request, recipe_id):
-        
-        return HttpResponse(content_type='application/pdf')
+    def download(self, request):
+        items_in_basket = get_list_or_404(Basket, user=request.user)
+        shopping_cart = {}
+        for item in items_in_basket:
+            ing_list = item.recipe.ingredients.all()
+            for ing in ing_list:
+                try:
+                    shopping_cart[ing.ingredient.name] += ing.amount
+                except KeyError:
+                    shopping_cart.update({
+                        ing.ingredient.name: ing.amount
+                    })
+        self.generate_pdf(request, {'shopping_cart': shopping_cart})
+        with open(f'foodgram_back/pdf/cart/shop_list_{request.user}.pdf', 'rb') as pdf:
+            response = HttpResponse(pdf.read(), content_type='application/pdf')
+            response['Content-Disposition'] = 'inline;filename=shop_cart.pdf'
+            return response
+
+    def generate_pdf(self, request, context):
+        template_loader = jinja2.FileSystemLoader('./')
+        template_env = jinja2.Environment(loader=template_loader)
+        template = template_env.get_template('foodgram_back/templates/shopping_list_template.html')
+        output_text = template.render(context)
+        config = pdfkit.configuration(wkhtmltopdf=settings.HTML_TO_PDF_ROUTE)
+        pdfkit.from_string(output_text, f'foodgram_back/pdf/cart/shop_list_{request.user}.pdf', configuration=config)
 
     def perform_create(self, serializer):
         serializer.save(

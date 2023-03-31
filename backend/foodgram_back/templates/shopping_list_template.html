@@ -38,8 +38,8 @@
 <main>
     <div>
         <ul>
-            {% for item in shopping_cart %}
-            <li>{{ item }}</li>
+            {% for item, amount in shopping_cart.items() %}
+            <li>{{ item }} - {{ amount }}</li>
             {% endfor %}
         </ul>
     </div>

@@ -5,5 +5,4 @@ from django.contrib.auth.models import AbstractUser, UserManager
 class User(AbstractUser):
     """Кастомная модель юзера, в коорую включены доп поля."""
 
-    is_subscribed = models.BooleanField(default=False)
     objects = UserManager()

@@ -153,6 +153,10 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join('BASE_DIR', 'media')
 
 REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
     'DEFAULT_PAGINATION_CLASS': 'api.pagination.CustomPagination',
     'PAGE_SIZE': 10,
 }
@@ -167,7 +171,7 @@ DJOSER = {
     'LOGIN_FIELD': 'email',
     'PERMISSIONS': {
         'activation': ['rest_framework.permissions.IsAdminUser'],
-        'password_reset': ['rest_framework.permissions.IsAdminUser'],
+        'password_reset': ['djoser.permissions.CurrentUserOrAdmin'],
         'password_reset_confirm': ['rest_framework.permissions.IsAdminUser'],
         'set_password': ['djoser.permissions.CurrentUserOrAdmin'],
         'username_reset': ['rest_framework.permissions.IsAdminUser'],
@@ -188,3 +192,5 @@ DJOSER = {
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 HTML_TO_PDF_ROUTE = '/usr/bin/wkhtmltopdf'
+
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')

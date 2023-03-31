@@ -81,7 +81,7 @@ class CustomUserSerializer(UserSerializer):
         fields = (
             'email', 'id',
             'username', 'first_name',
-            'second_name', 'password', 'is_subscribed'
+            'second_name', 'password'
         )
         extra_kwargs = {
             'password': {
@@ -89,13 +89,23 @@ class CustomUserSerializer(UserSerializer):
                 'style': {'input_type': 'password'}
             }
         }
-        read_only_fields = ('is_subscribed',)
 
     def create(self, validated_data):
         user = super(UserSerializer, self).create(validated_data)
         user.set_password(validated_data['password'])
         user.save()
         return user
+
+    def to_representation(self, instance):
+        repr = super().to_representation(instance)
+        repr.update({'is_subscribed': False})
+        user = self.context['request'].user
+        if user.is_authenticated and Subscriptions.objects.filter(
+            sub=user,
+            author=instance
+        ).exists():
+            repr['is_subscribed'] = True
+        return repr
 
 
 class PasswordSerializer(serializers.ModelSerializer):
@@ -222,6 +232,13 @@ class RecipeSerializer(serializers.ModelSerializer):
             instance.ingredients.set(ing_list)
         instance.save()
         return super().update(instance, validated_data)
+
+    def to_representation(self, instance):
+        # try:
+        return super().to_representation(instance)
+                    
+        # except Exception:
+        #     return super().to_representation(instance)
 
 
 class BasketSerializer(serializers.ModelSerializer):
