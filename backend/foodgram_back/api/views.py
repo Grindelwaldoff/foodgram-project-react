@@ -5,7 +5,6 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import get_list_or_404, get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from djoser.views import UserViewSet
 from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
 from rest_framework.decorators import action
@@ -15,7 +14,7 @@ from rest_framework import status, pagination, permissions
 from main.models import (
     Tags, Recipe, Ingredients,
     Favorites, Subscriptions,
-    Basket, IngredientsToRecipe
+    Basket
 )
 from .filters import RecipeFilter
 from .serializers import (
@@ -24,12 +23,6 @@ from .serializers import (
 )
 
 User = get_user_model()
-
-
-class MeViewSet(UserViewSet):
-
-    def me(self, request, *args, **kwargs):
-        return super().me(request, *args, **kwargs)
 
 
 class IgredientViewSet(ModelViewSet):

@@ -3,7 +3,7 @@ from rest_framework.routers import SimpleRouter
 
 from .views import (
     FavoriteViewSet, FollowViewSet,
-    IgredientViewSet, MeViewSet,
+    IgredientViewSet,
     RecipeViewSet, SubViewSet, TagViewSet,
     BasketViewSet
 )
@@ -29,7 +29,6 @@ router.register(
 
 
 urlpatterns = [
-    path('users/me/', MeViewSet.as_view({'get': 'me'})),
     path('auth/', include('djoser.urls.authtoken')),
     path(
         'recipes/<int:recipe_id>/shopping_cart/',

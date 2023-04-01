@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'corsheaders',
     'django_filters',
+    'colorfield',
     'djoser',
 ]
 
@@ -157,7 +158,7 @@ REST_FRAMEWORK = {
        'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],
-    'DEFAULT_PAGINATION_CLASS': 'api.pagination.CustomPagination',
+    'DEFAULT_PAGINATION_CLASS': 'api.pagination.LimitPageSizePagination',
     'PAGE_SIZE': 10,
 }
 
@@ -194,3 +195,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 HTML_TO_PDF_ROUTE = '/usr/bin/wkhtmltopdf'
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
+NAME_MAX_LENGTH = 150
+
+DESC_MAX_LENGTH = 400

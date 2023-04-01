@@ -1,5 +1,6 @@
-import webcolors
+from colorfield.fields import ColorField
 from django_base64field.fields import Base64Field
+from django.conf import settings
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -11,24 +12,14 @@ class Tags(models.Model):
     """Класс модели тэгов."""
 
     name = models.CharField(
-        max_length=100,
+        max_length=settings.NAME_MAX_LENGTH,
         unique=True
     )
-    color = models.CharField(
-        max_length=50,
+    color = ColorField()
+    slug = models.SlugField(
+        max_length=settings.NAME_MAX_LENGTH,
         unique=True
     )
-    slug = models.CharField(
-        max_length=150,
-        unique=True
-    )
-
-    def save(self, *args, **kwargs) -> None:
-        try:
-            self.color = webcolors.name_to_hex(self.color)
-            super().save(*args, **kwargs)
-        except ValueError:
-            raise Exception('Для такого цвета нет имени HEX.')
 
     class Meta:
         ordering = ['-id']
@@ -41,7 +32,7 @@ class Ingredients(models.Model):
     """Класс модели ингредиентов."""
 
     name = models.CharField(
-        max_length=150,
+        max_length=settings.NAME_MAX_LENGTH,
         unique=True,
     )
     measurement_unit = models.CharField(
@@ -64,11 +55,11 @@ class Recipe(models.Model):
         related_name='recipes',
     )
     name = models.CharField(
-        max_length=150,
+        max_length=settings.NAME_MAX_LENGTH,
     )
     img = Base64Field()
     description = models.CharField(
-        max_length=400,
+        max_length=settings.DESC_MAX_LENGTH,
     )
     tags = models.ManyToManyField(
         Tags,
@@ -93,8 +84,8 @@ class IngredientsToRecipe(models.Model):
     )
     ingredient = models.ForeignKey(
         Ingredients,
-        on_delete=models.DO_NOTHING,
-        related_name='recipe'
+        on_delete=models.CASCADE,
+        related_name='+'
     )
     amount = models.IntegerField()
 
@@ -105,7 +96,7 @@ class IngredientsToRecipe(models.Model):
 class Basket(models.Model):
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE,
-        related_name='basket'
+        related_name='+'
     )
     user = models.ForeignKey(
         User,
@@ -124,7 +115,7 @@ class Basket(models.Model):
 class Favorites(models.Model):
     recipe = models.ForeignKey(
         Recipe,
-        related_name='favorites',
+        related_name='+',
         on_delete=models.CASCADE,
     )
     user = models.ForeignKey(
