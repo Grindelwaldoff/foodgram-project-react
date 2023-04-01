@@ -19,7 +19,7 @@ from main.models import (
 from .filters import RecipeFilter
 from .serializers import (
     BasketSerializer, FavoriteSerializer, IngredientSerializer,
-    RecipeSerializer, SubSerializer, TagSerializer
+    RecipeSerializer, SubscriptionsSerializer, TagSerializer
 )
 
 User = get_user_model()
@@ -59,13 +59,13 @@ class FavoriteViewSet(ModelViewSet):
 
 class SubViewSet(ModelViewSet):
     queryset = Subscriptions.objects.all()
-    serializer_class = SubSerializer
+    serializer_class = SubscriptionsSerializer
     http_method_names = ['get', 'post', 'delete']
 
 
 class FollowViewSet(ModelViewSet):
     queryset = Subscriptions.objects.all()
-    serializer_class = SubSerializer
+    serializer_class = SubscriptionsSerializer
     pagination_class = pagination.LimitOffsetPagination
     http_method_names = ['post', 'delete', 'get']
 

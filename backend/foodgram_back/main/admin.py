@@ -1,7 +1,6 @@
-from django.contrib import admin
+from django.contrib import admin, auth
 from django.forms import BaseInlineFormSet
 
-from users.models import User
 from main.models import (
     Tags, Recipe, Ingredients,
     Basket, Favorites, Subscriptions,
@@ -9,7 +8,6 @@ from main.models import (
 )
 
 
-@admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     list_filter = ('email', 'username')
 
@@ -30,8 +28,18 @@ class IngredientsAdmin(admin.ModelAdmin):
     list_display = ('name', 'measurement_unit')
 
 
+# class PreventNullIngs(admin.TabularInline):
+#     model = Recipe.ingredients.through
+#     min_num = 1
+
+
+@admin.register(IngredientsToRecipe)
+class IngredientsRecipeAdmin(admin.ModelAdmin):
+    list_display = ['recipe', 'ingredient', 'amount']
+    # inlines = [PreventNullIngs]
+
+
 admin.site.register(Tags)
 admin.site.register(Favorites)
 admin.site.register(Basket)
 admin.site.register(Subscriptions)
-admin.site.register(IngredientsToRecipe)

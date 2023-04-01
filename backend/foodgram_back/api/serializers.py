@@ -69,61 +69,32 @@ class SubRecipeSerializer(serializers.ModelSerializer):
         )
 
 
-class CustomUserSerializer(UserSerializer):
-    email = serializers.EmailField(required=True, max_length=254)
-    first_name = serializers.CharField(required=True, max_length=150)
-    second_name = serializers.CharField(
-        required=True, max_length=150, source='last_name'
-    )
+class CustomUserSerializer(serializers.HyperlinkedModelSerializer):
+    is_subscribed = serializers.SerializerMethodField()
+    email = serializers.EmailField()
 
     class Meta(UserSerializer.Meta):
-
         fields = (
-            'email', 'id',
+            'id', 'email',
             'username', 'first_name',
-            'second_name', 'password'
+            'last_name', 'password', 'is_subscribed'
         )
         extra_kwargs = {
-            'password': {
-                'write_only': True,
-                'style': {'input_type': 'password'}
-            }
+            'password': {'write_only': True},
+            'first_name': {'required': True},
+            'last_name': {'required': True}
         }
 
-    def create(self, validated_data):
-        user = super(UserSerializer, self).create(validated_data)
-        user.set_password(validated_data['password'])
-        user.save()
-        return user
+    def get_email(self, obj):
+        return obj.email
 
-    def to_representation(self, instance):
-        repr = super().to_representation(instance)
-        repr.update({'is_subscribed': False})
-        user = self.context['request'].user
-        if user.is_authenticated and Subscriptions.objects.filter(
-            sub=user,
-            author=instance
-        ).exists():
-            repr['is_subscribed'] = True
-        return repr
+    def get_is_subscribed(self, obj):
+        return (self.context['request'].user.is_authenticated
+            and Subscriptions.objects.filter(author=obj, sub=self.context['request'].user).exists())
+        
 
 
-class PasswordSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = User
-        fields = ('new_password', 'current_password')
-
-    new_password = serializers.CharField(
-        style={'input_type': 'password'},
-        max_length=150, required=True
-    )
-    current_password = serializers.CharField(
-        style={'input_type': 'password'},
-        max_length=150, required=True
-    )
-
-
-class SubSerializer(serializers.ModelSerializer):
+class SubscriptionsSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Subscriptions
@@ -194,16 +165,13 @@ class RecipeSerializer(serializers.ModelSerializer):
         )
 
     def set_ing(self, ingredients, recipe):
-        for ingredient in ingredients:
-            print(ingredient)
-            IngredientsToRecipe.objects.create(
-                recipe=recipe,
-                ingredient=get_object_or_404(
-                    Ingredients,
-                    id=ingredient['ingredient_id']
-                ),
-                amount=ingredient['amount']
-            )
+        IngredientsToRecipe.objects.bulk_create(
+            [IngredientsToRecipe(
+                ingredient=Ingredients.objects.get(id=ingredient['ingredient_id']),
+                amount=ingredient['amount'],
+                recipe=recipe
+            ) for ingredient in ingredients]
+        )
 
     def create(self, validated_data):
         ingredients = validated_data.pop('ingredients')
@@ -218,18 +186,7 @@ class RecipeSerializer(serializers.ModelSerializer):
         if 'ingredients' in validated_data:
             ingredients = validated_data.pop('ingredients')
             IngredientsToRecipe.objects.filter(recipe=recipe).delete()
-            ing_list = []
-            for ingredient in ingredients:
-                ing_list.append(
-                    IngredientsToRecipe.objects.create(
-                        recipe=recipe,
-                        ingredient=Ingredients.objects.get(
-                            id=ingredient['ingredient_id']
-                        ),
-                        amount=ingredient['amount']
-                    )
-                )
-            instance.ingredients.set(ing_list)
+            self.set_ing(ingredients, recipe)
         instance.save()
         return super().update(instance, validated_data)
 
