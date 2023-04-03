@@ -27,7 +27,7 @@ jobs:
   push_to_Docker:
     name: Push image to DockerHub
     runs-on: ubuntu-latest
-    needs: pep8_and_tests
+    needs: pep8_and_pytest
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
