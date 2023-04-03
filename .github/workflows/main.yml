@@ -60,6 +60,7 @@ jobs:
             sudo docker run --rm -d -p 8000:8000 grindelwaldoff/infra_ations
   telegram:
     runs-on: ubuntu-latest
+    needs: deploy
     steps:
       - name: Send Message
         uses: appleboy/telegram-action@master
