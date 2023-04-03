@@ -460,27 +460,11 @@
         "documentation": {}
     },
     {
-        "label": "auth",
-        "importPath": "django.contrib",
-        "description": "django.contrib",
-        "isExtraImport": true,
-        "detail": "django.contrib",
-        "documentation": {}
-    },
-    {
         "label": "get_wsgi_application",
         "importPath": "django.core.wsgi",
         "description": "django.core.wsgi",
         "isExtraImport": true,
         "detail": "django.core.wsgi",
-        "documentation": {}
-    },
-    {
-        "label": "BaseInlineFormSet",
-        "importPath": "django.forms",
-        "description": "django.forms",
-        "isExtraImport": true,
-        "detail": "django.forms",
         "documentation": {}
     },
     {
@@ -1014,7 +998,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.foodgram_back.settings",
         "description": "backend.foodgram_back.foodgram_back.settings",
-        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.2/howto/static-files/\nSTATIC_URL = '/static/'\nSTATIC_ROOT = os.path.join('BASE_DIR', 'static')\nMEDIA_URL = '/media/'\nMEDIA_ROOT = os.path.join('BASE_DIR', 'media')\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n       'rest_framework.authentication.TokenAuthentication',",
+        "peekOfCode": "USE_TZ = True\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/3.2/howto/static-files/\nSTATIC_URL = '/static/'\nSTATIC_ROOT = os.path.join('BASE_DIR', 'static')\nMEDIA_URL = '/media/'\nMEDIA_ROOT = os.path.join('BASE_DIR', 'media')\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework.authentication.TokenAuthentication',",
         "detail": "backend.foodgram_back.foodgram_back.settings",
         "documentation": {}
     },
@@ -1023,7 +1007,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.foodgram_back.settings",
         "description": "backend.foodgram_back.foodgram_back.settings",
-        "peekOfCode": "STATIC_URL = '/static/'\nSTATIC_ROOT = os.path.join('BASE_DIR', 'static')\nMEDIA_URL = '/media/'\nMEDIA_ROOT = os.path.join('BASE_DIR', 'media')\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n       'rest_framework.authentication.TokenAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],\n    'DEFAULT_PAGINATION_CLASS': 'api.pagination.LimitPageSizePagination',",
+        "peekOfCode": "STATIC_URL = '/static/'\nSTATIC_ROOT = os.path.join('BASE_DIR', 'static')\nMEDIA_URL = '/media/'\nMEDIA_ROOT = os.path.join('BASE_DIR', 'media')\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework.authentication.TokenAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],\n    'DEFAULT_PAGINATION_CLASS': 'api.pagination.LimitPageSizePagination',",
         "detail": "backend.foodgram_back.foodgram_back.settings",
         "documentation": {}
     },
@@ -1032,7 +1016,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.foodgram_back.settings",
         "description": "backend.foodgram_back.foodgram_back.settings",
-        "peekOfCode": "STATIC_ROOT = os.path.join('BASE_DIR', 'static')\nMEDIA_URL = '/media/'\nMEDIA_ROOT = os.path.join('BASE_DIR', 'media')\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n       'rest_framework.authentication.TokenAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],\n    'DEFAULT_PAGINATION_CLASS': 'api.pagination.LimitPageSizePagination',\n    'PAGE_SIZE': 10,",
+        "peekOfCode": "STATIC_ROOT = os.path.join('BASE_DIR', 'static')\nMEDIA_URL = '/media/'\nMEDIA_ROOT = os.path.join('BASE_DIR', 'media')\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework.authentication.TokenAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],\n    'DEFAULT_PAGINATION_CLASS': 'api.pagination.LimitPageSizePagination',\n    'PAGE_SIZE': 10,",
         "detail": "backend.foodgram_back.foodgram_back.settings",
         "documentation": {}
     },
@@ -1041,7 +1025,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.foodgram_back.settings",
         "description": "backend.foodgram_back.foodgram_back.settings",
-        "peekOfCode": "MEDIA_URL = '/media/'\nMEDIA_ROOT = os.path.join('BASE_DIR', 'media')\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n       'rest_framework.authentication.TokenAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],\n    'DEFAULT_PAGINATION_CLASS': 'api.pagination.LimitPageSizePagination',\n    'PAGE_SIZE': 10,\n}",
+        "peekOfCode": "MEDIA_URL = '/media/'\nMEDIA_ROOT = os.path.join('BASE_DIR', 'media')\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework.authentication.TokenAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],\n    'DEFAULT_PAGINATION_CLASS': 'api.pagination.LimitPageSizePagination',\n    'PAGE_SIZE': 10,\n}",
         "detail": "backend.foodgram_back.foodgram_back.settings",
         "documentation": {}
     },
@@ -1050,7 +1034,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.foodgram_back.settings",
         "description": "backend.foodgram_back.foodgram_back.settings",
-        "peekOfCode": "MEDIA_ROOT = os.path.join('BASE_DIR', 'media')\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n       'rest_framework.authentication.TokenAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],\n    'DEFAULT_PAGINATION_CLASS': 'api.pagination.LimitPageSizePagination',\n    'PAGE_SIZE': 10,\n}\nDJOSER = {",
+        "peekOfCode": "MEDIA_ROOT = os.path.join('BASE_DIR', 'media')\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework.authentication.TokenAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],\n    'DEFAULT_PAGINATION_CLASS': 'api.pagination.LimitPageSizePagination',\n    'PAGE_SIZE': 10,\n}\nDJOSER = {",
         "detail": "backend.foodgram_back.foodgram_back.settings",
         "documentation": {}
     },
@@ -1059,7 +1043,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.foodgram_back.settings",
         "description": "backend.foodgram_back.foodgram_back.settings",
-        "peekOfCode": "REST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n       'rest_framework.authentication.TokenAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],\n    'DEFAULT_PAGINATION_CLASS': 'api.pagination.LimitPageSizePagination',\n    'PAGE_SIZE': 10,\n}\nDJOSER = {\n    'SERIALIZERS': {",
+        "peekOfCode": "REST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': (\n        'rest_framework.authentication.TokenAuthentication',\n    ),\n    'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissions.IsAuthenticated'],\n    'DEFAULT_PAGINATION_CLASS': 'api.pagination.LimitPageSizePagination',\n    'PAGE_SIZE': 10,\n}\nDJOSER = {\n    'SERIALIZERS': {",
         "detail": "backend.foodgram_back.foodgram_back.settings",
         "documentation": {}
     },
@@ -1158,7 +1142,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.main.admin",
         "description": "backend.foodgram_back.main.admin",
-        "peekOfCode": "class IngredientsAdmin(admin.ModelAdmin):\n    list_filter = ('name',)\n    list_display = ('name', 'measurement_unit')\n# class PreventNullIngs(admin.TabularInline):\n#     model = Recipe.ingredients.through\n#     min_num = 1\n@admin.register(IngredientsToRecipe)\nclass IngredientsRecipeAdmin(admin.ModelAdmin):\n    list_display = ['recipe', 'ingredient', 'amount']\n    # inlines = [PreventNullIngs]",
+        "peekOfCode": "class IngredientsAdmin(admin.ModelAdmin):\n    list_filter = ('name',)\n    list_display = ('name', 'measurement_unit')\n@admin.register(IngredientsToRecipe)\nclass IngredientsRecipeAdmin(admin.ModelAdmin):\n    list_display = ['recipe', 'ingredient', 'amount']\nadmin.site.register(Tags)\nadmin.site.register(Favorites)\nadmin.site.register(Basket)\nadmin.site.register(Subscriptions)",
         "detail": "backend.foodgram_back.main.admin",
         "documentation": {}
     },
@@ -1167,7 +1151,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.main.admin",
         "description": "backend.foodgram_back.main.admin",
-        "peekOfCode": "class IngredientsRecipeAdmin(admin.ModelAdmin):\n    list_display = ['recipe', 'ingredient', 'amount']\n    # inlines = [PreventNullIngs]\nadmin.site.register(Tags)\nadmin.site.register(Favorites)\nadmin.site.register(Basket)\nadmin.site.register(Subscriptions)",
+        "peekOfCode": "class IngredientsRecipeAdmin(admin.ModelAdmin):\n    list_display = ['recipe', 'ingredient', 'amount']\nadmin.site.register(Tags)\nadmin.site.register(Favorites)\nadmin.site.register(Basket)\nadmin.site.register(Subscriptions)",
         "detail": "backend.foodgram_back.main.admin",
         "documentation": {}
     },

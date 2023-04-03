@@ -46,6 +46,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     name: deploy on Yandex Cloud
+    needs: push_to_Docker
     steps:
       - name: executing remote ssh commands for deploy
         uses: appleboy/ssh-action@master
