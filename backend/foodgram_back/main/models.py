@@ -36,7 +36,7 @@ class Ingredients(models.Model):
         unique=True,
     )
     measurement_unit = models.CharField(
-        max_length=50,
+        max_length=settings.MEASURE_MAX_LENGTH,
     )
 
     class Meta:
@@ -65,7 +65,7 @@ class Recipe(models.Model):
         Tags,
         related_name='recipes',
     )
-    time_to_cook = models.IntegerField()
+    time_to_cook = models.PositiveIntegerField()
 
     class Meta:
         ordering = ['-id']
@@ -87,7 +87,7 @@ class IngredientsToRecipe(models.Model):
         on_delete=models.CASCADE,
         related_name='+'
     )
-    amount = models.IntegerField()
+    amount = models.PositiveIntegerField()
 
     def __str__(self):
         return self.ingredient.name

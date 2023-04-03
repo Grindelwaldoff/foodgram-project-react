@@ -69,7 +69,7 @@ class SubRecipeSerializer(serializers.ModelSerializer):
         )
 
 
-class CustomUserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializerWithAdditionalFields(serializers.HyperlinkedModelSerializer):
     is_subscribed = serializers.SerializerMethodField()
     email = serializers.EmailField()
 
@@ -102,7 +102,7 @@ class SubscriptionsSerializer(serializers.ModelSerializer):
         read_only_fields = fields
 
     def to_representation(self, instance):
-        user_data = CustomUserSerializer(
+        user_data = UserSerializerWithAdditionalFields(
             instance=instance.author
         ).data
         user_data.update({
@@ -153,7 +153,7 @@ class RecipeSerializer(serializers.ModelSerializer):
         many=True,
         queryset=Tags.objects.all()
     )
-    author = CustomUserSerializer(read_only=True)
+    author = UserSerializerWithAdditionalFields(read_only=True)
 
     class Meta:
         model = Recipe

@@ -92,23 +92,23 @@ WSGI_APPLICATION = 'foodgram_back.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.getenv('DB_NAME', default='postgres'),
-#         'USER': os.getenv('POSTGRES_USER', default='postgres'),
-#         'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='postgres'),
-#         'HOST': os.getenv('DB_HOST', default='0.0.0.0'),
-#         'PORT': os.getenv('DB_PORT', default=5432)
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME', default='postgres'),
+        'USER': os.getenv('POSTGRES_USER', default='postgres'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', default='postgres'),
+        'HOST': os.getenv('DB_HOST', default='0.0.0.0'),
+        'PORT': os.getenv('DB_PORT', default=5432)
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -161,9 +161,9 @@ REST_FRAMEWORK = {
 
 DJOSER = {
     'SERIALIZERS': {
-        'user': 'api.serializers.CustomUserSerializer',
-        'user_create': 'api.serializers.CustomUserSerializer',
-        'current_user': 'api.serializers.CustomUserSerializer',
+        'user': 'api.serializers.UserSerializerWithAdditionalFields',
+        'user_create': 'api.serializers.UserSerializerWithAdditionalFields',
+        'current_user': 'api.serializers.UserSerializerWithAdditionalFields',
     },
     'HIDE_USERS': False,
     'LOGIN_FIELD': 'email',
@@ -191,8 +191,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 HTML_TO_PDF_ROUTE = '/usr/bin/wkhtmltopdf'
 
-TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
-
 NAME_MAX_LENGTH = 150
 
 DESC_MAX_LENGTH = 400
+
+MEASURE_MAX_LENGTH = 50
