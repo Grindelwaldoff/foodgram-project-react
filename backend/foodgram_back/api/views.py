@@ -87,6 +87,7 @@ class FollowViewSet(ModelViewSet):
         ).delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+
 class TagViewSet(ModelViewSet):
     queryset = Tags.objects.all()
     serializer_class = TagSerializer
@@ -127,7 +128,10 @@ class BasketViewSet(ModelViewSet):
                         ing.ingredient.name: ing.amount
                     })
         self.generate_pdf(request, {'shopping_cart': shopping_cart})
-        with open(f'foodgram_back/pdf/cart/shop_list_{request.user}.pdf', 'rb') as pdf:
+        with open(
+            f'foodgram_back/pdf/cart/shop_list_{request.user}.pdf',
+            'rb'
+        ) as pdf:
             response = HttpResponse(pdf.read(), content_type='application/pdf')
             response['Content-Disposition'] = 'inline;filename=shop_cart.pdf'
             return response
@@ -135,10 +139,16 @@ class BasketViewSet(ModelViewSet):
     def generate_pdf(self, request, context):
         template_loader = jinja2.FileSystemLoader('./')
         template_env = jinja2.Environment(loader=template_loader)
-        template = template_env.get_template('foodgram_back/templates/shopping_list_template.html')
+        template = template_env.get_template(
+            'foodgram_back/templates/shopping_list_template.html'
+        )
         output_text = template.render(context)
         config = pdfkit.configuration(wkhtmltopdf=settings.HTML_TO_PDF_ROUTE)
-        pdfkit.from_string(output_text, f'foodgram_back/pdf/cart/shop_list_{request.user}.pdf', configuration=config)
+        pdfkit.from_string(
+            output_text,
+            f'foodgram_back/pdf/cart/shop_list_{request.user}.pdf',
+            configuration=config
+        )
 
     def perform_create(self, serializer):
         serializer.save(

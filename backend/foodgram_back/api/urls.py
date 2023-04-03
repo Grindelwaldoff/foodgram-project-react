@@ -37,8 +37,9 @@ urlpatterns = [
             'delete': 'delete'
         })
     ),
-    path('recipes/download_shopping_cart/',
-         BasketViewSet.as_view({
+    path(
+        'recipes/download_shopping_cart/',
+        BasketViewSet.as_view({
             'get': 'download'
         })
     ),

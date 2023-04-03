@@ -69,7 +69,9 @@ class SubRecipeSerializer(serializers.ModelSerializer):
         )
 
 
-class UserSerializerWithAdditionalFields(serializers.HyperlinkedModelSerializer):
+class UserSerializerWithAdditionalFields(
+    serializers.HyperlinkedModelSerializer
+):
     is_subscribed = serializers.SerializerMethodField()
     email = serializers.EmailField()
 
@@ -89,9 +91,13 @@ class UserSerializerWithAdditionalFields(serializers.HyperlinkedModelSerializer)
         return obj.email
 
     def get_is_subscribed(self, obj):
-        return (self.context['request'].user.is_authenticated
-            and Subscriptions.objects.filter(author=obj, sub=self.context['request'].user).exists())
-        
+        return (
+            self.context['request'].user.is_authenticated
+            and Subscriptions.objects.filter(
+                author=obj,
+                sub=self.context['request'].user
+            ).exists()
+        )
 
 
 class SubscriptionsSerializer(serializers.ModelSerializer):
@@ -167,7 +173,9 @@ class RecipeSerializer(serializers.ModelSerializer):
     def set_ing(self, ingredients, recipe):
         IngredientsToRecipe.objects.bulk_create(
             [IngredientsToRecipe(
-                ingredient=Ingredients.objects.get(id=ingredient['ingredient_id']),
+                ingredient=Ingredients.objects.get(
+                    id=ingredient['ingredient_id']
+                ),
                 amount=ingredient['amount'],
                 recipe=recipe
             ) for ingredient in ingredients]
@@ -189,13 +197,6 @@ class RecipeSerializer(serializers.ModelSerializer):
             self.set_ing(ingredients, recipe)
         instance.save()
         return super().update(instance, validated_data)
-
-    def to_representation(self, instance):
-        # try:
-        return super().to_representation(instance)
-                    
-        # except Exception:
-        #     return super().to_representation(instance)
 
 
 class BasketSerializer(serializers.ModelSerializer):

@@ -24,6 +24,39 @@ jobs:
           python -m flake8
           cd backend/foodgram_back
           python manage.py test
+  push to Docker:
+    name: Push image to DockerHub
+    runs-on: ubuntu-latest
+    needs: pep8_and_tests
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - name: Login to Docker
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }} 
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v2
+        with:
+        push: true
+        tags: grindelwaldoff/foodgram_actions
+  deploy:
+    runs-on: ubuntu-latest
+    name: deploy on Yandex Cloud
+    steps:
+      - name: executing remote ssh commands for deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.HOST_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            sudo docker pull grindelwaldoff/foodgram_actions
+            sudo docker stop $(sudo docker container stop ps -qa)
+            sudo docker run --rm -d -p 8000:8000 grindelwaldoff/infra_ations
   telegram:
     runs-on: ubuntu-latest
     steps:

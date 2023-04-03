@@ -115,7 +115,7 @@ class Basket(models.Model):
 class Favorites(models.Model):
     recipe = models.ForeignKey(
         Recipe,
-        related_name='favorites', # да - для счетчика в админке.
+        related_name='favorites',  # да - для счетчика в админке.
         on_delete=models.CASCADE,
     )
     user = models.ForeignKey(
