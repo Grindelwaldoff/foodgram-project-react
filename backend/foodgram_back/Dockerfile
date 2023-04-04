@@ -4,7 +4,6 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip3 install --upgrade pip
 RUN pip3 install -r foodgram_back/requirements.txt --no-cache-dir
 
 CMD [ "gunicorn", "foodgram_back.wsgi:application", "--bind", "0:8000"]
