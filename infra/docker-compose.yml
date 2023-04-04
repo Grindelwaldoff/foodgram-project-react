@@ -10,7 +10,7 @@ services:
     depends_on:
       - db
     build:
-      context: ../
+      context: ../backend/foodgram_back/
       dockerfile: Dockerfile
     restart: always
     ports:
