@@ -25,6 +25,7 @@ jobs:
     name: Push image to DockerHub
     runs-on: ubuntu-latest
     needs: pep8_and_pytest
+    if: github.ref == 'refs/heads/master'
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -39,22 +40,30 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: grindelwaldoff/foodgram_actions
-  deploy:
+          file: ../backend/foodgram_back/Dockerfile
+          tags: ${{ secrets.DOCKER_USERNAME }}/foodgram_actions:latest
+  deploy_on_server:
     runs-on: ubuntu-latest
-    name: deploy on Yandex Cloud
-    needs: push_to_Docker
+    needs: docker-push
+    if: github.ref == 'refs/heads/master'
     steps:
-      - name: executing remote ssh commands for deploy
+      - name: executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.HOST_USERNAME }}
+          username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            sudo docker pull grindelwaldoff/foodgram_actions
-            sudo docker stop $(sudo docker container stop ps -qa)
-            sudo docker run --rm -d -p 8000:8000 grindelwaldoff/foodgram_actions
+            sudo docker container stop $(sudo docker container ps -qa)
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram_actions:latest
+            touch .env
+            echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
+            echo DB_NAME=${{ secrets.DB_NAME }} >> .env
+            echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
+            echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
+            echo DB_HOST=${{ secrets.DB_HOST }} >> . env
+            echo DB_PORT=${{ secrets.DB_PORT }} >> .env
+            sudo docker-compose up -d
   telegram:
     runs-on: ubuntu-latest
     needs: deploy
