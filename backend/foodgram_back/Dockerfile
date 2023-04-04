@@ -2,9 +2,9 @@ FROM python:3.7-slim
 
 WORKDIR /app
 
-COPY ./backend/foodgram_back .
+COPY . .
 
 RUN ls -a
-RUN pip3 install -r requirements.txt --no-cache-dir
+RUN pip3 install -r backend/foodgram_back/requirements.txt --no-cache-dir
 
 CMD [ "gunicorn", "foodgram_back.wsgi:application", "--bind", "0:8000"]
