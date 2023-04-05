@@ -1,6 +1,12 @@
 # praktikum_new_diplom
 
-Admin user:
+Direct Link
+
+```
+http://51.250.85.198/signin
+```
+
+Admin user
 
 ```
 Username: root
