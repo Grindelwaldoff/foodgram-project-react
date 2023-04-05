@@ -53,6 +53,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
+          passphrase: null
           script: |
             cd infra
             sudo docker container stop $(sudo docker container ps -qa)
