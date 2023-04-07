@@ -21,17 +21,10 @@ jobs:
           python -m flake8
           cd backend/foodgram_back
           python manage.py test
-<<<<<<< HEAD
   push_back_to_docker:
     name: Push back to DockerHub
     runs-on: ubuntu-latest
     needs: pep8_and_pytest
-=======
-  push_backend_to_docker:
-    name: Push back to DockerHub
-    runs-on: ubuntu-latest
-    # needs: pep8_and_pytest
->>>>>>> 7d9d2711d4845771fe050a223eb2a2e88752fbf5
     if: github.ref == 'refs/heads/master'
     steps:
       - name: Check out the repo
@@ -75,11 +68,7 @@ jobs:
   #           sudo docker-compose up -d
   telegram:
     runs-on: ubuntu-latest
-<<<<<<< HEAD
     needs: push_back_to_docker
-=======
-    needs: deploy_on_server
->>>>>>> 7d9d2711d4845771fe050a223eb2a2e88752fbf5
     steps:
       - name: Send Message
         uses: appleboy/telegram-action@master
@@ -88,8 +77,4 @@ jobs:
           token: ${{ secrets.TELEGRAM_TOKEN }}
           message: "${{ github.workflow }} запущенный ${{ github.actor }} в репозитории ${{ github.repository }} успешно выполнен! \n
             Комментарий: ${{ github.event.commits[0].message }} \n
-<<<<<<< HEAD
             https://github.com/${{ github.repository }}/commit/${{github.sha}}"
-=======
-            https://github.com/${{ github.repository }}/commit/${{github.sha}}"
->>>>>>> 7d9d2711d4845771fe050a223eb2a2e88752fbf5
