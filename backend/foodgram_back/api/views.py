@@ -10,7 +10,6 @@ from rest_framework.response import Response
 from rest_framework.decorators import action
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import status, pagination, permissions
-import requests
 
 from main.models import (
     Tags, Recipe, Ingredients,
@@ -30,7 +29,7 @@ class IgredientViewSet(ModelViewSet):
     queryset = Ingredients.objects.all()
     serializer_class = IngredientSerializer
     pagination_class = None
-    permission_classes = ()
+    permission_classes = (permissions.AllowAny,)
     http_method_names = ['get']
     filter_backends = (SearchFilter,)
     search_fields = ['^name']
@@ -94,6 +93,7 @@ class TagViewSet(ModelViewSet):
     queryset = Tags.objects.all()
     serializer_class = TagSerializer
     pagination_class = None
+    permission_classes = (permissions.AllowAny,)
     http_method_names = ['get']
 
 
