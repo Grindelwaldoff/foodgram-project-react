@@ -32,7 +32,7 @@ class IgredientViewSet(ModelViewSet):
     permission_classes = (permissions.AllowAny,)
     http_method_names = ['get']
     filter_backends = (DjangoFilterBackend,)
-    filterset_fileds = ['^name']
+    filterset_fields = ['^name']
 
 
 class FavoriteViewSet(ModelViewSet):
