@@ -1,6 +1,7 @@
 from colorfield.fields import ColorField
 from django_base64field.fields import Base64Field
 from django.conf import settings
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -65,10 +66,9 @@ class Recipe(models.Model):
         Tags,
         related_name='recipes',
     )
-    time_to_cook = models.PositiveIntegerField()
-
-    class Meta:
-        ordering = ['-id']
+    time_to_cook = models.PositiveIntegerField(
+        validators=[MaxValueValidator(30000), MinValueValidator(1)]
+    )
 
     def __str__(self):
         return self.name
@@ -87,7 +87,9 @@ class IngredientsToRecipe(models.Model):
         on_delete=models.CASCADE,
         related_name='+'
     )
-    amount = models.PositiveIntegerField()
+    amount = models.PositiveIntegerField(
+        validators=[MaxValueValidator(30000), MinValueValidator(1)]
+    )
 
     def __str__(self):
         return self.ingredient.name
@@ -115,7 +117,7 @@ class Basket(models.Model):
 class Favorites(models.Model):
     recipe = models.ForeignKey(
         Recipe,
-        related_name='favorites',  # да - для счетчика в админке.
+        related_name='+',
         on_delete=models.CASCADE,
     )
     user = models.ForeignKey(

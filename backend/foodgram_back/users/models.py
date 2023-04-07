@@ -1,11 +1,11 @@
 from django.db import models
 from django.conf import settings
-from django.core.validators import RegexValidator
+from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 
 
-class MyUser(AbstractUser):
+class ReworkedUser(AbstractUser):
     """Модель юзера с отредактированными полями."""
 
     email = models.EmailField(max_length=settings.EMAIL_MAX_LENGTH)
@@ -16,9 +16,6 @@ class MyUser(AbstractUser):
             'unique': _("A user with that username already exists."),
         },
         validators=[
-            RegexValidator(
-                regex='^[\w.@+-]+',
-                message='Username is invalid'
-            )
+            UnicodeUsernameValidator()
         ]
     )
