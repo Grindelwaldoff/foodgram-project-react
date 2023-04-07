@@ -31,8 +31,8 @@ class IgredientViewSet(ModelViewSet):
     pagination_class = None
     permission_classes = (permissions.AllowAny,)
     http_method_names = ['get']
-    filter_backends = (SearchFilter,)
-    search_fields = ['^name']
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fileds = ['^name']
 
 
 class FavoriteViewSet(ModelViewSet):
