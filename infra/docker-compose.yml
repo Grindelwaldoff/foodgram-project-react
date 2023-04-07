@@ -5,24 +5,21 @@ services:
     volumes:
       - pgdata:/var/lib/postgres/data/
     env_file:
-      - ../backend/foodgram_back/.env
+      - .env
   webapp:
     depends_on:
       - db
-    build:
-      context: ../backend/foodgram_back/
-      dockerfile: Dockerfile
+    image: grindelwaldoff/foodgram_back:latest
     restart: always
     ports:
       - '8000:8000'
     env_file:
-      - ../backend/foodgram_back/.env
+      - .env
     volumes:
+      - media_value:/app/media/
       - static_value:/app/static/
   frontend:
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
+    image: grindelwaldoff/foodgram_front:latest
     depends_on:
       - webapp
     volumes:
@@ -38,8 +35,9 @@ services:
       - ../frontend/build:/usr/share/nginx/html/
       - ../docs/:/usr/share/nginx/html/api/docs/
       - static_value:/var/html/static/
-      # - media_value:/data/www/media/
+     # - media_value:/var/html/media/
 
 volumes:
   static_value:
+  media_value:
   pgdata:

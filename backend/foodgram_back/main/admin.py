@@ -5,8 +5,10 @@ from main.models import (
     Basket, Favorites, Subscriptions,
     IngredientsToRecipe
 )
+from users.models import ReworkedUser
 
 
+@admin.register(ReworkedUser)
 class UserAdmin(admin.ModelAdmin):
     list_filter = ('email', 'username')
 
