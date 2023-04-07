@@ -16,7 +16,7 @@ from main.models import (
     Favorites, Subscriptions,
     Basket
 )
-from .filters import RecipeFilter
+from .filters import RecipeFilter, IngredientFilter
 from .serializers import (
     BasketSerializer, FavoriteSerializer, IngredientSerializer,
     RecipeSerializer, SubscriptionsSerializer, TagSerializer
@@ -31,8 +31,8 @@ class IgredientViewSet(ModelViewSet):
     pagination_class = None
     permission_classes = (permissions.AllowAny,)
     http_method_names = ['get']
-    filter_backends = (DjangoFilterBackend,)
-    filterset_fields = ['name']
+    filter_backends = (DjangoFilterBackend, IngredientFilter)
+    search_fields = ('^name',)
 
 
 class FavoriteViewSet(ModelViewSet):
