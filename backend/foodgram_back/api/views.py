@@ -31,7 +31,7 @@ class IgredientViewSet(ModelViewSet):
     serializer_class = IngredientSerializer
     pagination_class = None
     permission_classes = ()
-    http_method_names = ['get', 'post']
+    http_method_names = ['get']
     filter_backends = (SearchFilter,)
     search_fields = ['^name']
 
