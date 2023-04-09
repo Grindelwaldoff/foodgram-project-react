@@ -1,5 +1,4 @@
 from colorfield.fields import ColorField
-from django_base64field.fields import Base64Field
 from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
@@ -58,7 +57,9 @@ class Recipe(models.Model):
     name = models.CharField(
         max_length=settings.NAME_MAX_LENGTH,
     )
-    img = Base64Field()
+    img = models.ImageField(
+        upload_to='recipes/'
+    )
     description = models.CharField(
         max_length=settings.DESC_MAX_LENGTH,
     )
@@ -128,6 +129,7 @@ class Favorites(models.Model):
 
     class Meta:
         unique_together = ['recipe', 'user']
+        ordering = ['-id']
 
 
 class Subscriptions(models.Model):

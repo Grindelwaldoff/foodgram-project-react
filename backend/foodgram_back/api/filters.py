@@ -1,7 +1,10 @@
+from django.contrib.auth import get_user_model
 import django_filters as filter
 from rest_framework.filters import SearchFilter
 
-from main.models import Recipe
+from main.models import Recipe, Favorites
+
+User = get_user_model()
 
 
 class IngredientFilter(SearchFilter):
@@ -28,11 +31,11 @@ class RecipeFilter(filter.FilterSet):
         )
 
     def is_favorited_filter(self, queryset, name, value):
-        if self.request.user.is_authenticated:
-            return queryset.filter(favorites__user=self.request.user)
+        if self.request.user.is_authenticated and bool(value):
+            return Favorites.objects.filter(user=self.request.user).select_related('recipe')
         return queryset
 
     def cart_filter(self, queryset, name, value):
-        if self.request.user.is_authenticated:
+        if self.request.user.is_authenticated and bool(value):
             return queryset.filter(basket__user=self.request.user)
         return queryset

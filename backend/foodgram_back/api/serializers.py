@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from drf_extra_fields.fields import Base64ImageField
 from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from djoser.serializers import UserSerializer
@@ -99,6 +100,13 @@ class UserSerializerWithAdditionalFields(
             ).exists()
         )
 
+    def create(self, validated_data):
+        password = validated_data.pop('password')
+        user = User(**validated_data)
+        user.set_password(password)
+        user.save()
+        return user
+
 
 class SubscriptionsSerializer(serializers.ModelSerializer):
 
@@ -150,7 +158,7 @@ class IngredientField(serializers.Field):
 
 class RecipeSerializer(serializers.ModelSerializer):
     cooking_time = serializers.IntegerField(source='time_to_cook')
-    image = serializers.CharField(source='img')
+    image = Base64ImageField(source='img')
     text = serializers.CharField(source='description')
     ingredients = IngredientToRecipeSerializer(
         many=True, required=False

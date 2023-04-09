@@ -8,7 +8,7 @@ from django.utils.translation import gettext_lazy as _
 class ReworkedUser(AbstractUser):
     """Модель юзера с отредактированными полями."""
 
-    email = models.EmailField(max_length=settings.EMAIL_MAX_LENGTH)
+    email = models.EmailField(max_length=settings.EMAIL_MAX_LENGTH, unique=True)
     username = models.CharField(
         max_length=settings.NAME_MAX_LENGTH,
         unique=True,

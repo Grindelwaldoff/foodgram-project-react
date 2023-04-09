@@ -106,9 +106,7 @@ class RecipeViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(
-            author=User.objects.get(
-                username='admin'
-            )
+            author=self.request.user
         )
 
 
