@@ -4,6 +4,9 @@ WORKDIR /app
 
 COPY . .
 
-RUN pip3 install -r backend/foodgram_back/requirements.txt --no-cache-dir
+RUN pip3 install -r requirements.txt --no-cache-dir
+# RUN apt-get update -y
+# RUN apt-get install nano -y
+# RUN apt-get install wkhtmltopdf -y
 
 CMD [ "gunicorn", "foodgram_back.wsgi:application", "--bind", "0:8000"]

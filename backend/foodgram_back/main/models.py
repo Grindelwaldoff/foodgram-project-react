@@ -92,6 +92,9 @@ class IngredientsToRecipe(models.Model):
         validators=[MaxValueValidator(30000), MinValueValidator(1)]
     )
 
+    class Meta:
+        unique_together = ['recipe', 'ingredient']
+
     def __str__(self):
         return self.ingredient.name
 

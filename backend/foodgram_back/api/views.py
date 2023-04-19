@@ -59,7 +59,7 @@ class FavoriteViewSet(ModelViewSet):
 
 class SubViewSet(ModelViewSet):
     queryset = Subscriptions.objects.all()
-    serializer_class = SubscriptionsSerializer
+    serializer_class = SubscriptionsSerializer()
     http_method_names = ['get', 'post', 'delete']
 
 
@@ -100,7 +100,7 @@ class RecipeViewSet(ModelViewSet):
     queryset = Recipe.objects.all()
     serializer_class = RecipeSerializer
     http_method_names = ['get', 'post', 'patch', 'delete']
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (permissions.AllowAny,)
     filter_backends = (DjangoFilterBackend,)
     filterset_class = RecipeFilter
 
@@ -115,7 +115,7 @@ class BasketViewSet(ModelViewSet):
     serializer_class = BasketSerializer
 
     def download(self, request):
-        items_in_basket = get_list_or_404(Basket, user=request.user)
+        items_in_basket = get_list_or_404(Basket, user=self.request.user)
         shopping_cart = {}
         for item in items_in_basket:
             ing_list = item.recipe.ingredients.all()
@@ -128,7 +128,7 @@ class BasketViewSet(ModelViewSet):
                     })
         self.generate_pdf(request, {'shopping_cart': shopping_cart})
         with open(
-            f'foodgram_back/pdf/cart/shop_list_{request.user}.pdf',
+            f'./pdf/cart/shop_list_{request.user}.pdf',
             'rb'
         ) as pdf:
             response = HttpResponse(pdf.read(), content_type='application/pdf')
@@ -139,13 +139,13 @@ class BasketViewSet(ModelViewSet):
         template_loader = jinja2.FileSystemLoader('./')
         template_env = jinja2.Environment(loader=template_loader)
         template = template_env.get_template(
-            'foodgram_back/templates/shopping_list_template.html'
+            './templates/shopping_list_template.html'
         )
         output_text = template.render(context)
         config = pdfkit.configuration(wkhtmltopdf=settings.HTML_TO_PDF_ROUTE)
         pdfkit.from_string(
             output_text,
-            f'foodgram_back/pdf/cart/shop_list_{request.user}.pdf',
+            f'./pdf/cart/shop_list_{request.user}.pdf',
             configuration=config
         )
 

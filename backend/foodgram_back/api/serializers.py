@@ -73,14 +73,13 @@ class SubRecipeSerializer(serializers.ModelSerializer):
 class UserSerializerWithAdditionalFields(
     serializers.HyperlinkedModelSerializer
 ):
-    is_subscribed = serializers.SerializerMethodField()
     email = serializers.EmailField()
 
     class Meta(UserSerializer.Meta):
         fields = (
             'id', 'email',
             'username', 'first_name',
-            'last_name', 'password', 'is_subscribed'
+            'last_name', 'password',
         )
         extra_kwargs = {
             'password': {'write_only': True},
@@ -91,21 +90,22 @@ class UserSerializerWithAdditionalFields(
     def get_email(self, obj):
         return obj.email
 
-    def get_is_subscribed(self, obj):
-        return (
-            self.context['request'].user.is_authenticated
-            and Subscriptions.objects.filter(
-                author=obj,
-                sub=self.context['request'].user
-            ).exists()
-        )
-
     def create(self, validated_data):
         password = validated_data.pop('password')
         user = User(**validated_data)
         user.set_password(password)
         user.save()
         return user
+
+    def to_representation(self, instance):
+        repr = super().to_representation(instance)
+        return repr.update({
+            'is_subscribed': bool(
+                Subscriptions.objects.filter(
+                    sub=self.context['request'].user,
+                    author_id=instance.id).exists()
+            )
+        })
 
 
 class SubscriptionsSerializer(serializers.ModelSerializer):
@@ -217,9 +217,10 @@ class BasketSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         repr = super().to_representation(instance)
+        
         repr.update({
             'name': instance.recipe.name,
-            'image': instance.recipe.img,
+            'image': self.context.get('request').build_absolute_uri(instance.recipe.img.url) ,
             'cooking_time': instance.recipe.time_to_cook
         })
         return repr
