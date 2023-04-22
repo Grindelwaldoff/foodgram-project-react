@@ -99,13 +99,14 @@ class UserSerializerWithAdditionalFields(
 
     def to_representation(self, instance):
         repr = super().to_representation(instance)
-        return repr.update({
+        repr.update({
             'is_subscribed': bool(
                 Subscriptions.objects.filter(
                     sub=self.context['request'].user,
                     author_id=instance.id).exists()
             )
         })
+        return repr
 
 
 class SubscriptionsSerializer(serializers.ModelSerializer):
@@ -117,7 +118,7 @@ class SubscriptionsSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         user_data = UserSerializerWithAdditionalFields(
-            instance=instance.author
+            instance=instance.author, context={'request': self.context['request']}
         ).data
         user_data.update({
             'recipe_count': instance.author.recipes.all().count(),

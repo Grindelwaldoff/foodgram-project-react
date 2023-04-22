@@ -99,6 +99,8 @@ DATABASES = {
     }
 }
 
+SECURE_SSL_REDIRECT = False
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -137,8 +139,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/admin/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/admin')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 

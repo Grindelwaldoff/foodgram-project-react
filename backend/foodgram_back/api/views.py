@@ -59,9 +59,8 @@ class FavoriteViewSet(ModelViewSet):
 
 class SubViewSet(ModelViewSet):
     queryset = Subscriptions.objects.all()
-    serializer_class = SubscriptionsSerializer()
+    serializer_class = SubscriptionsSerializer
     http_method_names = ['get', 'post', 'delete']
-
 
 class FollowViewSet(ModelViewSet):
     queryset = Subscriptions.objects.all()
