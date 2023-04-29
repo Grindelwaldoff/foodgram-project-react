@@ -435,6 +435,14 @@
         "documentation": {}
     },
     {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
         "label": "HttpResponse",
         "importPath": "django.http",
         "description": "django.http",
@@ -472,6 +480,70 @@
         "description": "rest_framework.viewsets",
         "isExtraImport": true,
         "detail": "rest_framework.viewsets",
+        "documentation": {}
+    },
+    {
+        "label": "RecipeFilter",
+        "importPath": "api.filters",
+        "description": "api.filters",
+        "isExtraImport": true,
+        "detail": "api.filters",
+        "documentation": {}
+    },
+    {
+        "label": "IngredientFilter",
+        "importPath": "api.filters",
+        "description": "api.filters",
+        "isExtraImport": true,
+        "detail": "api.filters",
+        "documentation": {}
+    },
+    {
+        "label": "BasketSerializer",
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "isExtraImport": true,
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "FavoriteSerializer",
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "isExtraImport": true,
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "IngredientSerializer",
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "isExtraImport": true,
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "RecipeSerializer",
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "isExtraImport": true,
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "SubscriptionsSerializer",
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "isExtraImport": true,
+        "detail": "api.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "TagSerializer",
+        "importPath": "api.serializers",
+        "description": "api.serializers",
+        "isExtraImport": true,
+        "detail": "api.serializers",
         "documentation": {}
     },
     {
@@ -622,6 +694,14 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -639,6 +719,30 @@
     },
     {
         "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
@@ -949,7 +1053,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.api.serializers",
         "description": "backend.foodgram_back.api.serializers",
-        "peekOfCode": "class SubscriptionsSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Subscriptions\n        fields = ('author', 'sub')\n        read_only_fields = fields\n    def to_representation(self, instance):\n        user_data = UserSerializerWithAdditionalFields(\n            instance=instance.author, context={'request': self.context['request']}\n        ).data\n        user_data.update({",
+        "peekOfCode": "class SubscriptionsSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Subscriptions\n        fields = ('author', 'sub')\n        read_only_fields = fields\n    def to_representation(self, instance):\n        user_data = UserSerializerWithAdditionalFields(\n            instance=instance.author, context={\n                'request': self.context['request'],\n                'check_sub_tag': None",
         "detail": "backend.foodgram_back.api.serializers",
         "documentation": {}
     },
@@ -1102,7 +1206,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.foodgram_back.settings",
         "description": "backend.foodgram_back.foodgram_back.settings",
-        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = 'django-insecure-f@*z%5lsgaw6cy!rd!n0f41x7dq&t*tqwhy&^n&^$(%rn(8fw4'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = os.getenv('SECRET_KEY')\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = os.getenv('DEBUG')\nALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]\n# Application definition\nINSTALLED_APPS = [",
         "detail": "backend.foodgram_back.foodgram_back.settings",
         "documentation": {}
     },
@@ -1111,7 +1215,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.foodgram_back.settings",
         "description": "backend.foodgram_back.foodgram_back.settings",
-        "peekOfCode": "SECRET_KEY = 'django-insecure-f@*z%5lsgaw6cy!rd!n0f41x7dq&t*tqwhy&^n&^$(%rn(8fw4'\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\nALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
+        "peekOfCode": "SECRET_KEY = os.getenv('SECRET_KEY')\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = os.getenv('DEBUG')\nALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',",
         "detail": "backend.foodgram_back.foodgram_back.settings",
         "documentation": {}
     },
@@ -1120,7 +1224,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.foodgram_back.settings",
         "description": "backend.foodgram_back.foodgram_back.settings",
-        "peekOfCode": "DEBUG = True\nALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
+        "peekOfCode": "DEBUG = os.getenv('DEBUG')\nALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',",
         "detail": "backend.foodgram_back.foodgram_back.settings",
         "documentation": {}
     },
@@ -1129,7 +1233,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.foodgram_back.settings",
         "description": "backend.foodgram_back.foodgram_back.settings",
-        "peekOfCode": "ALLOWED_HOSTS = ['*']\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'rest_framework',",
+        "peekOfCode": "ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS')]\n# Application definition\nINSTALLED_APPS = [\n    'django.contrib.admin',\n    'django.contrib.auth',\n    'django.contrib.contenttypes',\n    'django.contrib.sessions',\n    'django.contrib.messages',\n    'django.contrib.staticfiles',\n    'rest_framework',",
         "detail": "backend.foodgram_back.foodgram_back.settings",
         "documentation": {}
     },
@@ -1440,11 +1544,29 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.foodgram_back.main.migrations.0004_auto_20230429_1016",
+        "description": "backend.foodgram_back.main.migrations.0004_auto_20230429_1016",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n        ('main', '0003_alter_ingredientstorecipe_unique_together'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='favorites',\n            name='recipe',\n            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='favorites', to='main.recipe'),",
+        "detail": "backend.foodgram_back.main.migrations.0004_auto_20230429_1016",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.foodgram_back.main.migrations.0005_alter_recipe_options",
+        "description": "backend.foodgram_back.main.migrations.0005_alter_recipe_options",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('main', '0004_auto_20230429_1016'),\n    ]\n    operations = [\n        migrations.AlterModelOptions(\n            name='recipe',\n            options={'ordering': ['-id']},\n        ),\n    ]",
+        "detail": "backend.foodgram_back.main.migrations.0005_alter_recipe_options",
+        "documentation": {}
+    },
+    {
         "label": "UserAdmin",
         "kind": 6,
         "importPath": "backend.foodgram_back.main.admin",
         "description": "backend.foodgram_back.main.admin",
-        "peekOfCode": "class UserAdmin(admin.ModelAdmin):\n    list_filter = ('email', 'username')\n@admin.register(Recipe)\nclass RecipeAdmin(admin.ModelAdmin):\n    list_display = ['author', 'name']\n    list_filter = ('author', 'name', 'tags')\n    readonly_fields = ('favorite_count',)\n    def favorite_count(self, obj):\n        return Favorites.objects.filter(recipe=obj).count()\n@admin.register(Ingredients)",
+        "peekOfCode": "class UserAdmin(admin.ModelAdmin):\n    list_filter = ('email', 'username')\n@admin.register(Recipe)\nclass RecipeAdmin(admin.ModelAdmin):\n    list_display = ['author', 'name']\n    list_filter = ('author', 'name', 'tags')\n    readonly_fields = ('favorite_count',)\n    def favorite_count(self, obj):\n        return obj.favorites.count()\n@admin.register(Ingredients)",
         "detail": "backend.foodgram_back.main.admin",
         "documentation": {}
     },
@@ -1453,7 +1575,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.main.admin",
         "description": "backend.foodgram_back.main.admin",
-        "peekOfCode": "class RecipeAdmin(admin.ModelAdmin):\n    list_display = ['author', 'name']\n    list_filter = ('author', 'name', 'tags')\n    readonly_fields = ('favorite_count',)\n    def favorite_count(self, obj):\n        return Favorites.objects.filter(recipe=obj).count()\n@admin.register(Ingredients)\nclass IngredientsAdmin(admin.ModelAdmin):\n    list_filter = ('name',)\n    list_display = ('name', 'measurement_unit')",
+        "peekOfCode": "class RecipeAdmin(admin.ModelAdmin):\n    list_display = ['author', 'name']\n    list_filter = ('author', 'name', 'tags')\n    readonly_fields = ('favorite_count',)\n    def favorite_count(self, obj):\n        return obj.favorites.count()\n@admin.register(Ingredients)\nclass IngredientsAdmin(admin.ModelAdmin):\n    list_filter = ('name',)\n    list_display = ('name', 'measurement_unit')",
         "detail": "backend.foodgram_back.main.admin",
         "documentation": {}
     },
@@ -1534,7 +1656,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.main.models",
         "description": "backend.foodgram_back.main.models",
-        "peekOfCode": "class Favorites(models.Model):\n    recipe = models.ForeignKey(\n        Recipe,\n        related_name='+',\n        on_delete=models.CASCADE,\n    )\n    user = models.ForeignKey(\n        User,\n        on_delete=models.CASCADE,\n        related_name='favorites',",
+        "peekOfCode": "class Favorites(models.Model):\n    recipe = models.ForeignKey(\n        Recipe,\n        related_name='favorites',\n        on_delete=models.CASCADE,\n    )\n    user = models.ForeignKey(\n        User,\n        on_delete=models.CASCADE,\n        related_name='+',",
         "detail": "backend.foodgram_back.main.models",
         "documentation": {}
     },
@@ -1563,6 +1685,15 @@
         "description": "backend.foodgram_back.users.migrations.0001_initial",
         "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        ('auth', '0012_alter_user_first_name_max_length'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='ReworkedUser',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
         "detail": "backend.foodgram_back.users.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.foodgram_back.users.migrations.0002_alter_reworkeduser_options",
+        "description": "backend.foodgram_back.users.migrations.0002_alter_reworkeduser_options",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('users', '0001_initial'),\n    ]\n    operations = [\n        migrations.AlterModelOptions(\n            name='reworkeduser',\n            options={'ordering': ['-id']},\n        ),\n    ]",
+        "detail": "backend.foodgram_back.users.migrations.0002_alter_reworkeduser_options",
         "documentation": {}
     },
     {

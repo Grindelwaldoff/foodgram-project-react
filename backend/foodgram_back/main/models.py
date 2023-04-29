@@ -71,6 +71,9 @@ class Recipe(models.Model):
         validators=[MaxValueValidator(30000), MinValueValidator(1)]
     )
 
+    class Meta:
+        ordering = ['-id']
+
     def __str__(self):
         return self.name
 
@@ -121,13 +124,13 @@ class Basket(models.Model):
 class Favorites(models.Model):
     recipe = models.ForeignKey(
         Recipe,
-        related_name='+',
+        related_name='favorites',
         on_delete=models.CASCADE,
     )
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='favorites',
+        related_name='+',
     )
 
     class Meta:

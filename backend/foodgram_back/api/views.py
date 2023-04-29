@@ -15,8 +15,8 @@ from main.models import (
     Favorites, Subscriptions,
     Basket
 )
-from .filters import RecipeFilter, IngredientFilter
-from .serializers import (
+from api.filters import RecipeFilter, IngredientFilter
+from api.serializers import (
     BasketSerializer, FavoriteSerializer, IngredientSerializer,
     RecipeSerializer, SubscriptionsSerializer, TagSerializer
 )

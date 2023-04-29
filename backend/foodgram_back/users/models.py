@@ -19,3 +19,6 @@ class ReworkedUser(AbstractUser):
             UnicodeUsernameValidator()
         ]
     )
+
+    class Meta:
+        ordering = ['-id']

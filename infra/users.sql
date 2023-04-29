@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 13.0
--- Dumped by pg_dump version 13.0
+-- Dumped from database version 12.14 (Ubuntu 12.14-0ubuntu0.20.04.1)
+-- Dumped by pg_dump version 12.14 (Ubuntu 12.14-0ubuntu0.20.04.1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -16,12 +16,6 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-DROP INDEX public.users_reworkeduser_username_61cc1848_like;
-ALTER TABLE ONLY public.users_reworkeduser DROP CONSTRAINT users_reworkeduser_username_key;
-ALTER TABLE ONLY public.users_reworkeduser DROP CONSTRAINT users_reworkeduser_pkey;
-ALTER TABLE public.users_reworkeduser ALTER COLUMN id DROP DEFAULT;
-DROP SEQUENCE public.users_reworkeduser_id_seq;
-DROP TABLE public.users_reworkeduser;
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -80,7 +74,8 @@ ALTER TABLE ONLY public.users_reworkeduser ALTER COLUMN id SET DEFAULT nextval('
 --
 
 COPY public.users_reworkeduser (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, username) FROM stdin;
-1	pbkdf2_sha256$260000$9v4jBAYREXIBBeO7kzpKM4$rSkeAXfbN0p7ShWV+3SI8PTxbSvYS642a7t0TLG3c60=	2023-04-07 12:59:27.225586+00	t			t	t	2023-04-07 12:59:24.489825+00	root@rt.rt	root
+1	pbkdf2_sha256$260000$MQEIztOGYw0mvqKHtNDxjA$EAqSFWgrSA2M5m8pMLuFN+Dx0YY+zq95GEj4sZVyAqA=	2023-04-29 12:17:26.736908+03	t			t	t	2023-04-22 14:49:05.114261+03	root2@rt.rt	rot
+2	pbkdf2_sha256$260000$wzQQq8M8cokxYZ5QVVsQcq$6UO3JAIzpRq/7JtiA+xCGuqCiRxlV+egbkMWvdONgAk=	\N	f	Vsev	Ryb	f	t	2023-04-29 12:28:29.620832+03	root@rt.rt	Test_tip_user
 \.
 
 
@@ -88,7 +83,15 @@ COPY public.users_reworkeduser (id, password, last_login, is_superuser, first_na
 -- Name: users_reworkeduser_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_reworkeduser_id_seq', 1, true);
+SELECT pg_catalog.setval('public.users_reworkeduser_id_seq', 2, true);
+
+
+--
+-- Name: users_reworkeduser users_reworkeduser_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_reworkeduser
+    ADD CONSTRAINT users_reworkeduser_email_key UNIQUE (email);
 
 
 --
@@ -105,6 +108,13 @@ ALTER TABLE ONLY public.users_reworkeduser
 
 ALTER TABLE ONLY public.users_reworkeduser
     ADD CONSTRAINT users_reworkeduser_username_key UNIQUE (username);
+
+
+--
+-- Name: users_reworkeduser_email_355107e5_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_reworkeduser_email_355107e5_like ON public.users_reworkeduser USING btree (email varchar_pattern_ops);
 
 
 --

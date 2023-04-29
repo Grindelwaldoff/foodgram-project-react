@@ -8,12 +8,11 @@
             "name": "Python: Django",
             "type": "python",
             "request": "launch",
-            "program": "backend/foodgram_back/manage.py",
+            "program": "${workspaceFolder}/backend/foodgram_back/manage.py",
             "args": [
-                "runserver"
+                "runserver",
             ],
-            "django": true,
-            "justMyCode": true
-        }
+            "django": true
+        },
     ]
 }

@@ -99,13 +99,14 @@ class UserSerializerWithAdditionalFields(
 
     def to_representation(self, instance):
         repr = super().to_representation(instance)
-        repr.update({
-            'is_subscribed': bool(
-                Subscriptions.objects.filter(
-                    sub=self.context['request'].user,
-                    author_id=instance.id).exists()
-            )
-        })
+        if 'check_sub_tag' in self.context:
+            repr.update({
+                'is_subscribed': bool(
+                    Subscriptions.objects.filter(
+                        sub=self.context['request'].user,
+                        author_id=instance.id).exists()
+                )
+            })
         return repr
 
 
@@ -118,26 +119,32 @@ class SubscriptionsSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         user_data = UserSerializerWithAdditionalFields(
-            instance=instance.author, context={'request': self.context['request']}
+            instance=instance.author, context={
+                'request': self.context['request'],
+                'check_sub_tag': None
+            }
         ).data
-        user_data.update({
-            'recipe_count': instance.author.recipes.all().count(),
-        })
-        recipes = SubRecipeSerializer(
-            instance.author.recipes.all(),
-            many=True
-        ).data
-        if "recipes_limit" in self.context['request'].query_params.keys():
+        if user_data.get('is_subscribed'):
+            user_data.update({
+                'recipe_count': instance.author.recipes.all().count(),
+            })
+            
             recipes = SubRecipeSerializer(
                 instance.author.recipes.all(),
                 many=True
-            ).data[
-                :int(self.context['request'].query_params['recipes_limit'])
-            ]
-        user_data.update({
-            'recipe': recipes
-        })
-        return user_data
+            ).data
+            if "recipes_limit" in self.context['request'].query_params.keys():
+                recipes = SubRecipeSerializer(
+                    instance.author.recipes.all(),
+                    many=True
+                ).data[
+                    :int(self.context['request'].query_params['recipes_limit'])
+                ]
+            user_data.update({
+                'recipe': recipes
+            })
+            return user_data
+        pass
 
 
 class TagSerializer(serializers.ModelSerializer):

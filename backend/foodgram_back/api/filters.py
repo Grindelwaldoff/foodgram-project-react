@@ -33,7 +33,7 @@ class RecipeFilter(filter.FilterSet):
 
     def is_favorited_filter(self, queryset, name, value):
         if self.request.user.is_authenticated and bool(value):
-            return get_list_or_404(Favorites, user=self.request.user).recipe
+            return queryset.filter(favorites__user=self.request.user)
         return queryset
 
     def cart_filter(self, queryset, name, value):
