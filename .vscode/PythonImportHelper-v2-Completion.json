@@ -491,30 +491,6 @@
         "documentation": {}
     },
     {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
-        "isExtraImport": true,
-        "detail": "django.conf",
-        "documentation": {}
-    },
-    {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
-        "isExtraImport": true,
-        "detail": "django.conf",
-        "documentation": {}
-    },
-    {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
-        "isExtraImport": true,
-        "detail": "django.conf",
-        "documentation": {}
-    },
-    {
         "label": "HttpResponse",
         "importPath": "django.http",
         "description": "django.http",
@@ -675,12 +651,11 @@
         "documentation": {}
     },
     {
-        "label": "colorfield.fields",
-        "kind": 6,
+        "label": "ReworkedUser",
+        "importPath": "users.models",
+        "description": "users.models",
         "isExtraImport": true,
-        "importPath": "colorfield.fields",
-        "description": "colorfield.fields",
-        "detail": "colorfield.fields",
+        "detail": "users.models",
         "documentation": {}
     },
     {
@@ -689,15 +664,6 @@
         "description": "colorfield.fields",
         "isExtraImport": true,
         "detail": "colorfield.fields",
-        "documentation": {}
-    },
-    {
-        "label": "django.core.validators",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.core.validators",
-        "description": "django.core.validators",
-        "detail": "django.core.validators",
         "documentation": {}
     },
     {
@@ -717,78 +683,6 @@
         "documentation": {}
     },
     {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -802,99 +696,6 @@
         "description": "django.db",
         "isExtraImport": true,
         "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "django.db.models.deletion",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.db.models.deletion",
-        "description": "django.db.models.deletion",
-        "detail": "django.db.models.deletion",
-        "documentation": {}
-    },
-    {
-        "label": "django.db.models.expressions",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.db.models.expressions",
-        "description": "django.db.models.expressions",
-        "detail": "django.db.models.expressions",
-        "documentation": {}
-    },
-    {
-        "label": "django.db.models.fields.related",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.db.models.fields.related",
-        "description": "django.db.models.fields.related",
-        "detail": "django.db.models.fields.related",
-        "documentation": {}
-    },
-    {
-        "label": "ReworkedUser",
-        "importPath": "users.models",
-        "description": "users.models",
-        "isExtraImport": true,
-        "detail": "users.models",
-        "documentation": {}
-    },
-    {
-        "label": "django.contrib.auth.models",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
-        "detail": "django.contrib.auth.models",
-        "documentation": {}
-    },
-    {
-        "label": "AbstractUser",
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
-        "isExtraImport": true,
-        "detail": "django.contrib.auth.models",
-        "documentation": {}
-    },
-    {
-        "label": "django.contrib.auth.validators",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "django.contrib.auth.validators",
-        "description": "django.contrib.auth.validators",
-        "detail": "django.contrib.auth.validators",
         "documentation": {}
     },
     {
@@ -906,12 +707,11 @@
         "documentation": {}
     },
     {
-        "label": "django.utils.timezone",
-        "kind": 6,
+        "label": "AbstractUser",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
         "isExtraImport": true,
-        "importPath": "django.utils.timezone",
-        "description": "django.utils.timezone",
-        "detail": "django.utils.timezone",
+        "detail": "django.contrib.auth.models",
         "documentation": {}
     },
     {
@@ -1837,60 +1637,6 @@
         "documentation": {}
     },
     {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "backend.foodgram_back.main.migrations.0001_initial",
-        "description": "backend.foodgram_back.main.migrations.0001_initial",
-        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Ingredients',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
-        "detail": "backend.foodgram_back.main.migrations.0001_initial",
-        "documentation": {}
-    },
-    {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "backend.foodgram_back.main.migrations.0002_auto_20230410_0826",
-        "description": "backend.foodgram_back.main.migrations.0002_auto_20230410_0826",
-        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('main', '0001_initial'),\n    ]\n    operations = [\n        migrations.AlterModelOptions(\n            name='favorites',\n            options={'ordering': ['-id']},\n        ),\n        migrations.AlterField(",
-        "detail": "backend.foodgram_back.main.migrations.0002_auto_20230410_0826",
-        "documentation": {}
-    },
-    {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "backend.foodgram_back.main.migrations.0003_alter_ingredientstorecipe_unique_together",
-        "description": "backend.foodgram_back.main.migrations.0003_alter_ingredientstorecipe_unique_together",
-        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('main', '0002_auto_20230410_0826'),\n    ]\n    operations = [\n        migrations.AlterUniqueTogether(\n            name='ingredientstorecipe',\n            unique_together={('recipe', 'ingredient')},\n        ),\n    ]",
-        "detail": "backend.foodgram_back.main.migrations.0003_alter_ingredientstorecipe_unique_together",
-        "documentation": {}
-    },
-    {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "backend.foodgram_back.main.migrations.0004_auto_20230429_1016",
-        "description": "backend.foodgram_back.main.migrations.0004_auto_20230429_1016",
-        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n        ('main', '0003_alter_ingredientstorecipe_unique_together'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='favorites',\n            name='recipe',\n            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='favorites', to='main.recipe'),",
-        "detail": "backend.foodgram_back.main.migrations.0004_auto_20230429_1016",
-        "documentation": {}
-    },
-    {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "backend.foodgram_back.main.migrations.0005_alter_recipe_options",
-        "description": "backend.foodgram_back.main.migrations.0005_alter_recipe_options",
-        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('main', '0004_auto_20230429_1016'),\n    ]\n    operations = [\n        migrations.AlterModelOptions(\n            name='recipe',\n            options={'ordering': ['-id']},\n        ),\n    ]",
-        "detail": "backend.foodgram_back.main.migrations.0005_alter_recipe_options",
-        "documentation": {}
-    },
-    {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "backend.foodgram_back.main.migrations.0006_auto_20230429_1337",
-        "description": "backend.foodgram_back.main.migrations.0006_auto_20230429_1337",
-        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n        ('main', '0005_alter_recipe_options'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='basket',\n            name='recipe',\n            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='basket', to='main.recipe'),",
-        "detail": "backend.foodgram_back.main.migrations.0006_auto_20230429_1337",
-        "documentation": {}
-    },
-    {
         "label": "UserAdmin",
         "kind": 6,
         "importPath": "backend.foodgram_back.main.admin",
@@ -2005,24 +1751,6 @@
         "description": "backend.foodgram_back.main.models",
         "peekOfCode": "User = get_user_model()\nclass Tags(models.Model):\n    \"\"\"Класс модели тэгов.\"\"\"\n    name = models.CharField(\n        max_length=settings.NAME_MAX_LENGTH,\n        unique=True\n    )\n    color = ColorField()\n    slug = models.SlugField(\n        max_length=settings.NAME_MAX_LENGTH,",
         "detail": "backend.foodgram_back.main.models",
-        "documentation": {}
-    },
-    {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "backend.foodgram_back.users.migrations.0001_initial",
-        "description": "backend.foodgram_back.users.migrations.0001_initial",
-        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        ('auth', '0012_alter_user_first_name_max_length'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='ReworkedUser',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
-        "detail": "backend.foodgram_back.users.migrations.0001_initial",
-        "documentation": {}
-    },
-    {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "backend.foodgram_back.users.migrations.0002_alter_reworkeduser_options",
-        "description": "backend.foodgram_back.users.migrations.0002_alter_reworkeduser_options",
-        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('users', '0001_initial'),\n    ]\n    operations = [\n        migrations.AlterModelOptions(\n            name='reworkeduser',\n            options={'ordering': ['-id']},\n        ),\n    ]",
-        "detail": "backend.foodgram_back.users.migrations.0002_alter_reworkeduser_options",
         "documentation": {}
     },
     {

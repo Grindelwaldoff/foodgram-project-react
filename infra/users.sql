@@ -74,8 +74,9 @@ ALTER TABLE ONLY public.users_reworkeduser ALTER COLUMN id SET DEFAULT nextval('
 --
 
 COPY public.users_reworkeduser (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, username) FROM stdin;
-1	pbkdf2_sha256$260000$MQEIztOGYw0mvqKHtNDxjA$EAqSFWgrSA2M5m8pMLuFN+Dx0YY+zq95GEj4sZVyAqA=	2023-04-29 12:17:26.736908+03	t			t	t	2023-04-22 14:49:05.114261+03	root2@rt.rt	rot
-2	pbkdf2_sha256$260000$wzQQq8M8cokxYZ5QVVsQcq$6UO3JAIzpRq/7JtiA+xCGuqCiRxlV+egbkMWvdONgAk=	\N	f	Vsev	Ryb	f	t	2023-04-29 12:28:29.620832+03	root@rt.rt	Test_tip_user
+1	pbkdf2_sha256$260000$MQEIztOGYw0mvqKHtNDxjA$EAqSFWgrSA2M5m8pMLuFN+Dx0YY+zq95GEj4sZVyAqA=	2023-04-29 12:31:16.970215+03	t			t	t	2023-04-22 14:49:05.114261+03	root2@rt.rt	rot
+3	pbkdf2_sha256$260000$qcPnmRaxE9Vbk91rtWR2Km$BbgiX2xrz0EPBts/V4cpNkydS8YhzM+Cnk2Lexzv8ic=	\N	f	Vsev	Ryb	f	t	2023-04-29 12:33:01.349725+03	root3@rt.rt	Test2_tip_user
+2	pbkdf2_sha256$260000$wzQQq8M8cokxYZ5QVVsQcq$6UO3JAIzpRq/7JtiA+xCGuqCiRxlV+egbkMWvdONgAk=	2023-04-29 12:42:11.731138+03	f	Vsev	Ryb	f	t	2023-04-29 12:28:29.620832+03	root@rt.rt	Test_tip_user
 \.
 
 
@@ -83,7 +84,7 @@ COPY public.users_reworkeduser (id, password, last_login, is_superuser, first_na
 -- Name: users_reworkeduser_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_reworkeduser_id_seq', 2, true);
+SELECT pg_catalog.setval('public.users_reworkeduser_id_seq', 3, true);
 
 
 --
