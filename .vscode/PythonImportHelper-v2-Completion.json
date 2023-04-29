@@ -491,6 +491,14 @@
         "documentation": {}
     },
     {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
         "label": "HttpResponse",
         "importPath": "django.http",
         "description": "django.http",
@@ -651,11 +659,12 @@
         "documentation": {}
     },
     {
-        "label": "ReworkedUser",
-        "importPath": "users.models",
-        "description": "users.models",
+        "label": "colorfield.fields",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "users.models",
+        "importPath": "colorfield.fields",
+        "description": "colorfield.fields",
+        "detail": "colorfield.fields",
         "documentation": {}
     },
     {
@@ -664,6 +673,15 @@
         "description": "colorfield.fields",
         "isExtraImport": true,
         "detail": "colorfield.fields",
+        "documentation": {}
+    },
+    {
+        "label": "django.core.validators",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.core.validators",
+        "description": "django.core.validators",
+        "detail": "django.core.validators",
         "documentation": {}
     },
     {
@@ -683,6 +701,30 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -696,6 +738,91 @@
         "description": "django.db",
         "isExtraImport": true,
         "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "django.db.models.deletion",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.deletion",
+        "description": "django.db.models.deletion",
+        "detail": "django.db.models.deletion",
+        "documentation": {}
+    },
+    {
+        "label": "django.db.models.expressions",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.expressions",
+        "description": "django.db.models.expressions",
+        "detail": "django.db.models.expressions",
+        "documentation": {}
+    },
+    {
+        "label": "django.db.models.fields.related",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.fields.related",
+        "description": "django.db.models.fields.related",
+        "detail": "django.db.models.fields.related",
+        "documentation": {}
+    },
+    {
+        "label": "ReworkedUser",
+        "importPath": "users.models",
+        "description": "users.models",
+        "isExtraImport": true,
+        "detail": "users.models",
+        "documentation": {}
+    },
+    {
+        "label": "django.contrib.auth.models",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractUser",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "django.contrib.auth.validators",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.contrib.auth.validators",
+        "description": "django.contrib.auth.validators",
+        "detail": "django.contrib.auth.validators",
         "documentation": {}
     },
     {
@@ -707,11 +834,12 @@
         "documentation": {}
     },
     {
-        "label": "AbstractUser",
-        "importPath": "django.contrib.auth.models",
-        "description": "django.contrib.auth.models",
+        "label": "django.utils.timezone",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "django.contrib.auth.models",
+        "importPath": "django.utils.timezone",
+        "description": "django.utils.timezone",
+        "detail": "django.utils.timezone",
         "documentation": {}
     },
     {
@@ -1263,7 +1391,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.api.views",
         "description": "backend.foodgram_back.api.views",
-        "peekOfCode": "class SubViewSet(ModelViewSet):\n    queryset = Subscriptions.objects.all()\n    serializer_class = SubscriptionsSerializer\n    http_method_names = ['get', 'post', 'delete']\nclass FollowViewSet(ModelViewSet):\n    queryset = Subscriptions.objects.all()\n    serializer_class = SubscriptionsSerializer\n    pagination_class = pagination.LimitOffsetPagination\n    http_method_names = ['post', 'delete', 'get']\n    def get_queryset(self):",
+        "peekOfCode": "class SubViewSet(ModelViewSet):\n    serializer_class = SubscriptionsSerializer\n    http_method_names = ['get', 'post', 'delete']\n    def get_queryset(self):\n        return Subscriptions.objects.filter(sub=self.request.user)\nclass FollowViewSet(ModelViewSet):\n    queryset = Subscriptions.objects.all()\n    serializer_class = SubscriptionsSerializer\n    pagination_class = pagination.LimitOffsetPagination\n    http_method_names = ['post', 'delete', 'get']",
         "detail": "backend.foodgram_back.api.views",
         "documentation": {}
     },
@@ -1637,6 +1765,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.foodgram_back.main.migrations.0001_initial",
+        "description": "backend.foodgram_back.main.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Basket',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n            ],",
+        "detail": "backend.foodgram_back.main.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.foodgram_back.main.migrations.0002_initial",
+        "description": "backend.foodgram_back.main.migrations.0002_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        ('main', '0001_initial'),\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='subscriptions',\n            name='author',",
+        "detail": "backend.foodgram_back.main.migrations.0002_initial",
+        "documentation": {}
+    },
+    {
         "label": "UserAdmin",
         "kind": 6,
         "importPath": "backend.foodgram_back.main.admin",
@@ -1751,6 +1897,15 @@
         "description": "backend.foodgram_back.main.models",
         "peekOfCode": "User = get_user_model()\nclass Tags(models.Model):\n    \"\"\"Класс модели тэгов.\"\"\"\n    name = models.CharField(\n        max_length=settings.NAME_MAX_LENGTH,\n        unique=True\n    )\n    color = ColorField()\n    slug = models.SlugField(\n        max_length=settings.NAME_MAX_LENGTH,",
         "detail": "backend.foodgram_back.main.models",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.foodgram_back.users.migrations.0001_initial",
+        "description": "backend.foodgram_back.users.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        ('auth', '0012_alter_user_first_name_max_length'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='ReworkedUser',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
+        "detail": "backend.foodgram_back.users.migrations.0001_initial",
         "documentation": {}
     },
     {

@@ -124,27 +124,25 @@ class SubscriptionsSerializer(serializers.ModelSerializer):
                 'check_sub_tag': None
             }
         ).data
-        if user_data.get('is_subscribed'):
-            user_data.update({
-                'recipe_count': instance.author.recipes.all().count(),
-            })
-            
+        user_data.update({
+            'recipe_count': instance.author.recipes.all().count(),
+        })
+        
+        recipes = SubRecipeSerializer(
+            instance.author.recipes.all(),
+            many=True
+        ).data
+        if "recipes_limit" in self.context['request'].query_params.keys():
             recipes = SubRecipeSerializer(
                 instance.author.recipes.all(),
                 many=True
-            ).data
-            if "recipes_limit" in self.context['request'].query_params.keys():
-                recipes = SubRecipeSerializer(
-                    instance.author.recipes.all(),
-                    many=True
-                ).data[
-                    :int(self.context['request'].query_params['recipes_limit'])
-                ]
-            user_data.update({
-                'recipe': recipes
-            })
-            return user_data
-        pass
+            ).data[
+                :int(self.context['request'].query_params['recipes_limit'])
+            ]
+        user_data.update({
+            'recipe': recipes
+        })
+        return user_data
 
 
 class TagSerializer(serializers.ModelSerializer):
