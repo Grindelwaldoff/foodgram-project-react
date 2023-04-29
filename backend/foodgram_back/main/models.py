@@ -105,12 +105,12 @@ class IngredientsToRecipe(models.Model):
 class Basket(models.Model):
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE,
-        related_name='+'
+        related_name='basket'
     )
     user = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='basket'
+        related_name='+'
     )
 
     def __str__(self):

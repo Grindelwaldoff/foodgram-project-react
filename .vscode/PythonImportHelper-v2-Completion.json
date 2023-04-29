@@ -377,6 +377,71 @@
         "documentation": {}
     },
     {
+        "label": "FavoriteViewSet",
+        "importPath": "api.views",
+        "description": "api.views",
+        "isExtraImport": true,
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "FollowViewSet",
+        "importPath": "api.views",
+        "description": "api.views",
+        "isExtraImport": true,
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "IgredientViewSet",
+        "importPath": "api.views",
+        "description": "api.views",
+        "isExtraImport": true,
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "RecipeViewSet",
+        "importPath": "api.views",
+        "description": "api.views",
+        "isExtraImport": true,
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "SubViewSet",
+        "importPath": "api.views",
+        "description": "api.views",
+        "isExtraImport": true,
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "TagViewSet",
+        "importPath": "api.views",
+        "description": "api.views",
+        "isExtraImport": true,
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "BasketViewSet",
+        "importPath": "api.views",
+        "description": "api.views",
+        "isExtraImport": true,
+        "detail": "api.views",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
         "label": "pdfkit",
         "kind": 6,
         "isExtraImport": true,
@@ -386,12 +451,19 @@
         "documentation": {}
     },
     {
-        "label": "jinja2",
-        "kind": 6,
+        "label": "render_to_string",
+        "importPath": "django.template.loader",
+        "description": "django.template.loader",
         "isExtraImport": true,
-        "importPath": "jinja2",
-        "description": "jinja2",
-        "detail": "jinja2",
+        "detail": "django.template.loader",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
         "documentation": {}
     },
     {
@@ -544,15 +616,6 @@
         "description": "api.serializers",
         "isExtraImport": true,
         "detail": "api.serializers",
-        "documentation": {}
-    },
-    {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
         "documentation": {}
     },
     {
@@ -718,6 +781,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -861,12 +940,253 @@
         "documentation": {}
     },
     {
+        "label": "sys,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys.",
+        "description": "sys.",
+        "detail": "sys.",
+        "documentation": {}
+    },
+    {
+        "label": "StringIO",
+        "importPath": "io",
+        "description": "io",
+        "isExtraImport": true,
+        "detail": "io",
+        "documentation": {}
+    },
+    {
+        "label": "PSKeyword",
+        "importPath": "pdfminer.psparser",
+        "description": "pdfminer.psparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.psparser",
+        "documentation": {}
+    },
+    {
+        "label": "PSLiteral",
+        "importPath": "pdfminer.psparser",
+        "description": "pdfminer.psparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.psparser",
+        "documentation": {}
+    },
+    {
+        "label": "LIT",
+        "importPath": "pdfminer.psparser",
+        "description": "pdfminer.psparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.psparser",
+        "documentation": {}
+    },
+    {
+        "label": "PDFParser",
+        "importPath": "pdfminer.pdfparser",
+        "description": "pdfminer.pdfparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfparser",
+        "documentation": {}
+    },
+    {
+        "label": "PDFParser",
+        "importPath": "pdfminer.pdfparser",
+        "description": "pdfminer.pdfparser",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfparser",
+        "documentation": {}
+    },
+    {
+        "label": "PDFDocument",
+        "importPath": "pdfminer.pdfdocument",
+        "description": "pdfminer.pdfdocument",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfdocument",
+        "documentation": {}
+    },
+    {
+        "label": "PDFNoOutlines",
+        "importPath": "pdfminer.pdfdocument",
+        "description": "pdfminer.pdfdocument",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfdocument",
+        "documentation": {}
+    },
+    {
+        "label": "PDFDocument",
+        "importPath": "pdfminer.pdfdocument",
+        "description": "pdfminer.pdfdocument",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfdocument",
+        "documentation": {}
+    },
+    {
+        "label": "PDFObjectNotFound",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "PDFValueError",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "PDFStream",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "PDFObjRef",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "resolve1",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "stream_value",
+        "importPath": "pdfminer.pdftypes",
+        "description": "pdfminer.pdftypes",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdftypes",
+        "documentation": {}
+    },
+    {
+        "label": "PDFPage",
+        "importPath": "pdfminer.pdfpage",
+        "description": "pdfminer.pdfpage",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfpage",
+        "documentation": {}
+    },
+    {
+        "label": "PDFPage",
+        "importPath": "pdfminer.pdfpage",
+        "description": "pdfminer.pdfpage",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfpage",
+        "documentation": {}
+    },
+    {
+        "label": "isnumber",
+        "importPath": "pdfminer.utils",
+        "description": "pdfminer.utils",
+        "isExtraImport": true,
+        "detail": "pdfminer.utils",
+        "documentation": {}
+    },
+    {
+        "label": "q",
+        "importPath": "pdfminer.utils",
+        "description": "pdfminer.utils",
+        "isExtraImport": true,
+        "detail": "pdfminer.utils",
+        "documentation": {}
+    },
+    {
         "label": "sys",
         "kind": 6,
         "isExtraImport": true,
         "importPath": "sys",
         "description": "sys",
         "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "PDFResourceManager",
+        "importPath": "pdfminer.pdfinterp",
+        "description": "pdfminer.pdfinterp",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfinterp",
+        "documentation": {}
+    },
+    {
+        "label": "PDFPageInterpreter",
+        "importPath": "pdfminer.pdfinterp",
+        "description": "pdfminer.pdfinterp",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfinterp",
+        "documentation": {}
+    },
+    {
+        "label": "PDFDevice",
+        "importPath": "pdfminer.pdfdevice",
+        "description": "pdfminer.pdfdevice",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfdevice",
+        "documentation": {}
+    },
+    {
+        "label": "TagExtractor",
+        "importPath": "pdfminer.pdfdevice",
+        "description": "pdfminer.pdfdevice",
+        "isExtraImport": true,
+        "detail": "pdfminer.pdfdevice",
+        "documentation": {}
+    },
+    {
+        "label": "XMLConverter",
+        "importPath": "pdfminer.converter",
+        "description": "pdfminer.converter",
+        "isExtraImport": true,
+        "detail": "pdfminer.converter",
+        "documentation": {}
+    },
+    {
+        "label": "HTMLConverter",
+        "importPath": "pdfminer.converter",
+        "description": "pdfminer.converter",
+        "isExtraImport": true,
+        "detail": "pdfminer.converter",
+        "documentation": {}
+    },
+    {
+        "label": "TextConverter",
+        "importPath": "pdfminer.converter",
+        "description": "pdfminer.converter",
+        "isExtraImport": true,
+        "detail": "pdfminer.converter",
+        "documentation": {}
+    },
+    {
+        "label": "CMapDB",
+        "importPath": "pdfminer.cmapdb",
+        "description": "pdfminer.cmapdb",
+        "isExtraImport": true,
+        "detail": "pdfminer.cmapdb",
+        "documentation": {}
+    },
+    {
+        "label": "LAParams",
+        "importPath": "pdfminer.layout",
+        "description": "pdfminer.layout",
+        "isExtraImport": true,
+        "detail": "pdfminer.layout",
+        "documentation": {}
+    },
+    {
+        "label": "ImageWriter",
+        "importPath": "pdfminer.image",
+        "description": "pdfminer.image",
+        "isExtraImport": true,
+        "detail": "pdfminer.image",
         "documentation": {}
     },
     {
@@ -1179,7 +1499,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.api.views",
         "description": "backend.foodgram_back.api.views",
-        "peekOfCode": "class BasketViewSet(ModelViewSet):\n    queryset = Basket.objects.all()\n    serializer_class = BasketSerializer\n    def download(self, request):\n        items_in_basket = get_list_or_404(Basket, user=self.request.user)\n        shopping_cart = {}\n        for item in items_in_basket:\n            ing_list = item.recipe.ingredients.all()\n            for ing in ing_list:\n                try:",
+        "peekOfCode": "class BasketViewSet(ModelViewSet):\n    queryset = Basket.objects.all()\n    serializer_class = BasketSerializer\n    permission_classes = ()\n    def download(self, request):\n        items_in_basket = get_list_or_404(Basket, user=User.objects.get(id=2))\n        shopping_cart = {}\n        for item in items_in_basket:\n            ing_list = item.recipe.ingredients.all()\n            for ing in ing_list:",
         "detail": "backend.foodgram_back.api.views",
         "documentation": {}
     },
@@ -1287,7 +1607,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.foodgram_back.settings",
         "description": "backend.foodgram_back.foodgram_back.settings",
-        "peekOfCode": "ROOT_URLCONF = 'foodgram_back.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',",
+        "peekOfCode": "ROOT_URLCONF = 'foodgram_back.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [os.path.join(BASE_DIR, 'templates/'),],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',",
         "detail": "backend.foodgram_back.foodgram_back.settings",
         "documentation": {}
     },
@@ -1296,7 +1616,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.foodgram_back.settings",
         "description": "backend.foodgram_back.foodgram_back.settings",
-        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
+        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [os.path.join(BASE_DIR, 'templates/'),],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
         "detail": "backend.foodgram_back.foodgram_back.settings",
         "documentation": {}
     },
@@ -1562,6 +1882,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.foodgram_back.main.migrations.0006_auto_20230429_1337",
+        "description": "backend.foodgram_back.main.migrations.0006_auto_20230429_1337",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n        ('main', '0005_alter_recipe_options'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='basket',\n            name='recipe',\n            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='basket', to='main.recipe'),",
+        "detail": "backend.foodgram_back.main.migrations.0006_auto_20230429_1337",
+        "documentation": {}
+    },
+    {
         "label": "UserAdmin",
         "kind": 6,
         "importPath": "backend.foodgram_back.main.admin",
@@ -1647,7 +1976,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.main.models",
         "description": "backend.foodgram_back.main.models",
-        "peekOfCode": "class Basket(models.Model):\n    recipe = models.ForeignKey(\n        Recipe, on_delete=models.CASCADE,\n        related_name='+'\n    )\n    user = models.ForeignKey(\n        User,\n        on_delete=models.CASCADE,\n        related_name='basket'\n    )",
+        "peekOfCode": "class Basket(models.Model):\n    recipe = models.ForeignKey(\n        Recipe, on_delete=models.CASCADE,\n        related_name='basket'\n    )\n    user = models.ForeignKey(\n        User,\n        on_delete=models.CASCADE,\n        related_name='+'\n    )",
         "detail": "backend.foodgram_back.main.models",
         "documentation": {}
     },
@@ -1712,6 +2041,114 @@
         "description": "backend.foodgram_back.users.models",
         "peekOfCode": "class ReworkedUser(AbstractUser):\n    \"\"\"Модель юзера с отредактированными полями.\"\"\"\n    email = models.EmailField(max_length=settings.EMAIL_MAX_LENGTH, unique=True)\n    username = models.CharField(\n        max_length=settings.NAME_MAX_LENGTH,\n        unique=True,\n        error_messages={\n            'unique': _(\"A user with that username already exists.\"),\n        },\n        validators=[",
         "detail": "backend.foodgram_back.users.models",
+        "documentation": {}
+    },
+    {
+        "label": "encode",
+        "kind": 2,
+        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
+        "description": "backend.foodgram_back.venv.bin.dumppdf",
+        "peekOfCode": "def encode(data):\n    buf = StringIO()\n    for b in data:\n        if b < 32 or 127 <= b or b in ESCAPE:\n            buf.write(f'&#{b};')\n        else:\n            buf.write(chr(b))\n    return buf.getvalue()\n# dumpxml\ndef dumpxml(out, obj, mode=None):",
+        "detail": "backend.foodgram_back.venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumpxml",
+        "kind": 2,
+        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
+        "description": "backend.foodgram_back.venv.bin.dumppdf",
+        "peekOfCode": "def dumpxml(out, obj, mode=None):\n    if obj is None:\n        out.write('<null />')\n        return\n    if isinstance(obj, dict):\n        out.write('<dict size=\"%d\">\\n' % len(obj))\n        for (k,v) in obj.items():\n            out.write('<key>%s</key>\\n' % k)\n            out.write('<value>')\n            dumpxml(out, v)",
+        "detail": "backend.foodgram_back.venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumptrailers",
+        "kind": 2,
+        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
+        "description": "backend.foodgram_back.venv.bin.dumppdf",
+        "peekOfCode": "def dumptrailers(out, doc):\n    for xref in doc.xrefs:\n        out.write('<trailer>\\n')\n        dumpxml(out, xref.trailer)\n        out.write('\\n</trailer>\\n\\n')\n    return\n# dumpallobjs\ndef dumpallobjs(out, doc, mode=None):\n    visited = set()\n    out.write('<pdf>')",
+        "detail": "backend.foodgram_back.venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumpallobjs",
+        "kind": 2,
+        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
+        "description": "backend.foodgram_back.venv.bin.dumppdf",
+        "peekOfCode": "def dumpallobjs(out, doc, mode=None):\n    visited = set()\n    out.write('<pdf>')\n    for xref in doc.xrefs:\n        for objid in xref.get_objids():\n            if objid in visited: continue\n            visited.add(objid)\n            try:\n                obj = doc.getobj(objid)\n                if obj is None: continue",
+        "detail": "backend.foodgram_back.venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumpoutline",
+        "kind": 2,
+        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
+        "description": "backend.foodgram_back.venv.bin.dumppdf",
+        "peekOfCode": "def dumpoutline(outfp, fname, objids, pagenos, password=b'',\n                dumpall=False, mode=None, extractdir=None):\n    with open(fname, 'rb') as fp:\n        parser = PDFParser(fp)\n        doc = PDFDocument(parser, password)\n        pages = dict( (page.pageid, pageno) for (pageno,page)\n                      in enumerate(PDFPage.create_pages(doc)) )\n        def resolve_dest(dest):\n            if isinstance(dest, str):\n                dest = resolve1(doc.get_dest(dest))",
+        "detail": "backend.foodgram_back.venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "extractembedded",
+        "kind": 2,
+        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
+        "description": "backend.foodgram_back.venv.bin.dumppdf",
+        "peekOfCode": "def extractembedded(outfp, fname, objids, pagenos, password=b'',\n                    dumpall=False, mode=None, extractdir=None):\n    def extract1(obj):\n        filename = os.path.basename(obj['UF'] or obj['F'])\n        fileref = obj['EF']['F']\n        fileobj = doc.getobj(fileref.objid)\n        if not isinstance(fileobj, PDFStream):\n            raise PDFValueError(\n                'unable to process PDF: reference for %r is not a PDFStream' %\n                (filename))",
+        "detail": "backend.foodgram_back.venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumppdf",
+        "kind": 2,
+        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
+        "description": "backend.foodgram_back.venv.bin.dumppdf",
+        "peekOfCode": "def dumppdf(outfp, fname, objids, pagenos, password=b'',\n            dumpall=False, mode=None, extractdir=None):\n    with open(fname, 'rb') as fp:\n        parser = PDFParser(fp)\n        doc = PDFDocument(parser, password)\n        if objids:\n            for objid in objids:\n                obj = doc.getobj(objid)\n                dumpxml(outfp, obj, mode=mode)\n        if pagenos:",
+        "detail": "backend.foodgram_back.venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
+        "description": "backend.foodgram_back.venv.bin.dumppdf",
+        "peekOfCode": "def main(argv):\n    import getopt\n    def usage():\n        print(f'usage: {argv[0]} [-P password] [-a] [-p pageid] [-i objid] [-o output] '\n               '[-r|-b|-t] [-T] [-O output_dir] [-d] input.pdf ...')\n        return 100\n    try:\n        (opts, args) = getopt.getopt(argv[1:], 'dP:ap:i:o:rbtTO:')\n    except getopt.GetoptError:\n        return usage()",
+        "detail": "backend.foodgram_back.venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "ESCAPE",
+        "kind": 5,
+        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
+        "description": "backend.foodgram_back.venv.bin.dumppdf",
+        "peekOfCode": "ESCAPE = set(map(ord, '&<>\"'))\ndef encode(data):\n    buf = StringIO()\n    for b in data:\n        if b < 32 or 127 <= b or b in ESCAPE:\n            buf.write(f'&#{b};')\n        else:\n            buf.write(chr(b))\n    return buf.getvalue()\n# dumpxml",
+        "detail": "backend.foodgram_back.venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "LITERAL_FILESPEC",
+        "kind": 5,
+        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
+        "description": "backend.foodgram_back.venv.bin.dumppdf",
+        "peekOfCode": "LITERAL_FILESPEC = LIT('Filespec')\nLITERAL_EMBEDDEDFILE = LIT('EmbeddedFile')\ndef extractembedded(outfp, fname, objids, pagenos, password=b'',\n                    dumpall=False, mode=None, extractdir=None):\n    def extract1(obj):\n        filename = os.path.basename(obj['UF'] or obj['F'])\n        fileref = obj['EF']['F']\n        fileobj = doc.getobj(fileref.objid)\n        if not isinstance(fileobj, PDFStream):\n            raise PDFValueError(",
+        "detail": "backend.foodgram_back.venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "LITERAL_EMBEDDEDFILE",
+        "kind": 5,
+        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
+        "description": "backend.foodgram_back.venv.bin.dumppdf",
+        "peekOfCode": "LITERAL_EMBEDDEDFILE = LIT('EmbeddedFile')\ndef extractembedded(outfp, fname, objids, pagenos, password=b'',\n                    dumpall=False, mode=None, extractdir=None):\n    def extract1(obj):\n        filename = os.path.basename(obj['UF'] or obj['F'])\n        fileref = obj['EF']['F']\n        fileobj = doc.getobj(fileref.objid)\n        if not isinstance(fileobj, PDFStream):\n            raise PDFValueError(\n                'unable to process PDF: reference for %r is not a PDFStream' %",
+        "detail": "backend.foodgram_back.venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "backend.foodgram_back.venv.bin.pdf2txt",
+        "description": "backend.foodgram_back.venv.bin.pdf2txt",
+        "peekOfCode": "def main(argv):\n    import getopt\n    def usage():\n        print(f'usage: {argv[0]} [-P password] [-o output] [-t text|html|xml|tag]'\n               ' [-O output_dir] [-c encoding] [-s scale] [-R rotation]'\n               ' [-Y normal|loose|exact] [-p pagenos] [-m maxpages]'\n               ' [-S] [-C] [-n] [-A] [-V] [-M char_margin] [-L line_margin]'\n               ' [-W word_margin] [-F boxes_flow] [-d] input.pdf ...')\n        return 100\n    try:",
+        "detail": "backend.foodgram_back.venv.bin.pdf2txt",
         "documentation": {}
     },
     {

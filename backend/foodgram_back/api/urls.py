@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import SimpleRouter
 
-from .views import (
+from api.views import (
     FavoriteViewSet, FollowViewSet,
     IgredientViewSet,
     RecipeViewSet, SubViewSet, TagViewSet,

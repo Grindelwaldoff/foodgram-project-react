@@ -1,5 +1,6 @@
+import os
 import pdfkit
-import jinja2
+from django.template.loader import render_to_string
 from django.contrib.auth import get_user_model
 from django.conf import settings
 from django.http import HttpResponse
@@ -112,9 +113,10 @@ class RecipeViewSet(ModelViewSet):
 class BasketViewSet(ModelViewSet):
     queryset = Basket.objects.all()
     serializer_class = BasketSerializer
+    permission_classes = ()
 
     def download(self, request):
-        items_in_basket = get_list_or_404(Basket, user=self.request.user)
+        items_in_basket = get_list_or_404(Basket, user=User.objects.get(id=2))
         shopping_cart = {}
         for item in items_in_basket:
             ing_list = item.recipe.ingredients.all()
@@ -125,28 +127,18 @@ class BasketViewSet(ModelViewSet):
                     shopping_cart.update({
                         ing.ingredient.name: ing.amount
                     })
-        self.generate_pdf(request, {'shopping_cart': shopping_cart})
-        with open(
-            f'./pdf/cart/shop_list_{request.user}.pdf',
-            'rb'
-        ) as pdf:
-            response = HttpResponse(pdf.read(), content_type='application/pdf')
-            response['Content-Disposition'] = 'inline;filename=shop_cart.pdf'
-            return response
-
-    def generate_pdf(self, request, context):
-        template_loader = jinja2.FileSystemLoader('./')
-        template_env = jinja2.Environment(loader=template_loader)
-        template = template_env.get_template(
-            './templates/shopping_list_template.html'
+        html_string = render_to_string(
+            '../templates/shopping_list_template.html',
+            context={'shopping_cart': shopping_cart}
         )
-        output_text = template.render(context)
-        config = pdfkit.configuration(wkhtmltopdf=settings.HTML_TO_PDF_ROUTE)
-        pdfkit.from_string(
-            output_text,
-            f'./pdf/cart/shop_list_{request.user}.pdf',
-            configuration=config
-        )
+        options = {
+            'page-size': 'Letter',
+            'encoding': 'UTF-8',
+        }
+        pdf_file = pdfkit.from_string(html_string, False, options=options)
+        response = HttpResponse(pdf_file, content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="shopping_list.pdf"'
+        return response
 
     def perform_create(self, serializer):
         serializer.save(
