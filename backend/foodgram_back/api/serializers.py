@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from drf_extra_fields.fields import Base64ImageField
 from django.contrib.auth import get_user_model
-from django.shortcuts import get_object_or_404
 from djoser.serializers import UserSerializer
 
 from main.models import (
@@ -37,11 +36,10 @@ class FavoriteSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
-        recipe = get_object_or_404(Favorites, id=representation['id']).recipe
         representation.update({
-            'name': recipe.name,
-            'image': recipe.img,
-            'cooking_time': recipe.time_to_cook
+            'name': instance.recipe.name,
+            'image': self.context.get('request').build_absolute_uri(instance.recipe.img.url),
+            'cooking_time': instance.recipe.time_to_cook
         })
         return representation
 
@@ -184,6 +182,9 @@ class RecipeSerializer(serializers.ModelSerializer):
             'cooking_time', 'ingredients'
         )
 
+    def get_tags(self, obj):
+        return TagSerializer(obj.tags, many=True).data
+
     def set_ing(self, ingredients, recipe):
         IngredientsToRecipe.objects.bulk_create(
             [IngredientsToRecipe(
@@ -196,6 +197,8 @@ class RecipeSerializer(serializers.ModelSerializer):
         )
 
     def create(self, validated_data):
+        if validated_data['time_to_cook'] == 0:
+                raise serializers.ValidationError('Cooking time should be more than 0!')
         ingredients = validated_data.pop('ingredients')
         tags = validated_data.pop('tags')
         recipe = Recipe.objects.create(**validated_data)
@@ -226,7 +229,7 @@ class BasketSerializer(serializers.ModelSerializer):
         
         repr.update({
             'name': instance.recipe.name,
-            'image': self.context.get('request').build_absolute_uri(instance.recipe.img.url) ,
+            'image': self.context.get('request').build_absolute_uri(instance.recipe.img.url),
             'cooking_time': instance.recipe.time_to_cook
         })
         return repr

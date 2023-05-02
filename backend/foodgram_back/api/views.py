@@ -53,7 +53,10 @@ class FavoriteViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(
-            recipe=get_object_or_404(Recipe, id=self.kwargs.get('recipe_id')),
+            recipe=get_object_or_404(
+                Recipe,
+                id=self.kwargs.get('recipe_id')
+            ),
             user=self.request.user
         )
 

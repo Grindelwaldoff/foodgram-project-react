@@ -4,6 +4,8 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib.auth import get_user_model
 
+from users.validators import validate_username
+
 
 User = get_user_model()
 
@@ -56,6 +58,9 @@ class Recipe(models.Model):
     )
     name = models.CharField(
         max_length=settings.NAME_MAX_LENGTH,
+        validators=[
+            lambda value: validate_username(value, 'Recipe name')
+        ]
     )
     img = models.ImageField(
         upload_to='recipes/'
@@ -68,7 +73,7 @@ class Recipe(models.Model):
         related_name='recipes',
     )
     time_to_cook = models.PositiveIntegerField(
-        validators=[MaxValueValidator(30000), MinValueValidator(1)]
+        validators=[MaxValueValidator(30000), MinValueValidator(5)]
     )
 
     class Meta:
@@ -92,7 +97,7 @@ class IngredientsToRecipe(models.Model):
         related_name='+'
     )
     amount = models.PositiveIntegerField(
-        validators=[MaxValueValidator(30000), MinValueValidator(1)]
+        validators=[MaxValueValidator(30000), MinValueValidator(10)]
     )
 
     class Meta:

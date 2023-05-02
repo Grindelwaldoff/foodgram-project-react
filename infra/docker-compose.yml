@@ -5,7 +5,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgres/data/
     env_file:
-      - ../backend/foodgram_back/.env
+      - ../backend/foodgram_back/dev.env
   webapp:
     depends_on:
       - db
@@ -15,9 +15,8 @@ services:
     restart: always
     ports:
       - 8000:8000
-      - 3000:3000
     env_file:
-      - ../backend/foodgram_back/.env
+      - ../backend/foodgram_back/dev.env
     volumes:
       - media_value:/app/media/
       - static_value:/app/static/

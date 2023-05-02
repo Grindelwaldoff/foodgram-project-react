@@ -8,11 +8,13 @@
             "name": "Python: Django",
             "type": "python",
             "request": "launch",
+            "envFile": "${workspaceFolder}/backend/foodram_back/dev.env",
             "program": "${workspaceFolder}/backend/foodgram_back/manage.py",
             "args": [
                 "runserver",
+                "3000"
             ],
-            "django": true
+            "django": true,
         },
     ]
 }

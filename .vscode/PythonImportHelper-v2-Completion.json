@@ -64,14 +64,6 @@
         "documentation": {}
     },
     {
-        "label": "get_object_or_404",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
         "label": "get_list_or_404",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
@@ -800,6 +792,22 @@
         "documentation": {}
     },
     {
+        "label": "validate_username",
+        "importPath": "users.validators",
+        "description": "users.validators",
+        "isExtraImport": true,
+        "detail": "users.validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_username",
+        "importPath": "users.validators",
+        "description": "users.validators",
+        "isExtraImport": true,
+        "detail": "users.validators",
+        "documentation": {}
+    },
+    {
         "label": "django.contrib.auth.models",
         "kind": 6,
         "isExtraImport": true,
@@ -848,6 +856,22 @@
         "description": "django.utils.translation",
         "isExtraImport": true,
         "detail": "django.utils.translation",
+        "documentation": {}
+    },
+    {
+        "label": "gettext_lazy",
+        "importPath": "django.utils.translation",
+        "description": "django.utils.translation",
+        "isExtraImport": true,
+        "detail": "django.utils.translation",
+        "documentation": {}
+    },
+    {
+        "label": "ValidationError",
+        "importPath": "django.core.exceptions",
+        "description": "django.core.exceptions",
+        "isExtraImport": true,
+        "detail": "django.core.exceptions",
         "documentation": {}
     },
     {
@@ -1265,7 +1289,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.api.serializers",
         "description": "backend.foodgram_back.api.serializers",
-        "peekOfCode": "class FavoriteSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Favorites\n        fields = ('id',)\n    def to_representation(self, instance):\n        representation = super().to_representation(instance)\n        recipe = get_object_or_404(Favorites, id=representation['id']).recipe\n        representation.update({\n            'name': recipe.name,\n            'image': recipe.img,",
+        "peekOfCode": "class FavoriteSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Favorites\n        fields = ('id',)\n    def to_representation(self, instance):\n        representation = super().to_representation(instance)\n        representation.update({\n            'name': instance.recipe.name,\n            'image': self.context.get('request').build_absolute_uri(instance.recipe.img.url),\n            'cooking_time': instance.recipe.time_to_cook",
         "detail": "backend.foodgram_back.api.serializers",
         "documentation": {}
     },
@@ -1769,17 +1793,17 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.main.migrations.0001_initial",
         "description": "backend.foodgram_back.main.migrations.0001_initial",
-        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Basket',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n            ],",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Ingredients',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
         "detail": "backend.foodgram_back.main.migrations.0001_initial",
         "documentation": {}
     },
     {
         "label": "Migration",
         "kind": 6,
-        "importPath": "backend.foodgram_back.main.migrations.0002_initial",
-        "description": "backend.foodgram_back.main.migrations.0002_initial",
-        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        ('main', '0001_initial'),\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='subscriptions',\n            name='author',",
-        "detail": "backend.foodgram_back.main.migrations.0002_initial",
+        "importPath": "backend.foodgram_back.main.migrations.0002_alter_ingredientstorecipe_amount",
+        "description": "backend.foodgram_back.main.migrations.0002_alter_ingredientstorecipe_amount",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('main', '0001_initial'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='ingredientstorecipe',\n            name='amount',\n            field=models.PositiveIntegerField(validators=[django.core.validators.MaxValueValidator(30000), django.core.validators.MinValueValidator(10)]),\n        ),",
+        "detail": "backend.foodgram_back.main.migrations.0002_alter_ingredientstorecipe_amount",
         "documentation": {}
     },
     {
@@ -1805,16 +1829,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.main.admin",
         "description": "backend.foodgram_back.main.admin",
-        "peekOfCode": "class IngredientsAdmin(admin.ModelAdmin):\n    list_filter = ('name',)\n    list_display = ('name', 'measurement_unit')\n@admin.register(IngredientsToRecipe)\nclass IngredientsRecipeAdmin(admin.ModelAdmin):\n    list_display = ['recipe', 'ingredient', 'amount']\nadmin.site.register(Tags)\nadmin.site.register(Favorites)\nadmin.site.register(Basket)\nadmin.site.register(Subscriptions)",
-        "detail": "backend.foodgram_back.main.admin",
-        "documentation": {}
-    },
-    {
-        "label": "IngredientsRecipeAdmin",
-        "kind": 6,
-        "importPath": "backend.foodgram_back.main.admin",
-        "description": "backend.foodgram_back.main.admin",
-        "peekOfCode": "class IngredientsRecipeAdmin(admin.ModelAdmin):\n    list_display = ['recipe', 'ingredient', 'amount']\nadmin.site.register(Tags)\nadmin.site.register(Favorites)\nadmin.site.register(Basket)\nadmin.site.register(Subscriptions)",
+        "peekOfCode": "class IngredientsAdmin(admin.ModelAdmin):\n    list_filter = ('name',)\n    list_display = ('name', 'measurement_unit')\n# @admin.register(IngredientsToRecipe)\n# class IngredientsRecipeAdmin(admin.ModelAdmin):\n#     list_display = ['recipe', 'ingredient', 'amount']\nadmin.site.register(Tags)\nadmin.site.register(Favorites)\nadmin.site.register(Basket)\nadmin.site.register(Subscriptions)",
         "detail": "backend.foodgram_back.main.admin",
         "documentation": {}
     },
@@ -1850,7 +1865,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.main.models",
         "description": "backend.foodgram_back.main.models",
-        "peekOfCode": "class Recipe(models.Model):\n    \"\"\"Класс модели рецептов.\"\"\"\n    author = models.ForeignKey(\n        User,\n        on_delete=models.CASCADE,\n        related_name='recipes',\n    )\n    name = models.CharField(\n        max_length=settings.NAME_MAX_LENGTH,\n    )",
+        "peekOfCode": "class Recipe(models.Model):\n    \"\"\"Класс модели рецептов.\"\"\"\n    author = models.ForeignKey(\n        User,\n        on_delete=models.CASCADE,\n        related_name='recipes',\n    )\n    name = models.CharField(\n        max_length=settings.NAME_MAX_LENGTH,\n        validators=[",
         "detail": "backend.foodgram_back.main.models",
         "documentation": {}
     },
@@ -1924,6 +1939,15 @@
         "description": "backend.foodgram_back.users.models",
         "peekOfCode": "class ReworkedUser(AbstractUser):\n    \"\"\"Модель юзера с отредактированными полями.\"\"\"\n    email = models.EmailField(max_length=settings.EMAIL_MAX_LENGTH, unique=True)\n    username = models.CharField(\n        max_length=settings.NAME_MAX_LENGTH,\n        unique=True,\n        error_messages={\n            'unique': _(\"A user with that username already exists.\"),\n        },\n        validators=[",
         "detail": "backend.foodgram_back.users.models",
+        "documentation": {}
+    },
+    {
+        "label": "validate_username",
+        "kind": 2,
+        "importPath": "backend.foodgram_back.users.validators",
+        "description": "backend.foodgram_back.users.validators",
+        "peekOfCode": "def validate_username(value, field_name):\n    if any(char in value for char in '!@#$%^'):\n        raise ValidationError(\n            _(f'{field_name} cannot contain special characters'),\n            params={'value': value},\n        )",
+        "detail": "backend.foodgram_back.users.validators",
         "documentation": {}
     },
     {
