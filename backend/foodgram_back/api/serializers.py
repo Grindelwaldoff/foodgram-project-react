@@ -97,14 +97,13 @@ class UserSerializerWithAdditionalFields(
 
     def to_representation(self, instance):
         repr = super().to_representation(instance)
-        if 'check_sub_tag' in self.context:
-            repr.update({
-                'is_subscribed': bool(
-                    Subscriptions.objects.filter(
-                        sub=self.context['request'].user,
-                        author_id=instance.id).exists()
-                )
-            })
+        repr.update({
+            'is_subscribed': bool(
+                Subscriptions.objects.filter(
+                    sub=self.context['request'].user,
+                    author_id=instance.id).exists()
+            )
+        })
         return repr
 
 

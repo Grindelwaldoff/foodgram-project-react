@@ -27,17 +27,17 @@ class ReworkedUser(AbstractUser):
         blank=True,
         validators=[
             lambda value: validate_username(value, 'First name'),
-        ]
+        ],
     )
     last_name = models.CharField(
         max_length=settings.NAME_MAX_LENGTH,
         blank=True,
         validators=[
             lambda value: validate_username(value, 'Last name'),
-        ]
+        ],
     )
 
-    
+
 
     class Meta:
         ordering = ['-id']

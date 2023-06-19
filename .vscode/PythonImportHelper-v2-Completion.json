@@ -875,6 +875,104 @@
         "documentation": {}
     },
     {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "APIClient",
+        "importPath": "rest_framework.test",
+        "description": "rest_framework.test",
+        "isExtraImport": true,
+        "detail": "rest_framework.test",
+        "documentation": {}
+    },
+    {
+        "label": "AccessToken",
+        "importPath": "rest_framework_simplejwt.tokens",
+        "description": "rest_framework_simplejwt.tokens",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt.tokens",
+        "documentation": {}
+    },
+    {
+        "label": "get_version",
+        "importPath": "django.utils.version",
+        "description": "django.utils.version",
+        "isExtraImport": true,
+        "detail": "django.utils.version",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPStatus",
+        "importPath": "http",
+        "description": "http",
+        "isExtraImport": true,
+        "detail": "http",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPStatus",
+        "importPath": "http",
+        "description": "http",
+        "isExtraImport": true,
+        "detail": "http",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPStatus",
+        "importPath": "http",
+        "description": "http",
+        "isExtraImport": true,
+        "detail": "http",
+        "documentation": {}
+    },
+    {
+        "label": "# check_pagination",
+        "importPath": "tests.utils",
+        "description": "tests.utils",
+        "isExtraImport": true,
+        "detail": "tests.utils",
+        "documentation": {}
+    },
+    {
+        "label": "invalid_data_for_set_password",
+        "importPath": "tests.utils",
+        "description": "tests.utils",
+        "isExtraImport": true,
+        "detail": "tests.utils",
+        "documentation": {}
+    },
+    {
+        "label": "invalid_data_for_user_fields",
+        "importPath": "tests.utils",
+        "description": "tests.utils",
+        "isExtraImport": true,
+        "detail": "tests.utils",
+        "documentation": {}
+    },
+    {
+        "label": "# invalid_data_for_user_creation",
+        "importPath": "tests.utils",
+        "description": "tests.utils",
+        "isExtraImport": true,
+        "detail": "tests.utils",
+        "documentation": {}
+    },
+    {
         "label": "warnings",
         "kind": 6,
         "isExtraImport": true,
@@ -1053,15 +1151,6 @@
         "documentation": {}
     },
     {
-        "label": "sys",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
-        "documentation": {}
-    },
-    {
         "label": "PDFResourceManager",
         "importPath": "pdfminer.pdfinterp",
         "description": "pdfminer.pdfinterp",
@@ -1139,95 +1228,6 @@
         "description": "pdfminer.image",
         "isExtraImport": true,
         "detail": "pdfminer.image",
-        "documentation": {}
-    },
-    {
-        "label": "pytest",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "pytest",
-        "description": "pytest",
-        "detail": "pytest",
-        "documentation": {}
-    },
-    {
-        "label": "APIClient",
-        "importPath": "rest_framework.test",
-        "description": "rest_framework.test",
-        "isExtraImport": true,
-        "detail": "rest_framework.test",
-        "documentation": {}
-    },
-    {
-        "label": "AccessToken",
-        "importPath": "rest_framework_simplejwt.tokens",
-        "description": "rest_framework_simplejwt.tokens",
-        "isExtraImport": true,
-        "detail": "rest_framework_simplejwt.tokens",
-        "documentation": {}
-    },
-    {
-        "label": "get_version",
-        "importPath": "django.utils.version",
-        "description": "django.utils.version",
-        "isExtraImport": true,
-        "detail": "django.utils.version",
-        "documentation": {}
-    },
-    {
-        "label": "HTTPStatus",
-        "importPath": "http",
-        "description": "http",
-        "isExtraImport": true,
-        "detail": "http",
-        "documentation": {}
-    },
-    {
-        "label": "HTTPStatus",
-        "importPath": "http",
-        "description": "http",
-        "isExtraImport": true,
-        "detail": "http",
-        "documentation": {}
-    },
-    {
-        "label": "HTTPStatus",
-        "importPath": "http",
-        "description": "http",
-        "isExtraImport": true,
-        "detail": "http",
-        "documentation": {}
-    },
-    {
-        "label": "# check_pagination",
-        "importPath": "tests.utils",
-        "description": "tests.utils",
-        "isExtraImport": true,
-        "detail": "tests.utils",
-        "documentation": {}
-    },
-    {
-        "label": "invalid_data_for_set_password",
-        "importPath": "tests.utils",
-        "description": "tests.utils",
-        "isExtraImport": true,
-        "detail": "tests.utils",
-        "documentation": {}
-    },
-    {
-        "label": "invalid_data_for_user_fields",
-        "importPath": "tests.utils",
-        "description": "tests.utils",
-        "isExtraImport": true,
-        "detail": "tests.utils",
-        "documentation": {}
-    },
-    {
-        "label": "# invalid_data_for_user_creation",
-        "importPath": "tests.utils",
-        "description": "tests.utils",
-        "isExtraImport": true,
-        "detail": "tests.utils",
         "documentation": {}
     },
     {
@@ -1951,114 +1951,6 @@
         "documentation": {}
     },
     {
-        "label": "encode",
-        "kind": 2,
-        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
-        "description": "backend.foodgram_back.venv.bin.dumppdf",
-        "peekOfCode": "def encode(data):\n    buf = StringIO()\n    for b in data:\n        if b < 32 or 127 <= b or b in ESCAPE:\n            buf.write(f'&#{b};')\n        else:\n            buf.write(chr(b))\n    return buf.getvalue()\n# dumpxml\ndef dumpxml(out, obj, mode=None):",
-        "detail": "backend.foodgram_back.venv.bin.dumppdf",
-        "documentation": {}
-    },
-    {
-        "label": "dumpxml",
-        "kind": 2,
-        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
-        "description": "backend.foodgram_back.venv.bin.dumppdf",
-        "peekOfCode": "def dumpxml(out, obj, mode=None):\n    if obj is None:\n        out.write('<null />')\n        return\n    if isinstance(obj, dict):\n        out.write('<dict size=\"%d\">\\n' % len(obj))\n        for (k,v) in obj.items():\n            out.write('<key>%s</key>\\n' % k)\n            out.write('<value>')\n            dumpxml(out, v)",
-        "detail": "backend.foodgram_back.venv.bin.dumppdf",
-        "documentation": {}
-    },
-    {
-        "label": "dumptrailers",
-        "kind": 2,
-        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
-        "description": "backend.foodgram_back.venv.bin.dumppdf",
-        "peekOfCode": "def dumptrailers(out, doc):\n    for xref in doc.xrefs:\n        out.write('<trailer>\\n')\n        dumpxml(out, xref.trailer)\n        out.write('\\n</trailer>\\n\\n')\n    return\n# dumpallobjs\ndef dumpallobjs(out, doc, mode=None):\n    visited = set()\n    out.write('<pdf>')",
-        "detail": "backend.foodgram_back.venv.bin.dumppdf",
-        "documentation": {}
-    },
-    {
-        "label": "dumpallobjs",
-        "kind": 2,
-        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
-        "description": "backend.foodgram_back.venv.bin.dumppdf",
-        "peekOfCode": "def dumpallobjs(out, doc, mode=None):\n    visited = set()\n    out.write('<pdf>')\n    for xref in doc.xrefs:\n        for objid in xref.get_objids():\n            if objid in visited: continue\n            visited.add(objid)\n            try:\n                obj = doc.getobj(objid)\n                if obj is None: continue",
-        "detail": "backend.foodgram_back.venv.bin.dumppdf",
-        "documentation": {}
-    },
-    {
-        "label": "dumpoutline",
-        "kind": 2,
-        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
-        "description": "backend.foodgram_back.venv.bin.dumppdf",
-        "peekOfCode": "def dumpoutline(outfp, fname, objids, pagenos, password=b'',\n                dumpall=False, mode=None, extractdir=None):\n    with open(fname, 'rb') as fp:\n        parser = PDFParser(fp)\n        doc = PDFDocument(parser, password)\n        pages = dict( (page.pageid, pageno) for (pageno,page)\n                      in enumerate(PDFPage.create_pages(doc)) )\n        def resolve_dest(dest):\n            if isinstance(dest, str):\n                dest = resolve1(doc.get_dest(dest))",
-        "detail": "backend.foodgram_back.venv.bin.dumppdf",
-        "documentation": {}
-    },
-    {
-        "label": "extractembedded",
-        "kind": 2,
-        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
-        "description": "backend.foodgram_back.venv.bin.dumppdf",
-        "peekOfCode": "def extractembedded(outfp, fname, objids, pagenos, password=b'',\n                    dumpall=False, mode=None, extractdir=None):\n    def extract1(obj):\n        filename = os.path.basename(obj['UF'] or obj['F'])\n        fileref = obj['EF']['F']\n        fileobj = doc.getobj(fileref.objid)\n        if not isinstance(fileobj, PDFStream):\n            raise PDFValueError(\n                'unable to process PDF: reference for %r is not a PDFStream' %\n                (filename))",
-        "detail": "backend.foodgram_back.venv.bin.dumppdf",
-        "documentation": {}
-    },
-    {
-        "label": "dumppdf",
-        "kind": 2,
-        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
-        "description": "backend.foodgram_back.venv.bin.dumppdf",
-        "peekOfCode": "def dumppdf(outfp, fname, objids, pagenos, password=b'',\n            dumpall=False, mode=None, extractdir=None):\n    with open(fname, 'rb') as fp:\n        parser = PDFParser(fp)\n        doc = PDFDocument(parser, password)\n        if objids:\n            for objid in objids:\n                obj = doc.getobj(objid)\n                dumpxml(outfp, obj, mode=mode)\n        if pagenos:",
-        "detail": "backend.foodgram_back.venv.bin.dumppdf",
-        "documentation": {}
-    },
-    {
-        "label": "main",
-        "kind": 2,
-        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
-        "description": "backend.foodgram_back.venv.bin.dumppdf",
-        "peekOfCode": "def main(argv):\n    import getopt\n    def usage():\n        print(f'usage: {argv[0]} [-P password] [-a] [-p pageid] [-i objid] [-o output] '\n               '[-r|-b|-t] [-T] [-O output_dir] [-d] input.pdf ...')\n        return 100\n    try:\n        (opts, args) = getopt.getopt(argv[1:], 'dP:ap:i:o:rbtTO:')\n    except getopt.GetoptError:\n        return usage()",
-        "detail": "backend.foodgram_back.venv.bin.dumppdf",
-        "documentation": {}
-    },
-    {
-        "label": "ESCAPE",
-        "kind": 5,
-        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
-        "description": "backend.foodgram_back.venv.bin.dumppdf",
-        "peekOfCode": "ESCAPE = set(map(ord, '&<>\"'))\ndef encode(data):\n    buf = StringIO()\n    for b in data:\n        if b < 32 or 127 <= b or b in ESCAPE:\n            buf.write(f'&#{b};')\n        else:\n            buf.write(chr(b))\n    return buf.getvalue()\n# dumpxml",
-        "detail": "backend.foodgram_back.venv.bin.dumppdf",
-        "documentation": {}
-    },
-    {
-        "label": "LITERAL_FILESPEC",
-        "kind": 5,
-        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
-        "description": "backend.foodgram_back.venv.bin.dumppdf",
-        "peekOfCode": "LITERAL_FILESPEC = LIT('Filespec')\nLITERAL_EMBEDDEDFILE = LIT('EmbeddedFile')\ndef extractembedded(outfp, fname, objids, pagenos, password=b'',\n                    dumpall=False, mode=None, extractdir=None):\n    def extract1(obj):\n        filename = os.path.basename(obj['UF'] or obj['F'])\n        fileref = obj['EF']['F']\n        fileobj = doc.getobj(fileref.objid)\n        if not isinstance(fileobj, PDFStream):\n            raise PDFValueError(",
-        "detail": "backend.foodgram_back.venv.bin.dumppdf",
-        "documentation": {}
-    },
-    {
-        "label": "LITERAL_EMBEDDEDFILE",
-        "kind": 5,
-        "importPath": "backend.foodgram_back.venv.bin.dumppdf",
-        "description": "backend.foodgram_back.venv.bin.dumppdf",
-        "peekOfCode": "LITERAL_EMBEDDEDFILE = LIT('EmbeddedFile')\ndef extractembedded(outfp, fname, objids, pagenos, password=b'',\n                    dumpall=False, mode=None, extractdir=None):\n    def extract1(obj):\n        filename = os.path.basename(obj['UF'] or obj['F'])\n        fileref = obj['EF']['F']\n        fileobj = doc.getobj(fileref.objid)\n        if not isinstance(fileobj, PDFStream):\n            raise PDFValueError(\n                'unable to process PDF: reference for %r is not a PDFStream' %",
-        "detail": "backend.foodgram_back.venv.bin.dumppdf",
-        "documentation": {}
-    },
-    {
-        "label": "main",
-        "kind": 2,
-        "importPath": "backend.foodgram_back.venv.bin.pdf2txt",
-        "description": "backend.foodgram_back.venv.bin.pdf2txt",
-        "peekOfCode": "def main(argv):\n    import getopt\n    def usage():\n        print(f'usage: {argv[0]} [-P password] [-o output] [-t text|html|xml|tag]'\n               ' [-O output_dir] [-c encoding] [-s scale] [-R rotation]'\n               ' [-Y normal|loose|exact] [-p pagenos] [-m maxpages]'\n               ' [-S] [-C] [-n] [-A] [-V] [-M char_margin] [-L line_margin]'\n               ' [-W word_margin] [-F boxes_flow] [-d] input.pdf ...')\n        return 100\n    try:",
-        "detail": "backend.foodgram_back.venv.bin.pdf2txt",
-        "documentation": {}
-    },
-    {
         "label": "main",
         "kind": 2,
         "importPath": "backend.foodgram_back.manage",
@@ -2308,6 +2200,114 @@
         "description": "backend.tests.utils",
         "peekOfCode": "recipe_correct_data = {\n    \"ingredients\": \n    [\n        {\n            \"id\": 1,\n            \"amount\": 10\n        }\n    ],\n    \"tags\": \n        [",
         "detail": "backend.tests.utils",
+        "documentation": {}
+    },
+    {
+        "label": "encode",
+        "kind": 2,
+        "importPath": "venv.bin.dumppdf",
+        "description": "venv.bin.dumppdf",
+        "peekOfCode": "def encode(data):\n    buf = StringIO()\n    for b in data:\n        if b < 32 or 127 <= b or b in ESCAPE:\n            buf.write(f'&#{b};')\n        else:\n            buf.write(chr(b))\n    return buf.getvalue()\n# dumpxml\ndef dumpxml(out, obj, mode=None):",
+        "detail": "venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumpxml",
+        "kind": 2,
+        "importPath": "venv.bin.dumppdf",
+        "description": "venv.bin.dumppdf",
+        "peekOfCode": "def dumpxml(out, obj, mode=None):\n    if obj is None:\n        out.write('<null />')\n        return\n    if isinstance(obj, dict):\n        out.write('<dict size=\"%d\">\\n' % len(obj))\n        for (k,v) in obj.items():\n            out.write('<key>%s</key>\\n' % k)\n            out.write('<value>')\n            dumpxml(out, v)",
+        "detail": "venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumptrailers",
+        "kind": 2,
+        "importPath": "venv.bin.dumppdf",
+        "description": "venv.bin.dumppdf",
+        "peekOfCode": "def dumptrailers(out, doc):\n    for xref in doc.xrefs:\n        out.write('<trailer>\\n')\n        dumpxml(out, xref.trailer)\n        out.write('\\n</trailer>\\n\\n')\n    return\n# dumpallobjs\ndef dumpallobjs(out, doc, mode=None):\n    visited = set()\n    out.write('<pdf>')",
+        "detail": "venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumpallobjs",
+        "kind": 2,
+        "importPath": "venv.bin.dumppdf",
+        "description": "venv.bin.dumppdf",
+        "peekOfCode": "def dumpallobjs(out, doc, mode=None):\n    visited = set()\n    out.write('<pdf>')\n    for xref in doc.xrefs:\n        for objid in xref.get_objids():\n            if objid in visited: continue\n            visited.add(objid)\n            try:\n                obj = doc.getobj(objid)\n                if obj is None: continue",
+        "detail": "venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumpoutline",
+        "kind": 2,
+        "importPath": "venv.bin.dumppdf",
+        "description": "venv.bin.dumppdf",
+        "peekOfCode": "def dumpoutline(outfp, fname, objids, pagenos, password=b'',\n                dumpall=False, mode=None, extractdir=None):\n    with open(fname, 'rb') as fp:\n        parser = PDFParser(fp)\n        doc = PDFDocument(parser, password)\n        pages = dict( (page.pageid, pageno) for (pageno,page)\n                      in enumerate(PDFPage.create_pages(doc)) )\n        def resolve_dest(dest):\n            if isinstance(dest, str):\n                dest = resolve1(doc.get_dest(dest))",
+        "detail": "venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "extractembedded",
+        "kind": 2,
+        "importPath": "venv.bin.dumppdf",
+        "description": "venv.bin.dumppdf",
+        "peekOfCode": "def extractembedded(outfp, fname, objids, pagenos, password=b'',\n                    dumpall=False, mode=None, extractdir=None):\n    def extract1(obj):\n        filename = os.path.basename(obj['UF'] or obj['F'])\n        fileref = obj['EF']['F']\n        fileobj = doc.getobj(fileref.objid)\n        if not isinstance(fileobj, PDFStream):\n            raise PDFValueError(\n                'unable to process PDF: reference for %r is not a PDFStream' %\n                (filename))",
+        "detail": "venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "dumppdf",
+        "kind": 2,
+        "importPath": "venv.bin.dumppdf",
+        "description": "venv.bin.dumppdf",
+        "peekOfCode": "def dumppdf(outfp, fname, objids, pagenos, password=b'',\n            dumpall=False, mode=None, extractdir=None):\n    with open(fname, 'rb') as fp:\n        parser = PDFParser(fp)\n        doc = PDFDocument(parser, password)\n        if objids:\n            for objid in objids:\n                obj = doc.getobj(objid)\n                dumpxml(outfp, obj, mode=mode)\n        if pagenos:",
+        "detail": "venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "venv.bin.dumppdf",
+        "description": "venv.bin.dumppdf",
+        "peekOfCode": "def main(argv):\n    import getopt\n    def usage():\n        print(f'usage: {argv[0]} [-P password] [-a] [-p pageid] [-i objid] [-o output] '\n               '[-r|-b|-t] [-T] [-O output_dir] [-d] input.pdf ...')\n        return 100\n    try:\n        (opts, args) = getopt.getopt(argv[1:], 'dP:ap:i:o:rbtTO:')\n    except getopt.GetoptError:\n        return usage()",
+        "detail": "venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "ESCAPE",
+        "kind": 5,
+        "importPath": "venv.bin.dumppdf",
+        "description": "venv.bin.dumppdf",
+        "peekOfCode": "ESCAPE = set(map(ord, '&<>\"'))\ndef encode(data):\n    buf = StringIO()\n    for b in data:\n        if b < 32 or 127 <= b or b in ESCAPE:\n            buf.write(f'&#{b};')\n        else:\n            buf.write(chr(b))\n    return buf.getvalue()\n# dumpxml",
+        "detail": "venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "LITERAL_FILESPEC",
+        "kind": 5,
+        "importPath": "venv.bin.dumppdf",
+        "description": "venv.bin.dumppdf",
+        "peekOfCode": "LITERAL_FILESPEC = LIT('Filespec')\nLITERAL_EMBEDDEDFILE = LIT('EmbeddedFile')\ndef extractembedded(outfp, fname, objids, pagenos, password=b'',\n                    dumpall=False, mode=None, extractdir=None):\n    def extract1(obj):\n        filename = os.path.basename(obj['UF'] or obj['F'])\n        fileref = obj['EF']['F']\n        fileobj = doc.getobj(fileref.objid)\n        if not isinstance(fileobj, PDFStream):\n            raise PDFValueError(",
+        "detail": "venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "LITERAL_EMBEDDEDFILE",
+        "kind": 5,
+        "importPath": "venv.bin.dumppdf",
+        "description": "venv.bin.dumppdf",
+        "peekOfCode": "LITERAL_EMBEDDEDFILE = LIT('EmbeddedFile')\ndef extractembedded(outfp, fname, objids, pagenos, password=b'',\n                    dumpall=False, mode=None, extractdir=None):\n    def extract1(obj):\n        filename = os.path.basename(obj['UF'] or obj['F'])\n        fileref = obj['EF']['F']\n        fileobj = doc.getobj(fileref.objid)\n        if not isinstance(fileobj, PDFStream):\n            raise PDFValueError(\n                'unable to process PDF: reference for %r is not a PDFStream' %",
+        "detail": "venv.bin.dumppdf",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "venv.bin.pdf2txt",
+        "description": "venv.bin.pdf2txt",
+        "peekOfCode": "def main(argv):\n    import getopt\n    def usage():\n        print(f'usage: {argv[0]} [-P password] [-o output] [-t text|html|xml|tag]'\n               ' [-O output_dir] [-c encoding] [-s scale] [-R rotation]'\n               ' [-Y normal|loose|exact] [-p pagenos] [-m maxpages]'\n               ' [-S] [-C] [-n] [-A] [-V] [-M char_margin] [-L line_margin]'\n               ' [-W word_margin] [-F boxes_flow] [-d] input.pdf ...')\n        return 100\n    try:",
+        "detail": "venv.bin.pdf2txt",
         "documentation": {}
     }
 ]
