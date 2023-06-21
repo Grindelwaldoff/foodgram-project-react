@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.forms import ModelForm
 
-from main.models import (
+from recipes.models import (
     Tags, Recipe, Ingredients,
     Basket, Favorites, Subscriptions,
     IngredientsToRecipe

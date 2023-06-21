@@ -3,7 +3,7 @@ from django.shortcuts import get_list_or_404
 import django_filters as filter
 from rest_framework.filters import SearchFilter
 
-from main.models import Recipe, Favorites
+from recipes.models import Recipe, Favorites
 
 User = get_user_model()
 

@@ -19,21 +19,21 @@ class ReworkedUser(AbstractUser):
         },
         validators=[
             UnicodeUsernameValidator(),
-            lambda value: validate_username(value, 'Username'),
+            validate_username,
         ]
     )
     first_name = models.CharField(
         max_length=settings.NAME_MAX_LENGTH,
         blank=True,
         validators=[
-            lambda value: validate_username(value, 'First name'),
+            validate_username,
         ],
     )
     last_name = models.CharField(
         max_length=settings.NAME_MAX_LENGTH,
         blank=True,
         validators=[
-            lambda value: validate_username(value, 'Last name'),
+            validate_username,
         ],
     )
 

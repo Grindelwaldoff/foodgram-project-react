@@ -8,6 +8,7 @@
             "name": "Python: Django",
             "type": "python",
             "request": "launch",
+            "env": {"DB_HOST": "172.20.0.2"},
             "envFile": "${workspaceFolder}/backend/foodram_back/dev.env",
             "program": "${workspaceFolder}/backend/foodgram_back/manage.py",
             "args": [

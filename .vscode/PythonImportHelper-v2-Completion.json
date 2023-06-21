@@ -98,178 +98,178 @@
     },
     {
         "label": "Recipe",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Favorites",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Tags",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Recipe",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Ingredients",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Favorites",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Subscriptions",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "IngredientsToRecipe",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Basket",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Tags",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Recipe",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Ingredients",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Favorites",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Subscriptions",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Basket",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Tags",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Recipe",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Ingredients",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Basket",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Favorites",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "Subscriptions",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
         "label": "IngredientsToRecipe",
-        "importPath": "main.models",
-        "description": "main.models",
+        "importPath": "recipes.models",
+        "description": "recipes.models",
         "isExtraImport": true,
-        "detail": "main.models",
+        "detail": "recipes.models",
         "documentation": {}
     },
     {
@@ -709,7 +709,7 @@
         "documentation": {}
     },
     {
-        "label": "migrations",
+        "label": "models",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
@@ -717,7 +717,7 @@
         "documentation": {}
     },
     {
-        "label": "models",
+        "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
@@ -784,6 +784,31 @@
         "documentation": {}
     },
     {
+        "label": "users.validators",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "users.validators",
+        "description": "users.validators",
+        "detail": "users.validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_username",
+        "importPath": "users.validators",
+        "description": "users.validators",
+        "isExtraImport": true,
+        "detail": "users.validators",
+        "documentation": {}
+    },
+    {
+        "label": "validate_username",
+        "importPath": "users.validators",
+        "description": "users.validators",
+        "isExtraImport": true,
+        "detail": "users.validators",
+        "documentation": {}
+    },
+    {
         "label": "ModelForm",
         "importPath": "django.forms",
         "description": "django.forms",
@@ -797,22 +822,6 @@
         "description": "users.models",
         "isExtraImport": true,
         "detail": "users.models",
-        "documentation": {}
-    },
-    {
-        "label": "validate_username",
-        "importPath": "users.validators",
-        "description": "users.validators",
-        "isExtraImport": true,
-        "detail": "users.validators",
-        "documentation": {}
-    },
-    {
-        "label": "validate_username",
-        "importPath": "users.validators",
-        "description": "users.validators",
-        "isExtraImport": true,
-        "detail": "users.validators",
         "documentation": {}
     },
     {
@@ -1799,145 +1808,136 @@
     {
         "label": "Migration",
         "kind": 6,
-        "importPath": "backend.foodgram_back.main.migrations.0001_initial",
-        "description": "backend.foodgram_back.main.migrations.0001_initial",
+        "importPath": "backend.foodgram_back.recipes.migrations.0001_initial",
+        "description": "backend.foodgram_back.recipes.migrations.0001_initial",
         "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Ingredients',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
-        "detail": "backend.foodgram_back.main.migrations.0001_initial",
-        "documentation": {}
-    },
-    {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "backend.foodgram_back.main.migrations.0002_alter_ingredientstorecipe_amount",
-        "description": "backend.foodgram_back.main.migrations.0002_alter_ingredientstorecipe_amount",
-        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('main', '0001_initial'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='ingredientstorecipe',\n            name='amount',\n            field=models.PositiveIntegerField(validators=[django.core.validators.MaxValueValidator(30000), django.core.validators.MinValueValidator(10)]),\n        ),",
-        "detail": "backend.foodgram_back.main.migrations.0002_alter_ingredientstorecipe_amount",
+        "detail": "backend.foodgram_back.recipes.migrations.0001_initial",
         "documentation": {}
     },
     {
         "label": "IngsToRecipeTab",
         "kind": 6,
-        "importPath": "backend.foodgram_back.main.admin",
-        "description": "backend.foodgram_back.main.admin",
+        "importPath": "backend.foodgram_back.recipes.admin",
+        "description": "backend.foodgram_back.recipes.admin",
         "peekOfCode": "class IngsToRecipeTab(admin.TabularInline):\n    model = IngredientsToRecipe\n    min_num = 1\nclass FieldsChecker(ModelForm):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.fields['first_name'].required = True\n        self.fields['last_name'].required = True\n@admin.register(ReworkedUser)\nclass UserAdmin(admin.ModelAdmin):",
-        "detail": "backend.foodgram_back.main.admin",
+        "detail": "backend.foodgram_back.recipes.admin",
         "documentation": {}
     },
     {
         "label": "FieldsChecker",
         "kind": 6,
-        "importPath": "backend.foodgram_back.main.admin",
-        "description": "backend.foodgram_back.main.admin",
+        "importPath": "backend.foodgram_back.recipes.admin",
+        "description": "backend.foodgram_back.recipes.admin",
         "peekOfCode": "class FieldsChecker(ModelForm):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.fields['first_name'].required = True\n        self.fields['last_name'].required = True\n@admin.register(ReworkedUser)\nclass UserAdmin(admin.ModelAdmin):\n    list_filter = ('email', 'username')\n    form = FieldsChecker\n@admin.register(Recipe)",
-        "detail": "backend.foodgram_back.main.admin",
+        "detail": "backend.foodgram_back.recipes.admin",
         "documentation": {}
     },
     {
         "label": "UserAdmin",
         "kind": 6,
-        "importPath": "backend.foodgram_back.main.admin",
-        "description": "backend.foodgram_back.main.admin",
+        "importPath": "backend.foodgram_back.recipes.admin",
+        "description": "backend.foodgram_back.recipes.admin",
         "peekOfCode": "class UserAdmin(admin.ModelAdmin):\n    list_filter = ('email', 'username')\n    form = FieldsChecker\n@admin.register(Recipe)\nclass RecipeAdmin(admin.ModelAdmin):\n    list_display = ['author', 'name']\n    list_filter = ('author', 'name', 'tags')\n    readonly_fields = ('favorite_count',)\n    inlines = [IngsToRecipeTab]\n    def favorite_count(self, obj):",
-        "detail": "backend.foodgram_back.main.admin",
+        "detail": "backend.foodgram_back.recipes.admin",
         "documentation": {}
     },
     {
         "label": "RecipeAdmin",
         "kind": 6,
-        "importPath": "backend.foodgram_back.main.admin",
-        "description": "backend.foodgram_back.main.admin",
+        "importPath": "backend.foodgram_back.recipes.admin",
+        "description": "backend.foodgram_back.recipes.admin",
         "peekOfCode": "class RecipeAdmin(admin.ModelAdmin):\n    list_display = ['author', 'name']\n    list_filter = ('author', 'name', 'tags')\n    readonly_fields = ('favorite_count',)\n    inlines = [IngsToRecipeTab]\n    def favorite_count(self, obj):\n        return obj.favorites.count()\n@admin.register(Ingredients)\nclass IngredientsAdmin(admin.ModelAdmin):\n    list_filter = ('name',)",
-        "detail": "backend.foodgram_back.main.admin",
+        "detail": "backend.foodgram_back.recipes.admin",
         "documentation": {}
     },
     {
         "label": "IngredientsAdmin",
         "kind": 6,
-        "importPath": "backend.foodgram_back.main.admin",
-        "description": "backend.foodgram_back.main.admin",
+        "importPath": "backend.foodgram_back.recipes.admin",
+        "description": "backend.foodgram_back.recipes.admin",
         "peekOfCode": "class IngredientsAdmin(admin.ModelAdmin):\n    list_filter = ('name',)\n    list_display = ('name', 'measurement_unit')\n# @admin.register(IngredientsToRecipe)\n# class IngredientsRecipeAdmin(admin.ModelAdmin):\n#     list_display = ['recipe', 'ingredient', 'amount']\nadmin.site.register(Tags)\nadmin.site.register(Favorites)\nadmin.site.register(Basket)\nadmin.site.register(Subscriptions)",
-        "detail": "backend.foodgram_back.main.admin",
+        "detail": "backend.foodgram_back.recipes.admin",
         "documentation": {}
     },
     {
-        "label": "MainConfig",
+        "label": "RecipesConfig",
         "kind": 6,
-        "importPath": "backend.foodgram_back.main.apps",
-        "description": "backend.foodgram_back.main.apps",
-        "peekOfCode": "class MainConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'main'",
-        "detail": "backend.foodgram_back.main.apps",
+        "importPath": "backend.foodgram_back.recipes.apps",
+        "description": "backend.foodgram_back.recipes.apps",
+        "peekOfCode": "class RecipesConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'recipes'",
+        "detail": "backend.foodgram_back.recipes.apps",
         "documentation": {}
     },
     {
         "label": "Tags",
         "kind": 6,
-        "importPath": "backend.foodgram_back.main.models",
-        "description": "backend.foodgram_back.main.models",
+        "importPath": "backend.foodgram_back.recipes.models",
+        "description": "backend.foodgram_back.recipes.models",
         "peekOfCode": "class Tags(models.Model):\n    \"\"\"Класс модели тэгов.\"\"\"\n    name = models.CharField(\n        max_length=settings.NAME_MAX_LENGTH,\n        unique=True\n    )\n    color = ColorField()\n    slug = models.SlugField(\n        max_length=settings.NAME_MAX_LENGTH,\n        unique=True",
-        "detail": "backend.foodgram_back.main.models",
+        "detail": "backend.foodgram_back.recipes.models",
         "documentation": {}
     },
     {
         "label": "Ingredients",
         "kind": 6,
-        "importPath": "backend.foodgram_back.main.models",
-        "description": "backend.foodgram_back.main.models",
+        "importPath": "backend.foodgram_back.recipes.models",
+        "description": "backend.foodgram_back.recipes.models",
         "peekOfCode": "class Ingredients(models.Model):\n    \"\"\"Класс модели ингредиентов.\"\"\"\n    name = models.CharField(\n        max_length=settings.NAME_MAX_LENGTH,\n        unique=True,\n    )\n    measurement_unit = models.CharField(\n        max_length=settings.MEASURE_MAX_LENGTH,\n    )\n    class Meta:",
-        "detail": "backend.foodgram_back.main.models",
+        "detail": "backend.foodgram_back.recipes.models",
         "documentation": {}
     },
     {
         "label": "Recipe",
         "kind": 6,
-        "importPath": "backend.foodgram_back.main.models",
-        "description": "backend.foodgram_back.main.models",
+        "importPath": "backend.foodgram_back.recipes.models",
+        "description": "backend.foodgram_back.recipes.models",
         "peekOfCode": "class Recipe(models.Model):\n    \"\"\"Класс модели рецептов.\"\"\"\n    author = models.ForeignKey(\n        User,\n        on_delete=models.CASCADE,\n        related_name='recipes',\n    )\n    name = models.CharField(\n        max_length=settings.NAME_MAX_LENGTH,\n        validators=[",
-        "detail": "backend.foodgram_back.main.models",
+        "detail": "backend.foodgram_back.recipes.models",
         "documentation": {}
     },
     {
         "label": "IngredientsToRecipe",
         "kind": 6,
-        "importPath": "backend.foodgram_back.main.models",
-        "description": "backend.foodgram_back.main.models",
+        "importPath": "backend.foodgram_back.recipes.models",
+        "description": "backend.foodgram_back.recipes.models",
         "peekOfCode": "class IngredientsToRecipe(models.Model):\n    \"\"\"Класс модели, описывающей кол-во ингредиентов для рецептов.\"\"\"\n    recipe = models.ForeignKey(\n        Recipe,\n        related_name='ingredients',\n        on_delete=models.CASCADE\n    )\n    ingredient = models.ForeignKey(\n        Ingredients,\n        on_delete=models.CASCADE,",
-        "detail": "backend.foodgram_back.main.models",
+        "detail": "backend.foodgram_back.recipes.models",
         "documentation": {}
     },
     {
         "label": "Basket",
         "kind": 6,
-        "importPath": "backend.foodgram_back.main.models",
-        "description": "backend.foodgram_back.main.models",
+        "importPath": "backend.foodgram_back.recipes.models",
+        "description": "backend.foodgram_back.recipes.models",
         "peekOfCode": "class Basket(models.Model):\n    recipe = models.ForeignKey(\n        Recipe, on_delete=models.CASCADE,\n        related_name='basket'\n    )\n    user = models.ForeignKey(\n        User,\n        on_delete=models.CASCADE,\n        related_name='+'\n    )",
-        "detail": "backend.foodgram_back.main.models",
+        "detail": "backend.foodgram_back.recipes.models",
         "documentation": {}
     },
     {
         "label": "Favorites",
         "kind": 6,
-        "importPath": "backend.foodgram_back.main.models",
-        "description": "backend.foodgram_back.main.models",
+        "importPath": "backend.foodgram_back.recipes.models",
+        "description": "backend.foodgram_back.recipes.models",
         "peekOfCode": "class Favorites(models.Model):\n    recipe = models.ForeignKey(\n        Recipe,\n        related_name='favorites',\n        on_delete=models.CASCADE,\n    )\n    user = models.ForeignKey(\n        User,\n        on_delete=models.CASCADE,\n        related_name='+',",
-        "detail": "backend.foodgram_back.main.models",
+        "detail": "backend.foodgram_back.recipes.models",
         "documentation": {}
     },
     {
         "label": "Subscriptions",
         "kind": 6,
-        "importPath": "backend.foodgram_back.main.models",
-        "description": "backend.foodgram_back.main.models",
+        "importPath": "backend.foodgram_back.recipes.models",
+        "description": "backend.foodgram_back.recipes.models",
         "peekOfCode": "class Subscriptions(models.Model):\n    author = models.ForeignKey(\n        User,\n        on_delete=models.CASCADE,\n        related_name='author'\n    )\n    sub = models.ForeignKey(\n        User,\n        on_delete=models.ForeignKey,\n        related_name='sub'",
-        "detail": "backend.foodgram_back.main.models",
+        "detail": "backend.foodgram_back.recipes.models",
         "documentation": {}
     },
     {
         "label": "User",
         "kind": 5,
-        "importPath": "backend.foodgram_back.main.models",
-        "description": "backend.foodgram_back.main.models",
+        "importPath": "backend.foodgram_back.recipes.models",
+        "description": "backend.foodgram_back.recipes.models",
         "peekOfCode": "User = get_user_model()\nclass Tags(models.Model):\n    \"\"\"Класс модели тэгов.\"\"\"\n    name = models.CharField(\n        max_length=settings.NAME_MAX_LENGTH,\n        unique=True\n    )\n    color = ColorField()\n    slug = models.SlugField(\n        max_length=settings.NAME_MAX_LENGTH,",
-        "detail": "backend.foodgram_back.main.models",
+        "detail": "backend.foodgram_back.recipes.models",
         "documentation": {}
     },
     {
@@ -1947,6 +1947,15 @@
         "description": "backend.foodgram_back.users.migrations.0001_initial",
         "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        ('auth', '0012_alter_user_first_name_max_length'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='ReworkedUser',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
         "detail": "backend.foodgram_back.users.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.foodgram_back.users.migrations.0002_auto_20230621_2025",
+        "description": "backend.foodgram_back.users.migrations.0002_auto_20230621_2025",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('users', '0001_initial'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='reworkeduser',\n            name='first_name',\n            field=models.CharField(blank=True, max_length=150, validators=[users.validators.validate_username]),\n        ),",
+        "detail": "backend.foodgram_back.users.migrations.0002_auto_20230621_2025",
         "documentation": {}
     },
     {
@@ -1972,7 +1981,7 @@
         "kind": 2,
         "importPath": "backend.foodgram_back.users.validators",
         "description": "backend.foodgram_back.users.validators",
-        "peekOfCode": "def validate_username(value, field_name):\n    if any(char in value for char in '!@#$%^'):\n        raise ValidationError(\n            _(f'{field_name} cannot contain special characters'),\n            params={'value': value},\n        )",
+        "peekOfCode": "def validate_username(value):\n    if any(char in value for char in '!@#$%^'):\n        raise ValidationError(\n            _(f'{value} contains disallowed characters'),\n            params={'value': value},\n        )",
         "detail": "backend.foodgram_back.users.validators",
         "documentation": {}
     },

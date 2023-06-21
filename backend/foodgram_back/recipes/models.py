@@ -59,7 +59,7 @@ class Recipe(models.Model):
     name = models.CharField(
         max_length=settings.NAME_MAX_LENGTH,
         validators=[
-            lambda value: validate_username(value, 'Recipe name')
+            validate_username
         ]
     )
     img = models.ImageField(

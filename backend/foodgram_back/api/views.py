@@ -11,7 +11,7 @@ from rest_framework.decorators import action
 from rest_framework.viewsets import ModelViewSet
 from rest_framework import status, pagination, permissions
 
-from main.models import (
+from recipes.models import (
     Tags, Recipe, Ingredients,
     Favorites, Subscriptions,
     Basket

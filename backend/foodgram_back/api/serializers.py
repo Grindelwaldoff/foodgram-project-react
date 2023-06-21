@@ -3,7 +3,7 @@ from drf_extra_fields.fields import Base64ImageField
 from django.contrib.auth import get_user_model
 from djoser.serializers import UserSerializer
 
-from main.models import (
+from recipes.models import (
     Tags, Recipe, Ingredients,
     Favorites, Subscriptions, IngredientsToRecipe, Basket
 )
@@ -97,14 +97,16 @@ class UserSerializerWithAdditionalFields(
 
     def to_representation(self, instance):
         repr = super().to_representation(instance)
-        repr.update({
-            'is_subscribed': bool(
-                Subscriptions.objects.filter(
-                    sub=self.context['request'].user,
-                    author_id=instance.id).exists()
-            )
-        })
-        return repr
+        try:
+            repr.update({
+                'is_subscribed': bool(
+                    Subscriptions.objects.filter(
+                        sub=self.context['request'].user,
+                        author_id=instance.id).exists()
+                )
+            })
+        except Exception:
+            return repr
 
 
 class SubscriptionsSerializer(serializers.ModelSerializer):
