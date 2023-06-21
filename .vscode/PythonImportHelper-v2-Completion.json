@@ -784,6 +784,14 @@
         "documentation": {}
     },
     {
+        "label": "ModelForm",
+        "importPath": "django.forms",
+        "description": "django.forms",
+        "isExtraImport": true,
+        "detail": "django.forms",
+        "documentation": {}
+    },
+    {
         "label": "ReworkedUser",
         "importPath": "users.models",
         "description": "users.models",
@@ -1807,11 +1815,29 @@
         "documentation": {}
     },
     {
+        "label": "IngsToRecipeTab",
+        "kind": 6,
+        "importPath": "backend.foodgram_back.main.admin",
+        "description": "backend.foodgram_back.main.admin",
+        "peekOfCode": "class IngsToRecipeTab(admin.TabularInline):\n    model = IngredientsToRecipe\n    min_num = 1\nclass FieldsChecker(ModelForm):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.fields['first_name'].required = True\n        self.fields['last_name'].required = True\n@admin.register(ReworkedUser)\nclass UserAdmin(admin.ModelAdmin):",
+        "detail": "backend.foodgram_back.main.admin",
+        "documentation": {}
+    },
+    {
+        "label": "FieldsChecker",
+        "kind": 6,
+        "importPath": "backend.foodgram_back.main.admin",
+        "description": "backend.foodgram_back.main.admin",
+        "peekOfCode": "class FieldsChecker(ModelForm):\n    def __init__(self, *args, **kwargs):\n        super().__init__(*args, **kwargs)\n        self.fields['first_name'].required = True\n        self.fields['last_name'].required = True\n@admin.register(ReworkedUser)\nclass UserAdmin(admin.ModelAdmin):\n    list_filter = ('email', 'username')\n    form = FieldsChecker\n@admin.register(Recipe)",
+        "detail": "backend.foodgram_back.main.admin",
+        "documentation": {}
+    },
+    {
         "label": "UserAdmin",
         "kind": 6,
         "importPath": "backend.foodgram_back.main.admin",
         "description": "backend.foodgram_back.main.admin",
-        "peekOfCode": "class UserAdmin(admin.ModelAdmin):\n    list_filter = ('email', 'username')\n@admin.register(Recipe)\nclass RecipeAdmin(admin.ModelAdmin):\n    list_display = ['author', 'name']\n    list_filter = ('author', 'name', 'tags')\n    readonly_fields = ('favorite_count',)\n    def favorite_count(self, obj):\n        return obj.favorites.count()\n@admin.register(Ingredients)",
+        "peekOfCode": "class UserAdmin(admin.ModelAdmin):\n    list_filter = ('email', 'username')\n    form = FieldsChecker\n@admin.register(Recipe)\nclass RecipeAdmin(admin.ModelAdmin):\n    list_display = ['author', 'name']\n    list_filter = ('author', 'name', 'tags')\n    readonly_fields = ('favorite_count',)\n    inlines = [IngsToRecipeTab]\n    def favorite_count(self, obj):",
         "detail": "backend.foodgram_back.main.admin",
         "documentation": {}
     },
@@ -1820,7 +1846,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.main.admin",
         "description": "backend.foodgram_back.main.admin",
-        "peekOfCode": "class RecipeAdmin(admin.ModelAdmin):\n    list_display = ['author', 'name']\n    list_filter = ('author', 'name', 'tags')\n    readonly_fields = ('favorite_count',)\n    def favorite_count(self, obj):\n        return obj.favorites.count()\n@admin.register(Ingredients)\nclass IngredientsAdmin(admin.ModelAdmin):\n    list_filter = ('name',)\n    list_display = ('name', 'measurement_unit')",
+        "peekOfCode": "class RecipeAdmin(admin.ModelAdmin):\n    list_display = ['author', 'name']\n    list_filter = ('author', 'name', 'tags')\n    readonly_fields = ('favorite_count',)\n    inlines = [IngsToRecipeTab]\n    def favorite_count(self, obj):\n        return obj.favorites.count()\n@admin.register(Ingredients)\nclass IngredientsAdmin(admin.ModelAdmin):\n    list_filter = ('name',)",
         "detail": "backend.foodgram_back.main.admin",
         "documentation": {}
     },
