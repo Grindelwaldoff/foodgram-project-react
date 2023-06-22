@@ -145,7 +145,9 @@ class BasketViewSet(ModelViewSet):
         }
         pdf_file = pdfkit.from_string(html_string, False, options=options)
         response = HttpResponse(pdf_file, content_type='application/pdf')
-        response['Content-Disposition'] = 'attachment; filename="shopping_list.pdf"'
+        response['Content-Disposition'] = (
+            'attachment; filename="shopping_list.pdf"'
+        )
         return response
 
     def perform_create(self, serializer):
