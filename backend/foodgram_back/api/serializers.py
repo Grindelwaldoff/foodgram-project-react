@@ -166,11 +166,6 @@ class RecipeSerializer(serializers.ModelSerializer):
         )
 
     def get_tags(self, obj):
-        return TagSerializer(
-            Recipe.objects.filter(recipe=obj).tags, many=True
-        ).data
-
-    def get_tags(self, obj):
         return TagSerializer(obj.tags, many=True).data
 
     def set_ing(self, ingredients, recipe):

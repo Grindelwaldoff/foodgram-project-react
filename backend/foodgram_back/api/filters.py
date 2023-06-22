@@ -1,9 +1,8 @@
 from django.contrib.auth import get_user_model
-from django.shortcuts import get_list_or_404
 import django_filters as filter
 from rest_framework.filters import SearchFilter
 
-from recipes.models import Recipe, Favorites
+from recipes.models import Recipe
 
 User = get_user_model()
 
