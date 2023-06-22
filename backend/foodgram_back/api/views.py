@@ -121,7 +121,10 @@ class BasketViewSet(ModelViewSet):
     permission_classes = ()
 
     def download(self, request):
-        items_in_basket = get_list_or_404(Basket, user=User.objects.get(id=2))
+        items_in_basket = get_list_or_404(
+            Basket,
+            user=User.objects.get(id=self.request.user.id)
+        )
         shopping_cart = {}
         for item in items_in_basket:
             ing_list = item.recipe.ingredients.all()
@@ -142,8 +145,7 @@ class BasketViewSet(ModelViewSet):
         }
         pdf_file = pdfkit.from_string(html_string, False, options=options)
         response = HttpResponse(pdf_file, content_type='application/pdf')
-        response['Content-Disposition'] = 'attachment; \
-            filename="shopping_list.pdf"'
+        response['Content-Disposition'] = 'attachment; filename="shopping_list.pdf"'
         return response
 
     def perform_create(self, serializer):
