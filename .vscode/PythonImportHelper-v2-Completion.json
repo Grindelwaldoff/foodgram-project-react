@@ -145,14 +145,6 @@
         "documentation": {}
     },
     {
-        "label": "Subscriptions",
-        "importPath": "recipes.models",
-        "description": "recipes.models",
-        "isExtraImport": true,
-        "detail": "recipes.models",
-        "documentation": {}
-    },
-    {
         "label": "IngredientsToRecipe",
         "importPath": "recipes.models",
         "description": "recipes.models",
@@ -201,14 +193,6 @@
         "documentation": {}
     },
     {
-        "label": "Subscriptions",
-        "importPath": "recipes.models",
-        "description": "recipes.models",
-        "isExtraImport": true,
-        "detail": "recipes.models",
-        "documentation": {}
-    },
-    {
         "label": "Basket",
         "importPath": "recipes.models",
         "description": "recipes.models",
@@ -250,14 +234,6 @@
     },
     {
         "label": "Favorites",
-        "importPath": "recipes.models",
-        "description": "recipes.models",
-        "isExtraImport": true,
-        "detail": "recipes.models",
-        "documentation": {}
-    },
-    {
-        "label": "Subscriptions",
         "importPath": "recipes.models",
         "description": "recipes.models",
         "isExtraImport": true,
@@ -326,6 +302,38 @@
         "description": "djoser.serializers",
         "isExtraImport": true,
         "detail": "djoser.serializers",
+        "documentation": {}
+    },
+    {
+        "label": "Subscriptions",
+        "importPath": "users.models",
+        "description": "users.models",
+        "isExtraImport": true,
+        "detail": "users.models",
+        "documentation": {}
+    },
+    {
+        "label": "Subscriptions",
+        "importPath": "users.models",
+        "description": "users.models",
+        "isExtraImport": true,
+        "detail": "users.models",
+        "documentation": {}
+    },
+    {
+        "label": "ReworkedUser",
+        "importPath": "users.models",
+        "description": "users.models",
+        "isExtraImport": true,
+        "detail": "users.models",
+        "documentation": {}
+    },
+    {
+        "label": "Subscriptions",
+        "importPath": "users.models",
+        "description": "users.models",
+        "isExtraImport": true,
+        "detail": "users.models",
         "documentation": {}
     },
     {
@@ -425,15 +433,6 @@
         "documentation": {}
     },
     {
-        "label": "os",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os",
-        "description": "os",
-        "detail": "os",
-        "documentation": {}
-    },
-    {
         "label": "pdfkit",
         "kind": 6,
         "isExtraImport": true,
@@ -448,46 +447,6 @@
         "description": "django.template.loader",
         "isExtraImport": true,
         "detail": "django.template.loader",
-        "documentation": {}
-    },
-    {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
-        "isExtraImport": true,
-        "detail": "django.conf",
-        "documentation": {}
-    },
-    {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
-        "isExtraImport": true,
-        "detail": "django.conf",
-        "documentation": {}
-    },
-    {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
-        "isExtraImport": true,
-        "detail": "django.conf",
-        "documentation": {}
-    },
-    {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
-        "isExtraImport": true,
-        "detail": "django.conf",
-        "documentation": {}
-    },
-    {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
-        "isExtraImport": true,
-        "detail": "django.conf",
         "documentation": {}
     },
     {
@@ -595,6 +554,15 @@
         "documentation": {}
     },
     {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
         "label": "get_asgi_application",
         "importPath": "django.core.asgi",
         "description": "django.core.asgi",
@@ -632,6 +600,46 @@
         "description": "django.contrib",
         "isExtraImport": true,
         "detail": "django.contrib",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
         "documentation": {}
     },
     {
@@ -677,14 +685,6 @@
         "documentation": {}
     },
     {
-        "label": "MaxValueValidator",
-        "importPath": "django.core.validators",
-        "description": "django.core.validators",
-        "isExtraImport": true,
-        "detail": "django.core.validators",
-        "documentation": {}
-    },
-    {
         "label": "MinValueValidator",
         "importPath": "django.core.validators",
         "description": "django.core.validators",
@@ -709,30 +709,6 @@
         "documentation": {}
     },
     {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "migrations",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
-        "label": "models",
-        "importPath": "django.db",
-        "description": "django.db",
-        "isExtraImport": true,
-        "detail": "django.db",
-        "documentation": {}
-    },
-    {
         "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
@@ -757,30 +733,27 @@
         "documentation": {}
     },
     {
-        "label": "django.db.models.deletion",
-        "kind": 6,
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
         "isExtraImport": true,
-        "importPath": "django.db.models.deletion",
-        "description": "django.db.models.deletion",
-        "detail": "django.db.models.deletion",
+        "detail": "django.db",
         "documentation": {}
     },
     {
-        "label": "django.db.models.expressions",
-        "kind": 6,
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
         "isExtraImport": true,
-        "importPath": "django.db.models.expressions",
-        "description": "django.db.models.expressions",
-        "detail": "django.db.models.expressions",
+        "detail": "django.db",
         "documentation": {}
     },
     {
-        "label": "django.db.models.fields.related",
-        "kind": 6,
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
         "isExtraImport": true,
-        "importPath": "django.db.models.fields.related",
-        "description": "django.db.models.fields.related",
-        "detail": "django.db.models.fields.related",
+        "detail": "django.db",
         "documentation": {}
     },
     {
@@ -809,19 +782,20 @@
         "documentation": {}
     },
     {
+        "label": "django.db.models.deletion",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.deletion",
+        "description": "django.db.models.deletion",
+        "detail": "django.db.models.deletion",
+        "documentation": {}
+    },
+    {
         "label": "ModelForm",
         "importPath": "django.forms",
         "description": "django.forms",
         "isExtraImport": true,
         "detail": "django.forms",
-        "documentation": {}
-    },
-    {
-        "label": "ReworkedUser",
-        "importPath": "users.models",
-        "description": "users.models",
-        "isExtraImport": true,
-        "detail": "users.models",
         "documentation": {}
     },
     {
@@ -856,6 +830,24 @@
         "description": "django.contrib.auth.validators",
         "isExtraImport": true,
         "detail": "django.contrib.auth.validators",
+        "documentation": {}
+    },
+    {
+        "label": "django.db.models.expressions",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.expressions",
+        "description": "django.db.models.expressions",
+        "detail": "django.db.models.expressions",
+        "documentation": {}
+    },
+    {
+        "label": "django.db.models.fields.related",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.db.models.fields.related",
+        "description": "django.db.models.fields.related",
+        "detail": "django.db.models.fields.related",
         "documentation": {}
     },
     {
@@ -1248,6 +1240,24 @@
         "documentation": {}
     },
     {
+        "label": "psycopg2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "detail": "psycopg2",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
         "label": "ApiConfig",
         "kind": 6,
         "importPath": "backend.foodgram_back.api.apps",
@@ -1261,7 +1271,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.api.filters",
         "description": "backend.foodgram_back.api.filters",
-        "peekOfCode": "class IngredientFilter(SearchFilter):\n    search_param = 'name'\nclass RecipeFilter(filter.FilterSet):\n    tags = filter.AllValuesMultipleFilter(field_name='tags__slug')\n    author = filter.AllValuesFilter(field_name='author')\n    is_favorited = filter.BooleanFilter(\n        method='is_favorited_filter'\n    )\n    is_in_shopping_cart = filter.BooleanFilter(\n        method='cart_filter'",
+        "peekOfCode": "class IngredientFilter(SearchFilter):\n    search_param = 'name'\nclass RecipeFilter(filter.FilterSet):\n    tags = filter.AllValuesMultipleFilter(field_name='tags__slug')\n    author = filter.AllValuesFilter(field_name='author')\n    is_favorited = filter.ChoiceFilter(\n        method='is_favorited_filter', choices=(('1', True), ('0', False))\n    )\n    is_in_shopping_cart = filter.BooleanFilter(\n        method='cart_filter', choices=(('1', True), ('0', False))",
         "detail": "backend.foodgram_back.api.filters",
         "documentation": {}
     },
@@ -1270,7 +1280,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.api.filters",
         "description": "backend.foodgram_back.api.filters",
-        "peekOfCode": "class RecipeFilter(filter.FilterSet):\n    tags = filter.AllValuesMultipleFilter(field_name='tags__slug')\n    author = filter.AllValuesFilter(field_name='author')\n    is_favorited = filter.BooleanFilter(\n        method='is_favorited_filter'\n    )\n    is_in_shopping_cart = filter.BooleanFilter(\n        method='cart_filter'\n    )\n    class Meta:",
+        "peekOfCode": "class RecipeFilter(filter.FilterSet):\n    tags = filter.AllValuesMultipleFilter(field_name='tags__slug')\n    author = filter.AllValuesFilter(field_name='author')\n    is_favorited = filter.ChoiceFilter(\n        method='is_favorited_filter', choices=(('1', True), ('0', False))\n    )\n    is_in_shopping_cart = filter.BooleanFilter(\n        method='cart_filter', choices=(('1', True), ('0', False))\n    )\n    class Meta:",
         "detail": "backend.foodgram_back.api.filters",
         "documentation": {}
     },
@@ -1279,7 +1289,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.api.filters",
         "description": "backend.foodgram_back.api.filters",
-        "peekOfCode": "User = get_user_model()\nclass IngredientFilter(SearchFilter):\n    search_param = 'name'\nclass RecipeFilter(filter.FilterSet):\n    tags = filter.AllValuesMultipleFilter(field_name='tags__slug')\n    author = filter.AllValuesFilter(field_name='author')\n    is_favorited = filter.BooleanFilter(\n        method='is_favorited_filter'\n    )\n    is_in_shopping_cart = filter.BooleanFilter(",
+        "peekOfCode": "User = get_user_model()\nclass IngredientFilter(SearchFilter):\n    search_param = 'name'\nclass RecipeFilter(filter.FilterSet):\n    tags = filter.AllValuesMultipleFilter(field_name='tags__slug')\n    author = filter.AllValuesFilter(field_name='author')\n    is_favorited = filter.ChoiceFilter(\n        method='is_favorited_filter', choices=(('1', True), ('0', False))\n    )\n    is_in_shopping_cart = filter.BooleanFilter(",
         "detail": "backend.foodgram_back.api.filters",
         "documentation": {}
     },
@@ -1306,7 +1316,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.api.serializers",
         "description": "backend.foodgram_back.api.serializers",
-        "peekOfCode": "class FavoriteSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Favorites\n        fields = ('id',)\n    def to_representation(self, instance):\n        representation = super().to_representation(instance)\n        representation.update({\n            'name': instance.recipe.name,\n            'image': self.context.get('request').build_absolute_uri(instance.recipe.img.url),\n            'cooking_time': instance.recipe.time_to_cook",
+        "peekOfCode": "class FavoriteSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Favorites\n        fields = ('id',)\n    def to_representation(self, instance):\n        representation = super().to_representation(instance)\n        representation.update({\n            'name': instance.recipe.name,\n            'image': self.context.get('request').build_absolute_uri(\n                instance.recipe.img.url",
         "detail": "backend.foodgram_back.api.serializers",
         "documentation": {}
     },
@@ -1810,8 +1820,17 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.recipes.migrations.0001_initial",
         "description": "backend.foodgram_back.recipes.migrations.0001_initial",
-        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Ingredients',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='Basket',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n            ],",
         "detail": "backend.foodgram_back.recipes.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.foodgram_back.recipes.migrations.0002_initial",
+        "description": "backend.foodgram_back.recipes.migrations.0002_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        migrations.swappable_dependency(settings.AUTH_USER_MODEL),\n        ('recipes', '0001_initial'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='recipe',\n            name='author',",
+        "detail": "backend.foodgram_back.recipes.migrations.0002_initial",
         "documentation": {}
     },
     {
@@ -1923,15 +1942,6 @@
         "documentation": {}
     },
     {
-        "label": "Subscriptions",
-        "kind": 6,
-        "importPath": "backend.foodgram_back.recipes.models",
-        "description": "backend.foodgram_back.recipes.models",
-        "peekOfCode": "class Subscriptions(models.Model):\n    author = models.ForeignKey(\n        User,\n        on_delete=models.CASCADE,\n        related_name='author'\n    )\n    sub = models.ForeignKey(\n        User,\n        on_delete=models.ForeignKey,\n        related_name='sub'",
-        "detail": "backend.foodgram_back.recipes.models",
-        "documentation": {}
-    },
-    {
         "label": "User",
         "kind": 5,
         "importPath": "backend.foodgram_back.recipes.models",
@@ -1950,15 +1960,6 @@
         "documentation": {}
     },
     {
-        "label": "Migration",
-        "kind": 6,
-        "importPath": "backend.foodgram_back.users.migrations.0002_auto_20230621_2025",
-        "description": "backend.foodgram_back.users.migrations.0002_auto_20230621_2025",
-        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('users', '0001_initial'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='reworkeduser',\n            name='first_name',\n            field=models.CharField(blank=True, max_length=150, validators=[users.validators.validate_username]),\n        ),",
-        "detail": "backend.foodgram_back.users.migrations.0002_auto_20230621_2025",
-        "documentation": {}
-    },
-    {
         "label": "UsersConfig",
         "kind": 6,
         "importPath": "backend.foodgram_back.users.apps",
@@ -1972,7 +1973,16 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.users.models",
         "description": "backend.foodgram_back.users.models",
-        "peekOfCode": "class ReworkedUser(AbstractUser):\n    \"\"\"Модель юзера с отредактированными полями.\"\"\"\n    email = models.EmailField(max_length=settings.EMAIL_MAX_LENGTH, unique=True)\n    username = models.CharField(\n        max_length=settings.NAME_MAX_LENGTH,\n        unique=True,\n        error_messages={\n            'unique': _(\"A user with that username already exists.\"),\n        },\n        validators=[",
+        "peekOfCode": "class ReworkedUser(AbstractUser):\n    \"\"\"Модель юзера с отредактированными полями.\"\"\"\n    email = models.EmailField(\n        max_length=settings.EMAIL_MAX_LENGTH,\n        unique=True\n    )\n    username = models.CharField(\n        max_length=settings.NAME_MAX_LENGTH,\n        unique=True,\n        error_messages={",
+        "detail": "backend.foodgram_back.users.models",
+        "documentation": {}
+    },
+    {
+        "label": "Subscriptions",
+        "kind": 6,
+        "importPath": "backend.foodgram_back.users.models",
+        "description": "backend.foodgram_back.users.models",
+        "peekOfCode": "class Subscriptions(models.Model):\n    author = models.ForeignKey(\n        ReworkedUser,\n        on_delete=models.CASCADE,\n        related_name='author'\n    )\n    sub = models.ForeignKey(\n        ReworkedUser,\n        on_delete=models.ForeignKey,\n        related_name='sub'",
         "detail": "backend.foodgram_back.users.models",
         "documentation": {}
     },
@@ -2343,6 +2353,15 @@
         "description": "venv.bin.pdf2txt",
         "peekOfCode": "def main(argv):\n    import getopt\n    def usage():\n        print(f'usage: {argv[0]} [-P password] [-o output] [-t text|html|xml|tag]'\n               ' [-O output_dir] [-c encoding] [-s scale] [-R rotation]'\n               ' [-Y normal|loose|exact] [-p pagenos] [-m maxpages]'\n               ' [-S] [-C] [-n] [-A] [-V] [-M char_margin] [-L line_margin]'\n               ' [-W word_margin] [-F boxes_flow] [-d] input.pdf ...')\n        return 100\n    try:",
         "detail": "venv.bin.pdf2txt",
+        "documentation": {}
+    },
+    {
+        "label": "collection_array",
+        "kind": 5,
+        "importPath": "parse",
+        "description": "parse",
+        "peekOfCode": "collection_array = []\nfor item in data:\n    collection_array.append(json.dumps(item))\ntry:\n    conn = psycopg2.connect(database=\"postgres\", user=\"postgres\", password=\"postgres\",host=\"172.20.0.3\",port=\"5432\")\n    print(\"opened  database successfully\")\n    cur = conn.cursor()\n    for element in collection_array:\n        cur.execute(\"INSERT INTO recipes_ingredients (name, measurement_unit) VALUES (%s)\", (element,))\n    print(\"successfully inserted records\")",
+        "detail": "parse",
         "documentation": {}
     }
 ]

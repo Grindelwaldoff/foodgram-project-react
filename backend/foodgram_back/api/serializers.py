@@ -5,8 +5,9 @@ from djoser.serializers import UserSerializer
 
 from recipes.models import (
     Tags, Recipe, Ingredients,
-    Favorites, Subscriptions, IngredientsToRecipe, Basket
+    Favorites, IngredientsToRecipe, Basket
 )
+from users.models import Subscriptions
 
 
 User = get_user_model()
@@ -38,7 +39,9 @@ class FavoriteSerializer(serializers.ModelSerializer):
         representation = super().to_representation(instance)
         representation.update({
             'name': instance.recipe.name,
-            'image': self.context.get('request').build_absolute_uri(instance.recipe.img.url),
+            'image': self.context.get('request').build_absolute_uri(
+                instance.recipe.img.url
+            ),
             'cooking_time': instance.recipe.time_to_cook
         })
         return representation
@@ -126,7 +129,7 @@ class SubscriptionsSerializer(serializers.ModelSerializer):
         user_data.update({
             'recipe_count': instance.author.recipes.all().count(),
         })
-        
+
         recipes = SubRecipeSerializer(
             instance.author.recipes.all(),
             many=True
@@ -199,7 +202,9 @@ class RecipeSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         if validated_data['time_to_cook'] == 0:
-                raise serializers.ValidationError('Cooking time should be more than 0!')
+            raise serializers.ValidationError(
+                'Cooking time should be more than 0!'
+            )
         ingredients = validated_data.pop('ingredients')
         tags = validated_data.pop('tags')
         recipe = Recipe.objects.create(**validated_data)
@@ -227,10 +232,11 @@ class BasketSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         repr = super().to_representation(instance)
-        
         repr.update({
             'name': instance.recipe.name,
-            'image': self.context.get('request').build_absolute_uri(instance.recipe.img.url),
+            'image': self.context.get('request').build_absolute_uri(
+                instance.recipe.img.url
+            ),
             'cooking_time': instance.recipe.time_to_cook
         })
         return repr

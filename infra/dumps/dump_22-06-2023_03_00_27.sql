@@ -421,23 +421,23 @@ CREATE TABLE public.django_session (
 ALTER TABLE public.django_session OWNER TO postgres;
 
 --
--- Name: main_basket; Type: TABLE; Schema: public; Owner: postgres
+-- Name: recipes_basket; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.main_basket (
+CREATE TABLE public.recipes_basket (
     id bigint NOT NULL,
     recipe_id bigint NOT NULL,
     user_id bigint NOT NULL
 );
 
 
-ALTER TABLE public.main_basket OWNER TO postgres;
+ALTER TABLE public.recipes_basket OWNER TO postgres;
 
 --
--- Name: main_basket_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: recipes_basket_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.main_basket_id_seq
+CREATE SEQUENCE public.recipes_basket_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -445,33 +445,33 @@ CREATE SEQUENCE public.main_basket_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.main_basket_id_seq OWNER TO postgres;
+ALTER TABLE public.recipes_basket_id_seq OWNER TO postgres;
 
 --
--- Name: main_basket_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: recipes_basket_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.main_basket_id_seq OWNED BY public.main_basket.id;
+ALTER SEQUENCE public.recipes_basket_id_seq OWNED BY public.recipes_basket.id;
 
 
 --
--- Name: main_favorites; Type: TABLE; Schema: public; Owner: postgres
+-- Name: recipes_favorites; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.main_favorites (
+CREATE TABLE public.recipes_favorites (
     id bigint NOT NULL,
     recipe_id bigint NOT NULL,
     user_id bigint NOT NULL
 );
 
 
-ALTER TABLE public.main_favorites OWNER TO postgres;
+ALTER TABLE public.recipes_favorites OWNER TO postgres;
 
 --
--- Name: main_favorites_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: recipes_favorites_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.main_favorites_id_seq
+CREATE SEQUENCE public.recipes_favorites_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -479,33 +479,33 @@ CREATE SEQUENCE public.main_favorites_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.main_favorites_id_seq OWNER TO postgres;
+ALTER TABLE public.recipes_favorites_id_seq OWNER TO postgres;
 
 --
--- Name: main_favorites_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: recipes_favorites_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.main_favorites_id_seq OWNED BY public.main_favorites.id;
+ALTER SEQUENCE public.recipes_favorites_id_seq OWNED BY public.recipes_favorites.id;
 
 
 --
--- Name: main_ingredients; Type: TABLE; Schema: public; Owner: postgres
+-- Name: recipes_ingredients; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.main_ingredients (
+CREATE TABLE public.recipes_ingredients (
     id bigint NOT NULL,
     name character varying(150) NOT NULL,
     measurement_unit character varying(50) NOT NULL
 );
 
 
-ALTER TABLE public.main_ingredients OWNER TO postgres;
+ALTER TABLE public.recipes_ingredients OWNER TO postgres;
 
 --
--- Name: main_ingredients_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: recipes_ingredients_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.main_ingredients_id_seq
+CREATE SEQUENCE public.recipes_ingredients_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -513,35 +513,35 @@ CREATE SEQUENCE public.main_ingredients_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.main_ingredients_id_seq OWNER TO postgres;
+ALTER TABLE public.recipes_ingredients_id_seq OWNER TO postgres;
 
 --
--- Name: main_ingredients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: recipes_ingredients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.main_ingredients_id_seq OWNED BY public.main_ingredients.id;
+ALTER SEQUENCE public.recipes_ingredients_id_seq OWNED BY public.recipes_ingredients.id;
 
 
 --
--- Name: main_ingredientstorecipe; Type: TABLE; Schema: public; Owner: postgres
+-- Name: recipes_ingredientstorecipe; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.main_ingredientstorecipe (
+CREATE TABLE public.recipes_ingredientstorecipe (
     id bigint NOT NULL,
-    amount integer NOT NULL,
+    amount smallint NOT NULL,
     ingredient_id bigint NOT NULL,
     recipe_id bigint NOT NULL,
-    CONSTRAINT main_ingredientstorecipe_amount_check CHECK ((amount >= 0))
+    CONSTRAINT recipes_ingredientstorecipe_amount_check CHECK ((amount >= 0))
 );
 
 
-ALTER TABLE public.main_ingredientstorecipe OWNER TO postgres;
+ALTER TABLE public.recipes_ingredientstorecipe OWNER TO postgres;
 
 --
--- Name: main_ingredientstorecipe_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: recipes_ingredientstorecipe_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.main_ingredientstorecipe_id_seq
+CREATE SEQUENCE public.recipes_ingredientstorecipe_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -549,37 +549,37 @@ CREATE SEQUENCE public.main_ingredientstorecipe_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.main_ingredientstorecipe_id_seq OWNER TO postgres;
+ALTER TABLE public.recipes_ingredientstorecipe_id_seq OWNER TO postgres;
 
 --
--- Name: main_ingredientstorecipe_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: recipes_ingredientstorecipe_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.main_ingredientstorecipe_id_seq OWNED BY public.main_ingredientstorecipe.id;
+ALTER SEQUENCE public.recipes_ingredientstorecipe_id_seq OWNED BY public.recipes_ingredientstorecipe.id;
 
 
 --
--- Name: main_recipe; Type: TABLE; Schema: public; Owner: postgres
+-- Name: recipes_recipe; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.main_recipe (
+CREATE TABLE public.recipes_recipe (
     id bigint NOT NULL,
     name character varying(150) NOT NULL,
-    img character varying(255),
-    description character varying(400) NOT NULL,
-    time_to_cook integer NOT NULL,
+    img character varying(100) NOT NULL,
+    description character varying(5000) NOT NULL,
+    time_to_cook smallint NOT NULL,
     author_id bigint NOT NULL,
-    CONSTRAINT main_recipe_time_to_cook_check CHECK ((time_to_cook >= 0))
+    CONSTRAINT recipes_recipe_time_to_cook_check CHECK ((time_to_cook >= 0))
 );
 
 
-ALTER TABLE public.main_recipe OWNER TO postgres;
+ALTER TABLE public.recipes_recipe OWNER TO postgres;
 
 --
--- Name: main_recipe_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: recipes_recipe_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.main_recipe_id_seq
+CREATE SEQUENCE public.recipes_recipe_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -587,33 +587,33 @@ CREATE SEQUENCE public.main_recipe_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.main_recipe_id_seq OWNER TO postgres;
+ALTER TABLE public.recipes_recipe_id_seq OWNER TO postgres;
 
 --
--- Name: main_recipe_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: recipes_recipe_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.main_recipe_id_seq OWNED BY public.main_recipe.id;
+ALTER SEQUENCE public.recipes_recipe_id_seq OWNED BY public.recipes_recipe.id;
 
 
 --
--- Name: main_recipe_tags; Type: TABLE; Schema: public; Owner: postgres
+-- Name: recipes_recipe_tags; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.main_recipe_tags (
+CREATE TABLE public.recipes_recipe_tags (
     id bigint NOT NULL,
     recipe_id bigint NOT NULL,
     tags_id bigint NOT NULL
 );
 
 
-ALTER TABLE public.main_recipe_tags OWNER TO postgres;
+ALTER TABLE public.recipes_recipe_tags OWNER TO postgres;
 
 --
--- Name: main_recipe_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: recipes_recipe_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.main_recipe_tags_id_seq
+CREATE SEQUENCE public.recipes_recipe_tags_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -621,55 +621,20 @@ CREATE SEQUENCE public.main_recipe_tags_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.main_recipe_tags_id_seq OWNER TO postgres;
+ALTER TABLE public.recipes_recipe_tags_id_seq OWNER TO postgres;
 
 --
--- Name: main_recipe_tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: recipes_recipe_tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.main_recipe_tags_id_seq OWNED BY public.main_recipe_tags.id;
-
-
---
--- Name: main_subscriptions; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.main_subscriptions (
-    id bigint NOT NULL,
-    author_id bigint NOT NULL,
-    sub_id bigint NOT NULL,
-    CONSTRAINT its_not_allowed_to_follow_on_yourself CHECK ((NOT (sub_id = author_id)))
-);
-
-
-ALTER TABLE public.main_subscriptions OWNER TO postgres;
-
---
--- Name: main_subscriptions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.main_subscriptions_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.main_subscriptions_id_seq OWNER TO postgres;
-
---
--- Name: main_subscriptions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.main_subscriptions_id_seq OWNED BY public.main_subscriptions.id;
+ALTER SEQUENCE public.recipes_recipe_tags_id_seq OWNED BY public.recipes_recipe_tags.id;
 
 
 --
--- Name: main_tags; Type: TABLE; Schema: public; Owner: postgres
+-- Name: recipes_tags; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.main_tags (
+CREATE TABLE public.recipes_tags (
     id bigint NOT NULL,
     name character varying(150) NOT NULL,
     color character varying(18) NOT NULL,
@@ -677,13 +642,13 @@ CREATE TABLE public.main_tags (
 );
 
 
-ALTER TABLE public.main_tags OWNER TO postgres;
+ALTER TABLE public.recipes_tags OWNER TO postgres;
 
 --
--- Name: main_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: recipes_tags_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-CREATE SEQUENCE public.main_tags_id_seq
+CREATE SEQUENCE public.recipes_tags_id_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -691,13 +656,13 @@ CREATE SEQUENCE public.main_tags_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.main_tags_id_seq OWNER TO postgres;
+ALTER TABLE public.recipes_tags_id_seq OWNER TO postgres;
 
 --
--- Name: main_tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- Name: recipes_tags_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
-ALTER SEQUENCE public.main_tags_id_seq OWNED BY public.main_tags.id;
+ALTER SEQUENCE public.recipes_tags_id_seq OWNED BY public.recipes_tags.id;
 
 
 --
@@ -709,13 +674,13 @@ CREATE TABLE public.users_reworkeduser (
     password character varying(128) NOT NULL,
     last_login timestamp with time zone,
     is_superuser boolean NOT NULL,
-    first_name character varying(150) NOT NULL,
-    last_name character varying(150) NOT NULL,
     is_staff boolean NOT NULL,
     is_active boolean NOT NULL,
     date_joined timestamp with time zone NOT NULL,
     email character varying(254) NOT NULL,
-    username character varying(150) NOT NULL
+    username character varying(150) NOT NULL,
+    first_name character varying(150) NOT NULL,
+    last_name character varying(150) NOT NULL
 );
 
 
@@ -811,6 +776,41 @@ ALTER SEQUENCE public.users_reworkeduser_user_permissions_id_seq OWNED BY public
 
 
 --
+-- Name: users_subscriptions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users_subscriptions (
+    id bigint NOT NULL,
+    author_id bigint NOT NULL,
+    sub_id bigint NOT NULL,
+    CONSTRAINT its_not_allowed_to_follow_on_yourself CHECK ((NOT (sub_id = author_id)))
+);
+
+
+ALTER TABLE public.users_subscriptions OWNER TO postgres;
+
+--
+-- Name: users_subscriptions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_subscriptions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_subscriptions_id_seq OWNER TO postgres;
+
+--
+-- Name: users_subscriptions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_subscriptions_id_seq OWNED BY public.users_subscriptions.id;
+
+
+--
 -- Name: auth_group id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -853,59 +853,52 @@ ALTER TABLE ONLY public.django_migrations ALTER COLUMN id SET DEFAULT nextval('p
 
 
 --
--- Name: main_basket id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: recipes_basket id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_basket ALTER COLUMN id SET DEFAULT nextval('public.main_basket_id_seq'::regclass);
-
-
---
--- Name: main_favorites id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.main_favorites ALTER COLUMN id SET DEFAULT nextval('public.main_favorites_id_seq'::regclass);
+ALTER TABLE ONLY public.recipes_basket ALTER COLUMN id SET DEFAULT nextval('public.recipes_basket_id_seq'::regclass);
 
 
 --
--- Name: main_ingredients id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: recipes_favorites id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_ingredients ALTER COLUMN id SET DEFAULT nextval('public.main_ingredients_id_seq'::regclass);
-
-
---
--- Name: main_ingredientstorecipe id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.main_ingredientstorecipe ALTER COLUMN id SET DEFAULT nextval('public.main_ingredientstorecipe_id_seq'::regclass);
+ALTER TABLE ONLY public.recipes_favorites ALTER COLUMN id SET DEFAULT nextval('public.recipes_favorites_id_seq'::regclass);
 
 
 --
--- Name: main_recipe id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: recipes_ingredients id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_recipe ALTER COLUMN id SET DEFAULT nextval('public.main_recipe_id_seq'::regclass);
-
-
---
--- Name: main_recipe_tags id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.main_recipe_tags ALTER COLUMN id SET DEFAULT nextval('public.main_recipe_tags_id_seq'::regclass);
+ALTER TABLE ONLY public.recipes_ingredients ALTER COLUMN id SET DEFAULT nextval('public.recipes_ingredients_id_seq'::regclass);
 
 
 --
--- Name: main_subscriptions id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: recipes_ingredientstorecipe id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_subscriptions ALTER COLUMN id SET DEFAULT nextval('public.main_subscriptions_id_seq'::regclass);
+ALTER TABLE ONLY public.recipes_ingredientstorecipe ALTER COLUMN id SET DEFAULT nextval('public.recipes_ingredientstorecipe_id_seq'::regclass);
 
 
 --
--- Name: main_tags id; Type: DEFAULT; Schema: public; Owner: postgres
+-- Name: recipes_recipe id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_tags ALTER COLUMN id SET DEFAULT nextval('public.main_tags_id_seq'::regclass);
+ALTER TABLE ONLY public.recipes_recipe ALTER COLUMN id SET DEFAULT nextval('public.recipes_recipe_id_seq'::regclass);
+
+
+--
+-- Name: recipes_recipe_tags id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recipes_recipe_tags ALTER COLUMN id SET DEFAULT nextval('public.recipes_recipe_tags_id_seq'::regclass);
+
+
+--
+-- Name: recipes_tags id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recipes_tags ALTER COLUMN id SET DEFAULT nextval('public.recipes_tags_id_seq'::regclass);
 
 
 --
@@ -927,6 +920,13 @@ ALTER TABLE ONLY public.users_reworkeduser_groups ALTER COLUMN id SET DEFAULT ne
 --
 
 ALTER TABLE ONLY public.users_reworkeduser_user_permissions ALTER COLUMN id SET DEFAULT nextval('public.users_reworkeduser_user_permissions_id_seq'::regclass);
+
+
+--
+-- Name: users_subscriptions id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_subscriptions ALTER COLUMN id SET DEFAULT nextval('public.users_subscriptions_id_seq'::regclass);
 
 
 --
@@ -998,18 +998,18 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 46	Can change recipe	12	change_recipe
 47	Can delete recipe	12	delete_recipe
 48	Can view recipe	12	view_recipe
-49	Can add subscriptions	13	add_subscriptions
-50	Can change subscriptions	13	change_subscriptions
-51	Can delete subscriptions	13	delete_subscriptions
-52	Can view subscriptions	13	view_subscriptions
-53	Can add tags	14	add_tags
-54	Can change tags	14	change_tags
-55	Can delete tags	14	delete_tags
-56	Can view tags	14	view_tags
-57	Can add user	15	add_reworkeduser
-58	Can change user	15	change_reworkeduser
-59	Can delete user	15	delete_reworkeduser
-60	Can view user	15	view_reworkeduser
+49	Can add tags	13	add_tags
+50	Can change tags	13	change_tags
+51	Can delete tags	13	delete_tags
+52	Can view tags	13	view_tags
+53	Can add reworked user	14	add_reworkeduser
+54	Can change reworked user	14	change_reworkeduser
+55	Can delete reworked user	14	delete_reworkeduser
+56	Can view reworked user	14	view_reworkeduser
+57	Can add subscriptions	15	add_subscriptions
+58	Can change subscriptions	15	change_subscriptions
+59	Can delete subscriptions	15	delete_subscriptions
+60	Can view subscriptions	15	view_subscriptions
 \.
 
 
@@ -1018,6 +1018,7 @@ COPY public.auth_permission (id, name, content_type_id, codename) FROM stdin;
 --
 
 COPY public.authtoken_token (key, created, user_id) FROM stdin;
+91dc077be232675bda15d6b97c335d27c8372349	2023-06-21 23:55:10.532435+00	1
 \.
 
 
@@ -1026,6 +1027,11 @@ COPY public.authtoken_token (key, created, user_id) FROM stdin;
 --
 
 COPY public.django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
+1	2023-06-21 23:53:30.920774+00	1	Салат	1	[{"added": {}}]	13	1
+2	2023-06-21 23:53:40.002935+00	2	Суп	1	[{"added": {}}]	13	1
+3	2023-06-21 23:53:48.884441+00	1	Цезарь	1	[{"added": {}}, {"added": {"name": "ingredients to recipe", "object": "\\u043e\\u0441\\u044c\\u043c\\u0438\\u043d\\u043e\\u0433\\u0438 \\u043c\\u0438\\u043d\\u0438"}}]	12	1
+4	2023-06-21 23:54:34.886464+00	2	Борщ	1	[{"added": {}}, {"added": {"name": "ingredients to recipe", "object": "\\u043f\\u0430\\u0440\\u043c\\u0435\\u0437\\u0430\\u043d"}}]	12	1
+5	2023-06-21 23:54:45.31004+00	1	Favorites object (1)	1	[{"added": {}}]	9	1
 \.
 
 
@@ -1041,14 +1047,14 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 5	sessions	session
 6	authtoken	token
 7	authtoken	tokenproxy
-8	main	basket
-9	main	favorites
-10	main	ingredients
-11	main	ingredientstorecipe
-12	main	recipe
-13	main	subscriptions
-14	main	tags
-15	users	reworkeduser
+8	recipes	basket
+9	recipes	favorites
+10	recipes	ingredients
+11	recipes	ingredientstorecipe
+12	recipes	recipe
+13	recipes	tags
+14	users	reworkeduser
+15	users	subscriptions
 \.
 
 
@@ -1057,30 +1063,30 @@ COPY public.django_content_type (id, app_label, model) FROM stdin;
 --
 
 COPY public.django_migrations (id, app, name, applied) FROM stdin;
-1	contenttypes	0001_initial	2023-04-07 12:56:49.113859+00
-2	contenttypes	0002_remove_content_type_name	2023-04-07 12:56:49.12744+00
-3	auth	0001_initial	2023-04-07 12:56:49.182055+00
-4	auth	0002_alter_permission_name_max_length	2023-04-07 12:56:49.190019+00
-5	auth	0003_alter_user_email_max_length	2023-04-07 12:56:49.198055+00
-6	auth	0004_alter_user_username_opts	2023-04-07 12:56:49.20579+00
-7	auth	0005_alter_user_last_login_null	2023-04-07 12:56:49.213465+00
-8	auth	0006_require_contenttypes_0002	2023-04-07 12:56:49.216433+00
-9	auth	0007_alter_validators_add_error_messages	2023-04-07 12:56:49.227752+00
-10	auth	0008_alter_user_username_max_length	2023-04-07 12:56:49.234493+00
-11	auth	0009_alter_user_last_name_max_length	2023-04-07 12:56:49.24107+00
-12	auth	0010_alter_group_name_max_length	2023-04-07 12:56:49.24878+00
-13	auth	0011_update_proxy_permissions	2023-04-07 12:56:49.255933+00
-14	auth	0012_alter_user_first_name_max_length	2023-04-07 12:56:49.263315+00
-15	users	0001_initial	2023-04-07 12:56:49.318297+00
-16	admin	0001_initial	2023-04-07 12:56:49.346175+00
-17	admin	0002_logentry_remove_auto_add	2023-04-07 12:56:49.356396+00
-18	admin	0003_logentry_add_action_flag_choices	2023-04-07 12:56:49.365992+00
-19	authtoken	0001_initial	2023-04-07 12:56:49.384509+00
-20	authtoken	0002_auto_20160226_1747	2023-04-07 12:56:49.417728+00
-21	authtoken	0003_tokenproxy	2023-04-07 12:56:49.422001+00
-22	main	0001_initial	2023-04-07 12:56:49.47687+00
-23	main	0002_initial	2023-04-07 12:56:49.716832+00
-24	sessions	0001_initial	2023-04-07 12:56:49.735627+00
+1	contenttypes	0001_initial	2023-06-21 23:51:30.090432+00
+2	contenttypes	0002_remove_content_type_name	2023-06-21 23:51:30.099457+00
+3	auth	0001_initial	2023-06-21 23:51:30.146975+00
+4	auth	0002_alter_permission_name_max_length	2023-06-21 23:51:30.15281+00
+5	auth	0003_alter_user_email_max_length	2023-06-21 23:51:30.162072+00
+6	auth	0004_alter_user_username_opts	2023-06-21 23:51:30.168308+00
+7	auth	0005_alter_user_last_login_null	2023-06-21 23:51:30.175773+00
+8	auth	0006_require_contenttypes_0002	2023-06-21 23:51:30.17834+00
+9	auth	0007_alter_validators_add_error_messages	2023-06-21 23:51:30.184075+00
+10	auth	0008_alter_user_username_max_length	2023-06-21 23:51:30.189994+00
+11	auth	0009_alter_user_last_name_max_length	2023-06-21 23:51:30.19619+00
+12	auth	0010_alter_group_name_max_length	2023-06-21 23:51:30.204065+00
+13	auth	0011_update_proxy_permissions	2023-06-21 23:51:30.211955+00
+14	auth	0012_alter_user_first_name_max_length	2023-06-21 23:51:30.217848+00
+15	users	0001_initial	2023-06-21 23:51:30.290822+00
+16	admin	0001_initial	2023-06-21 23:51:30.311684+00
+17	admin	0002_logentry_remove_auto_add	2023-06-21 23:51:30.322463+00
+18	admin	0003_logentry_add_action_flag_choices	2023-06-21 23:51:30.331437+00
+19	authtoken	0001_initial	2023-06-21 23:51:30.351269+00
+20	authtoken	0002_auto_20160226_1747	2023-06-21 23:51:30.378621+00
+21	authtoken	0003_tokenproxy	2023-06-21 23:51:30.382295+00
+22	recipes	0001_initial	2023-06-21 23:51:30.42752+00
+23	recipes	0002_initial	2023-06-21 23:51:30.610419+00
+24	sessions	0001_initial	2023-06-21 23:51:30.624307+00
 \.
 
 
@@ -1089,31 +1095,32 @@ COPY public.django_migrations (id, app, name, applied) FROM stdin;
 --
 
 COPY public.django_session (session_key, session_data, expire_date) FROM stdin;
-1r5zbd6v7hy5ru9ad4drcou76t6da1qj	.eJxVjEEOwiAQRe_C2pBWGGBcuu8ZyAwDUjVtUtqV8e7apAvd_vfef6lI21rj1vISR1EX1avT78aUHnnagdxpus06zdO6jKx3RR-06WGW_Lwe7t9BpVa_teNSRCgkz9YDCqB3RLkD4wyGsxGboBiH4DrwwmiZCxYMtscAne_V-wPv6jdz:1pklgd:wbGSuvrpGgZsntVNJuMLXV4MvYXyUmlctLwT7Zu_VjE	2023-04-21 12:59:27.228288+00
+of7ung9b3c6t7oa15semcm28q5bppqqz	.eJxVjDsOwyAQBe9CHSFYvk6Z3mdAu4CDkwgkY1dR7h5bcpG0b2bemwXc1hK2npcwJ3Zlkl1-N8L4zPUA6YH13nhsdV1m4ofCT9r52FJ-3U7376BgL3uNZCTFPExeaucjWjR2iJ6iNqCzMN6CEMoKMKTAU5ZOqQmSFnvlCIB9vtsENyo:1qC7cn:bL1RNzVlhISTVfUzvnURxWj8yrSdcrVIJJ9CWfJ_UTA	2023-07-05 23:52:33.224128+00
 \.
 
 
 --
--- Data for Name: main_basket; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: recipes_basket; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.main_basket (id, recipe_id, user_id) FROM stdin;
+COPY public.recipes_basket (id, recipe_id, user_id) FROM stdin;
 \.
 
 
 --
--- Data for Name: main_favorites; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: recipes_favorites; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.main_favorites (id, recipe_id, user_id) FROM stdin;
+COPY public.recipes_favorites (id, recipe_id, user_id) FROM stdin;
+1	2	1
 \.
 
 
 --
--- Data for Name: main_ingredients; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: recipes_ingredients; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.main_ingredients (id, name, measurement_unit) FROM stdin;
+COPY public.recipes_ingredients (id, name, measurement_unit) FROM stdin;
 1	абрикосовое варенье	г
 2	абрикосовое пюре	г
 3	абрикосовый джем	г
@@ -2338,1008 +2345,47 @@ COPY public.main_ingredients (id, name, measurement_unit) FROM stdin;
 1222	пахта	г
 1223	паштет	г
 1224	пекарский порошок	г
-1225	пекорино	г
-1226	пектин	г
-1227	пеленгас	г
-1228	пельмени	г
-1229	пенне	г
-1230	пенне ригате	г
-1231	пеперончино	ч. л.
-1232	пеперончино молотый	щепотка
-1233	переводной лист для шоколада	шт.
-1234	перепелки	тушка
-1235	перец	г
-1236	перец белый	г
-1237	перец белый горошком	по вкусу
-1238	перец белый молотый	г
-1239	перец белый свежемолотый	ч. л.
-1240	перец болгарский	г
-1241	перец болгарский желтый	г
-1242	перец болгарский зеленый	г
-1243	перец болгарский красный	г
-1244	перец горошком	г
-1245	перец горошком смесь	г
-1246	перец душистый	щепотка
-1247	перец душистый горошком	г
-1248	перец душистый молотый	г
-1249	перец испанский острый	шт.
-1250	перец кайенский	г
-1251	перец кайенский красный	г
-1252	перец кайенский молотый	щепотка
-1253	перец красный	г
-1254	перец красный горошком	г
-1255	перец красный жгучий	г
-1256	перец красный молотый	г
-1257	перец красный острый	г
-1258	перец красный острый молотый	по вкусу
-1259	перец красный хлопьями	щепотка
-1260	перец лимонный	г
-1261	перец маринованный	г
-1262	перец острый	г
-1263	перец острый зеленый	шт.
-1264	перец острый молотый	щепотка
-1265	перец падрон	г
-1266	перец пеперони	г
-1267	перец пеперони красный	шт.
-1268	перец розовый горошком	г
-1269	перец свежемолотый смесь	г
-1270	перец сенегальский	по вкусу
-1271	перец сладкий	г
-1272	перец сладкий желтый	г
-1273	перец сладкий зеленый	г
-1274	перец сладкий красный	г
-1275	перец сладкий красный маринованный	шт.
-1276	перец сладкий красный молотый	г
-1277	перец сладкий оранжевый	г
-1278	перец сладкий сушеный	г
-1279	перец сычуаньский	г
-1280	перец халапеньо	г
-1281	перец халапеньо маринованный	шт.
-1282	перец черный	ст. л.
-1283	перец черный горошком	по вкусу
-1284	перец черный молотый	г
-1285	перец черный свежемолотый	г
-1286	перец чили	г
-1287	перец чили зеленый	стручок
-1288	перец чили красный	стручок
-1289	перец чили маринованный	по вкусу
-1290	перец чили молотый	г
-1291	перец чили сухой	ст. л.
-1292	перец чили хлопьями	по вкусу
-1293	перец ямайский	г
-1294	перловая крупа	г
-1295	перловая мука	г
-1296	персики	г
-1297	персики консервированные	г
-1298	персики сушеные	горсть
-1299	персиковое пюре	г
-1300	персиковый джем	г
-1301	персиковый мармелад	ст. л.
-1302	персиковый сироп	мл
-1303	персиковый сок	г
-1304	перцовая паста	ч. л.
-1305	петрушка	г
-1306	петрушка зелень	г
-1307	петрушка итальянская	пучок
-1308	петрушка корень	г
-1309	петрушка рубленая	г
-1310	петрушка сушеная	г
-1311	печень	г
-1312	печенье	по вкусу
-1313	печенье Oreo	г
-1314	печенье Амаретти	г
-1315	печенье бисквитное	г
-1316	печенье галетное	шт.
-1317	печенье «Дамские пальчики»	г
-1318	печенье песочное	г
-1319	печенье рассыпчатое	г
-1320	печенье Савоярди	г
-1321	печенье сахарное	г
-1322	печенье сладкое	г
-1323	печенье сухое	г
-1324	печенье шоколадное	г
-1325	печенье Юбилейное молочное	г
-1326	пиво	г
-1327	пиво имбирное	мл
-1328	пиво нефильтрованное	г
-1329	пиво светлое	г
-1330	пиво темное	банка
-1331	пикша	шт.
-1332	питы	по вкусу
-1333	повидло	г
-1334	подсолнечное масло	г
-1335	подсолнечные семечки	г
-1336	полба	г
-1337	полба недозрелая	г
-1338	полента	по вкусу
-1339	полента быстрого приготовления	стакан
-1340	помело	г
-1341	помидоры	г
-1342	помидоры бурые	г
-1343	помидоры вяленые	по вкусу
-1344	помидоры вяленые в масле	г
-1345	помидоры желтые	шт.
-1346	помидоры зеленые	кг
-1347	помидоры консервированные	г
-1348	помидоры консервированные в собственном соку	г
-1349	помидоры консервированные в собственном соку с базиликом	г
-1350	помидоры протертые пассата	г
-1351	помидоры соленые	шт.
-1352	помидоры сушеные хлопьями	г
-1353	помидоры черри	г
-1354	помидоры черри желтые	г
-1355	попкорн	г
-1356	поросенок	кг
-1357	портвейн	г
-1358	портобелло	г
-1359	портулак	г
-1360	посыпка кондитерская	по вкусу
-1361	почки	г
-1362	приправа 4 перца	г
-1363	приправа 5 специй (five spice)	ч. л.
-1364	приправа для баранины	ст. л.
-1365	приправа для картофеля	г
-1366	приправа для курицы	г
-1367	приправа для макарон	по вкусу
-1368	приправа для маринования свинины	по вкусу
-1369	приправа для морепродуктов	по вкусу
-1370	приправа для мяса	г
-1371	приправа для паэльи	по вкусу
-1372	приправа для пиццы	ч. л.
-1373	приправа для плова	г
-1374	приправа для птицы	ст. л.
-1375	приправа для рыбы	г
-1376	приправа для салатов	по вкусу
-1377	приправа заатар	ч. л.
-1378	приправа креольская	ст. л.
-1379	приправа с сушеными грибами	ч. л.
-1380	приправы	г
-1381	прованские травы	г
-1382	проволоне	г
-1383	просекко	мл
-1384	простокваша	г
-1385	протеин сывороточный	г
-1386	прошутто	г
-1387	пряники	г
-1388	пряничные специи	г
-1389	пряности	г
-1390	псиллиум	г
-1391	птитим	г
-1392	пудинг	г
-1393	пудинг ванильный	г
-1394	пудинг ванильный инстант	упаковка
-1395	пудинг карамельный	г
-1396	пшеница	г
-1397	пшеничная крупа	г
-1398	пшеничная мука	г
-1399	пшеничная мука цельнозерновая	г
-1400	пшеничные зародыши	стакан
-1401	пшеничные отруби	г
-1402	пшеничные ростки	г
-1403	пшеничные хлопья	г
-1404	пшенные хлопья	ст. л.
-1405	пшено	г
-1406	пыльца цветочная	г
-1407	пюре	по вкусу
-1408	радиккио	шт.
-1409	разрыхлитель	г
-1410	раки	шт.
-1411	раковые шейки	г
-1412	раковые шейки в рассоле	г
-1413	рамбутан	г
-1414	рапаны	г
-1415	рапсовое масло	по вкусу
-1416	рассол	г
-1417	рассол от каперсов	ст. л.
-1418	рассол от оливок	ст. л.
-1419	растительное масло	г
-1420	растительное масло для жарки	г
-1421	растительное масло нерафинированное	стакан
-1422	растительное масло рафинированное	г
-1423	растительное молоко	стакан
-1424	ревень	г
-1425	реган	веточка
-1426	редис	г
-1427	редька	г
-1428	редька белая	шт.
-1429	редька зеленая	шт.
-1430	редька черная	шт.
-1431	репа	г
-1432	репа белая	шт.
-1433	ржаная закваска	г
-1434	ржаная закваска густая	г
-1435	ржаная мука	г
-1436	ржаные отруби	г
-1437	ригатони	г
-1438	рикотта	г
-1439	рикотта твердая	г
-1440	рис	г
-1441	рис арборио	г
-1442	рис басмати	г
-1443	рис бурый	г
-1444	рис бурый и дикий смесь	г
-1445	рис вареный	г
-1446	рис виола	г
-1447	рис девзира	г
-1448	рис дикий	г
-1449	рис дикий и золотистый смесь	г
-1450	рис длиннозерный	г
-1451	рис длиннозерный золотистый	г
-1452	рис для плова	г
-1453	рис для пудинга	г
-1454	рис для ризотто	г
-1455	рис для суши	г
-1456	рис жасминовый	г
-1457	рис золотистый	г
-1458	рис индика	г
-1459	рис италика	г
-1460	рис карнароли	г
-1461	рис красный	г
-1462	рис круглозерный	г
-1463	рис кубанский	г
-1464	рисовая бумага	г
-1465	рисовая лапша	г
-1466	рисовая мука	г
-1467	рисовое вино	ч. л.
-1468	рисовые хлопья	г
-1469	рисовые шарики воздушные	г
-1470	рисовый крахмал	ст. л.
-1471	рисовый уксус	по вкусу
-1472	рис пропаренный	г
-1473	рис пропаренный и дикий смесь	г
-1474	рис японика	г
-1475	рожь	г
-1476	розмарин	шт.
-1477	розмарин сушеный	по вкусу
-1478	розовая вода	г
-1479	розовые бутоны сушеные	г
-1480	розовые лепестки	г
-1481	розы	г
-1482	рокфор	г
-1483	ром	бутылка
-1484	ромашка сушеная	г
-1485	ромовый экстракт	ч. л.
-1486	ром темный	г
-1487	ростбиф	г
-1488	рукола	г
-1489	рулька	по вкусу
-1490	рыба	г
-1491	рыба белая	г
-1492	рыба белая филе	г
-1493	рыба консервированная	банка
-1494	рыба копченая	г
-1495	рыба копченая филе	г
-1496	рыба красная	г
-1497	рыба красная соленая	г
-1498	рыба красная филе	г
-1499	рыба-меч	г
-1500	рыба морская	г
-1501	рыба солнечник филе	шт.
-1502	рыба-соль	тушка
-1503	рыбное филе	г
-1504	рыбные консервы	г
-1505	рыбные кости	г
-1506	рыбные обрезки, головы, плавники	по вкусу
-1507	рыбный бульон	г
-1508	рыбный соус	г
-1509	рыбный соус Nam Pla	г
-1510	рыбный соус тайский	г
-1511	рыбный фарш	г
-1512	рябина черноплодная	г
-1513	рябчик	г
-1514	ряженка	г
-1515	ряженка 4%	г
-1516	сайда	г
-1517	сайда филе	г
-1518	сайра	г
-1519	сайра консервированная	банка
-1520	саке	ст. л.
-1521	салака	г
-1522	салат	г
-1523	салат айсберг	г
-1524	салат китайский	г
-1525	салат корн	пучок
-1526	салат кочанный	г
-1527	салат кучерявый	г
-1528	салат листовой	г
-1529	салатный микс	г
-1530	салат романо	г
-1531	салат фриссе	г
-1532	сало	г
-1533	сало копченое в перце	г
-1534	сало копченое с мясными прослойками	г
-1535	сало с мясными прослойками	г
-1536	сальник	г
-1537	сальса	г
-1538	сальса верде	ч. л.
-1539	салями	г
-1540	салями итальянская	г
-1541	сардельки	г
-1542	сардельки копченые	г
-1543	сардинки маленькие	шт.
-1544	сардины	г
-1545	сардины в масле	банка
-1546	сахар	г
-1547	сахар ванильный	г
-1548	сахар демерара	г
-1549	сахар жемчужный	г
-1550	сахар коричневый	г
-1551	сахар коричневый крупнокристаллический	г
-1552	сахар мусковадо	горсть
-1553	сахарная пудра	г
-1554	сахарная пудра апельсиновая	г
-1555	сахарная пудра ванильная	г
-1556	сахарные жемчужинки	г
-1557	сахарные кондитерские украшения	горсть
-1558	сахарный песок	г
-1559	сахарный песок крупный	г
-1560	сахарный песок мелкий	г
-1561	сахарный сироп	г
-1562	сахар пальмовый	г
-1563	сахар-рафинад	г
-1564	сахар-рафинад с корицей	г
-1565	сахар тростниковый	г
-1566	сванская соль	г
-1567	свекла	г
-1568	свекла вареная	г
-1569	свекольная ботва	г
-1570	свекольные листья	г
-1571	свиная вырезка	г
-1572	свиная голова	г
-1573	свиная грудинка	г
-1574	свиная корейка	г
-1575	свиная корейка копченая	г
-1576	свиная корейка на кости	г
-1577	свиная лопатка варено-копченая	г
-1578	свиная мякоть	г
-1579	свиная пашина	кг
-1580	свиная печень	г
-1581	свиная рулька	по вкусу
-1582	свиная рулька варено-копченая	г
-1583	свиная рулька копченая	г
-1584	свиная шейка	кусок
-1585	свинина	г
-1586	свинина вареная	г
-1587	свинина нежирная	г
-1588	свинина с жирком	г
-1589	свиное сердце	г
-1590	свиное филе	г
-1591	свиной подчеревок	г
-1592	свиной фарш	г
-1593	свиной язык	г
-1594	свиные котлеты на косточке	шт.
-1595	свиные легкие	г
-1596	свиные ножки	г
-1597	свиные отбивные	г
-1598	свиные отбивные на косточке	г
-1599	свиные ребра	г
-1600	свиные уши	шт.
-1601	свиные щечки	шт.
-1602	свити	г
-1603	сельдерей	г
-1604	сельдерей зелень	г
-1605	сельдерей корень	г
-1606	сельдерей корень сушеный	по вкусу
-1607	сельдерейная соль	г
-1608	сельдерей семена	ч. л.
-1609	сельдерей стебли	г
-1610	сельдь	г
-1611	сельдь слабосоленая	г
-1612	сельдь соленая	шт.
-1613	сельдь филе	г
-1614	семга	г
-1615	семга копченая	г
-1616	семга свежая	г
-1617	семга соленая	г
-1618	семга филе на коже	г
-1619	семечки	г
-1620	семечки смесь	ст. л.
-1621	семолина	г
-1622	сервелат варено-копченый	г
-1623	сибас	г
-1624	сидр	г
-1625	сироп	г
-1626	сироп от консервированных груш	г
-1627	сироп от консервированных персиков	ст. л.
-1628	сироп топинамбура	стакан
-1629	скумбрия	по вкусу
-1630	скумбрия свежая	г
-1631	скумбрия филе	г
-1632	скумбрия холодного копчения	г
-1633	сливки	упаковка
-1634	сливки 10-20%	г
-1635	сливки 15%	г
-1636	сливки 20%	г
-1637	сливки 33-35%	г
-1638	сливки жирные	г
-1639	сливки кондитерские	г
-1640	сливовая паста	г
-1641	сливовое варенье	г
-1642	сливовое вино	г
-1643	сливовый джем	г
-1644	сливовый ликер	ст. л.
-1645	сливовый соус	г
-1646	сливочное масло	г
-1647	сливы	кг
-1648	сливы замороженные	г
-1649	смалец	г
-1650	смесь для кекса	шт.
-1651	смесь для оладий	г
-1652	смесь для хлеба 8 злаков	г
-1653	сметана	г
-1654	сметана 10%	г
-1655	сметана 15%	ч. л.
-1656	сметана 18%	г
-1657	сметана 20%	г
-1658	сметана 25%	г
-1659	сметана 30%	г
-1660	сметана 35%	г
-1661	сметана жирная	г
-1662	сметана нежирная	г
-1663	сметана некислая	г
-1664	смородина сушеная	г
-1665	смородиновые листья	г
-1666	сморчки сухие	г
-1667	снежок	л
-1668	сныть	г
-1669	сода	г
-1670	соевая мука	г
-1671	соевое масло	г
-1672	соевое молоко	г
-1673	соевые ростки	г
-1674	соевый соус	г
-1675	сок	г
-1676	сок из красных апельсинов	мл
-1677	сок мультивитаминный	мл
-1678	сок юзу	мл
-1679	солод	ч. л.
-1680	солод жидкий	г
-1681	солодовый экстракт	г
-1682	солод темный	г
-1683	соломка	г
-1684	соль	г
-1685	соль гималайская	г
-1686	соль крупного помола	г
-1687	соль морская	г
-1688	сом филе	г
-1689	сосиски	г
-1690	сосиски из куриного фарша	шт.
-1691	сосиски копченые	г
-1692	соус	г
-1693	соус black bean	ст. л.
-1694	соус sambal oelek	ч. л.
-1695	соус барбекю	г
-1696	соус краснодарский	г
-1697	соус красный острый	г
-1698	соус мирин	по вкусу
-1699	соус наршараб	г
-1700	соус острый	г
-1701	соус песто	по вкусу
-1702	соус сацебели	г
-1703	соус табаско	капля
-1704	соус терияки	г
-1705	соус ткемали	стакан
-1706	соус ткемали благородный	г
-1707	соус ткемали ранний	ст. л.
-1708	соус устричный	ч. л.
-1709	соус чили	г
-1710	соус чили сладкий	ч. л.
-1711	соус экзотический	г
-1712	соя	г
-1713	спагетти	г
-1714	спагетти № 3	г
-1715	спагетти № 5	г
-1716	спагетти лунги	г
-1717	спаржа	кг
-1718	спаржа белая	г
-1719	спаржа зеленая	г
-1720	спаржа молодая	г
-1721	спек	г
-1722	спельта	стакан
-1723	спельтовая (полбяная) мука	г
-1724	специи	г
-1725	спирт	г
-1726	спирулина порошок	г
-1727	спред	г
-1728	ставрида	г
-1729	стейк семги	шт.
-1730	стеклянная лапша	г
-1731	страчателла	г
-1732	судак	г
-1733	судак филе	г
-1734	судак филе на коже	г
-1735	сулугуни	г
-1736	сулугуни копченый	г
-1737	сумах	г
-1738	суповой набор	г
-1739	сухари	по вкусу
-1740	сухари белые	г
-1741	сухари молотые	г
-1742	сухари панировочные	г
-1743	сухари ржаные	г
-1744	сухарная крошка	г
-1745	сухофрукты	г
-1746	сухофрукты тропические	по вкусу
-1747	сушки	г
-1748	сыворотка	г
-1749	сыр	г
-1750	сыр tete de moine	г
-1751	сыр Австрия блю	г
-1752	сыр адыгейский	г
-1753	сыр бри	г
-1754	сыр буко	г
-1755	сыр гауда	г
-1756	сыр гойя	г
-1757	сыр голландский	г
-1758	сыр голубой	г
-1759	сыр гравьера	г
-1760	сыр джугас	г
-1761	сыр домашний	г
-1762	сыр дорблю	г
-1763	сыр имеретинский	г
-1764	сыр кефалотири	г
-1765	сырки творожные	г
-1766	сыр козий мягкий	г
-1767	сыр козий твердый	г
-1768	сыр колбасный	г
-1769	сыр копченый	г
-1770	сыр коттедж	г
-1771	сыр Маскарпоне	г
-1772	сыр мраморный	г
-1773	сыр мягкий	по вкусу
-1774	сыр овечий	г
-1775	сыр панир	г
-1776	сыр пеше миньон	г
-1777	сыр плавленый	г
-1778	сыр плавленый шоколадный	г
-1779	сыр пластинками	г
-1780	сыр полутвердый	г
-1781	сыр провола	г
-1782	сыр российский	г
-1783	сыр скаморца	г
-1784	сыр скаморца копченый	г
-1785	сыр сливочный	г
-1786	сыр с плесенью	г
-1787	сыр с плесенью мягкий	г
-1788	сыр твердый	г
-1789	сыр филадельфия	г
-1790	сыр фонтина	г
-1791	сыр хаварти	г
-1792	сыр швейцарский	г
-1793	сычужный фермент	ч. л.
-1794	таледжо	г
-1795	тальолини	г
-1796	тальятелле	г
-1797	тальятелле-гнезда	шт.
-1798	тамаринд	шт.
-1799	тамариндовая паста	ч. л.
-1800	тапиока	г
-1801	тарталетки	по вкусу
-1802	тартар	ст. л.
-1803	тархун	г
-1804	творог	г
-1805	творог 18%	г
-1806	творог 2%	г
-1807	творог 5%	г
-1808	творог 9%	г
-1809	творог жирный	г
-1810	творог зерненый	г
-1811	творог обезжиренный	г
-1812	творожная масса	г
-1813	творожная паста	г
-1814	творожный сыр	г
-1815	творожный сыр соленый	г
-1816	творожок клубничный	г
-1817	текила	стакан
-1818	телятина	по вкусу
-1819	телятина вареная	г
-1820	телячий фарш	г
-1821	телячьи отбивные на косточке	шт.
-1822	телячьи шницели	шт.
-1823	телячьи эскалопы	г
-1824	телячья вырезка	г
-1825	телячья печень	г
-1826	телячья щека	шт.
-1827	тесто бездрожжевое	г
-1828	тесто готовое	г
-1829	тесто для вонтонов	г
-1830	тесто для пиццы	шт.
-1831	тесто дрожжевое	по вкусу
-1832	тесто катаифи	г
-1833	тесто макаронное	г
-1834	тесто макаронное для лазаньи	г
-1835	тесто пельменное	г
-1836	тесто песочное	по вкусу
-1837	тесто пресное	г
-1838	тесто пряничное	г
-1839	тесто слоеное	г
-1840	тесто слоеное бездрожжевое	по вкусу
-1841	тесто слоеное дрожжевое	кг
-1842	тесто фило	г
-1843	тилапия	г
-1844	тилапия филе	г
-1845	тильзитер	г
-1846	тимьян	горсть
-1847	тимьян лимонный	веточка
-1848	тимьян свежий	по вкусу
-1849	тимьян сушеный	г
-1850	ткемали	г
-1851	тмин	г
-1852	тмин молотый	г
-1853	томатная паста	г
-1854	томатное пюре	г
-1855	томатный концентрат	г
-1856	томатный порошок	г
-1857	томатный сок	г
-1858	томатный соус	г
-1859	томатный соус итальянский	г
-1860	томатный соус острый	г
-1861	томатный соус с базиликом	г
-1862	тоник	бутылка
-1863	топинамбур	г
-1864	топленое масло	г
-1865	тортильи	по вкусу
-1866	тортильони	г
-1867	тофу	г
-1868	травы ароматные	г
-1869	травы пряные с перцем	ч. л.
-1870	травы сухие	г
-1871	треска	г
-1872	треска печень	г
-1873	треска филе	г
-1874	трюфель	г
-1875	трюфельная крошка	г
-1876	трюфельное масло	ст. л.
-1877	трюфель черный	шт.
-1878	тунец	по вкусу
-1879	тунец консервированный	г
-1880	тунец филе	г
-1881	тушенка	г
-1882	тыква	г
-1883	тыквенное масло	шт.
-1884	тыквенное пюре	г
-1885	тыквенные семечки	г
-1886	тюлька свежая	г
-1887	угорь	г
-1888	угорь копченый	г
-1889	угурт	г
-1890	укроп	г
-1891	укропное семя	ч. л.
-1892	укроп свежий	г
-1893	укроп сушеный	г
-1894	уксус	г
-1895	уксус 9%	г
-1896	уксус из сидра	ст. л.
-1897	уксусная эссенция	г
-1898	уксус столовый	г
-1899	улитки	г
-1900	улитки виноградные	шт.
-1901	урюк	г
-1902	устрицы	г
-1903	утиная грудка	г
-1904	утиная печень	г
-1905	утиное филе	г
-1906	утиные бедрышки	г
-1907	утиные ножки	по вкусу
-1908	утка	по вкусу
-1909	утка печеная	г
-1910	утка тушка	тушка
-1911	уцхо-сунели	г
-1912	фазан	г
-1913	фарш (баранина и говядина)	г
-1914	фарш (свинина и курица)	г
-1915	фасоль	г
-1916	фасоль белая	г
-1917	фасоль белая консервированная	г
-1918	фасоль белая лима	г
-1919	фасоль зеленая стручковая	г
-1920	фасоль кенийская	горсть
-1921	фасоль кидни красная	г
-1922	фасоль консервированная	г
-1923	фасоль красная	г
-1924	фасоль красная вареная	стакан
-1925	фасоль красная консервированная	г
-1926	фасоль молодая замороженная	г
-1927	фасоль пинто	г
-1928	фасоль спаржевая вареная	г
-1929	фасоль стручковая	г
-1930	фасоль стручковая замороженная	г
-1931	фасоль стручковая консервированная	г
-1932	фасоль черный глаз	г
-1933	фейхоа	г
-1934	фенхель	г
-1935	фенхель семена	г
-1936	фенхель семена молотые	г
-1937	фестонате	г
-1938	фета	г
-1939	фетаки	г
-1940	фетакса	г
-1941	феттучине	г
-1942	фиалки засахаренные	шт.
-1943	фиалковый сироп	г
-1944	физалис	по вкусу
-1945	филе красного окуня	шт.
-1946	филе лосося	г
-1947	филе палтуса	шт.
-1948	финики	г
-1949	финики без косточек	стакан
-1950	финики иранские	г
-1951	финики иранские без косточек	шт.
-1952	фисташки	г
-1953	фисташки очищенные	г
-1954	фисташки очищенные несоленые	горсть
-1955	фисташки рубленые	г
-1956	фисташковая мука	г
-1957	фисташковая паста	г
-1958	фисташковое масло	г
-1959	фокачча	по вкусу
-1960	форель	г
-1961	форель вареная	г
-1962	форель горячего копчения	г
-1963	форель озерная свежая	шт.
-1964	форель слабосоленая	г
-1965	форель стейки	шт.
-1966	форель филе	г
-1967	форель холодного копчения	г
-1968	фрикадельки	г
-1969	фрукт дракона	шт.
-1970	фруктовый сироп	г
-1971	фруктовый сок	г
-1972	фруктовый сок без сахара	стакан
-1973	фруктоза	г
-1974	фрукты	г
-1975	фрукты консервированные	г
-1976	фундук	г
-1977	фундучная мука	г
-1978	фунчоза	г
-1979	халва	г
-1980	халва ванильная	г
-1981	халва подсолнечная	г
-1982	халуми	г
-1983	хамон	г
-1984	хек	г
-1985	хек филе	г
-1986	херес	стакан
-1987	хересный уксус	ч. л.
-1988	хлеб	г
-1989	хлеб 7 злаков	батон
-1990	хлеб белый	г
-1991	хлеб белый сухой	г
-1992	хлеб бородинский	кусок
-1993	хлеб датский ржаной	г
-1994	хлеб для сэндвичей	г
-1995	хлебная крошка	г
-1996	хлеб ржаной	г
-1997	хлеб серый	г
-1998	хлеб с кунжутом	кусок
-1999	хлеб цельнозерновой	г
-2000	хлебцы пшенично-ржаные цельнозерновые	г
-2001	хлопья 4 злака	г
-2002	хлопья 5 злаков	г
-2003	хлопья 7 злаков	ст. л.
-2004	хлопья быстрого приготовления	стакан
-2005	хлорид кальция	г
-2006	хмели-сунели	г
-2007	хмель	ст. л.
-2008	хрен	г
-2009	хрен протертый	г
-2010	хрен со сливками	г
-2011	хурма	г
-2012	хурма спелая	г
-2013	цесарка тушка	г
-2014	цикорий	ч. л.
-2015	цитроновые цукаты	горсть
-2016	цитрусовые цукаты	шт.
-2017	цитрусовый свежевыжатый сок	мл
-2018	цукаты	г
-2019	цукини	г
-2020	цукини цветы	шт.
-2021	цыплята	г
-2022	цыплята-корнишоны	шт.
-2023	чабер	г
-2024	чабрец	г
-2025	чабрец сушеный	г
-2026	чай дарджилинг	пакетик
-2027	чай жасминовый	ст. л.
-2028	чай зеленый	пакетик
-2029	чай копченый лапсанг сушонг	г
-2030	чай красный	г
-2031	чай ройбуш	ст. л.
-2032	чай черный	г
-2033	чай черный крупнолистовой	ч. л.
-2034	чай черный со специями	пакет
-2035	чай эрл грей	стакан
-2036	чатни манго	г
-2037	чеддер	г
-2038	черемуха	г
-2039	черемуховая мука	г
-2040	черемша	г
-2041	черешневый джем	г
-2042	черешня	г
-2043	черешня консервированная без косточек	ст. л.
-2044	черная смородина	г
-2045	черника	г
-2046	черника замороженная	г
-2047	чернила каракатицы	г
-2048	черничный джем	стакан
-2049	чернослив	г
-2050	чернослив без косточек	г
-2051	чернослив вяленый	г
-2052	чернослив копченый без косточек	г
-2053	черносмородиновое варенье	г
-2054	черносмородиновый джем	г
-2055	чеснок	г
-2056	чеснок молодой	г
-2057	чеснок сушеный	г
-2058	чесночная соль	щепотка
-2059	чесночное масло	по вкусу
-2060	чесночный порошок	г
-2061	чечевица	г
-2062	чечевица вареная	ст. л.
-2063	чечевица зеленая	г
-2064	чечевица красная	г
-2065	чечил спагетти	г
-2066	чиабатта	кусок
-2067	чиа семена	г
-2068	чипотле молотый	щепотка
-2069	чипсы	г
-2070	чоризо	г
-2071	шалфей	г
-2072	шалфей свежий	пучок
-2073	шалфей сушеный	лист
-2074	шампанское	г
-2075	шампанское советское	стакан
-2076	шампанское сухое	ст. л.
-2077	шампиньоны	по вкусу
-2078	шампиньоны замороженные	г
-2079	шампиньоны консервированные	г
-2080	шампиньоны маринованные	г
-2081	шампиньоны свежие	г
-2082	шафран	г
-2083	шафран имеретинский	г
-2084	шафран молотый	ч. л.
-2085	шафран нити	шт.
-2086	шелковица	г
-2087	шелковица сушеная	г
-2088	шиповник	г
-2089	шиповниковый сироп	г
-2090	шнапс	г
-2091	шнитт-лук	стебель
-2092	шоколад	г
-2093	шоколад белый	г
-2094	шоколад горький с апельсиновой цедрой	г
-2095	шоколад молочный	г
-2096	шоколад мятный	г
-2097	шоколадная паста	г
-2098	шоколадная стружка	г
-2099	шоколадное масло	г
-2100	шоколадно-ореховая паста	г
-2101	шоколадные горошины	г
-2102	шоколадные капли	г
-2103	шоколадные капли белые	г
-2104	шоколадные конфеты	г
-2105	шоколадные хлопья	г
-2106	шоколадные шарики из готовых завтраков	горсть
-2107	шоколадный ликер	г
-2108	шоколадный сироп	г
-2109	шоколадный соус	г
-2110	шоколад полусладкий	г
-2111	шоколад с орехами	г
-2112	шоколад черный горький	г
-2113	шоколад черный горький 70%	г
-2114	шоколад черный горький 75%	ч. л.
-2115	шоколад черный горький 85%	г
-2116	шортенинг	стакан
-2117	шпик	шт.
-2118	шпик копченый	г
-2119	шпинат	г
-2120	шпинат замороженный	г
-2121	шпинат молодой	г
-2122	шпинат свежий	г
-2123	шпроты	г
-2124	шпроты в масле	г
-2125	шрот	г
-2126	щавель замороженный	г
-2127	щавель свежий	веточка
-2128	щука	г
-2129	щука филе	г
-2130	эгг-ног	стакан
-2131	эдам	г
-2132	эль	мл
-2133	эмменталь	г
-2134	эскалоп	г
-2135	эстрагон	г
-2136	эстрагон сушеный	веточка
-2137	яблоки	г
-2138	яблоки антоновка	кг
-2139	яблоки гала	г
-2140	яблоки голден	г
-2141	яблоки гренни смит	кг
-2142	яблоки зеленые	г
-2143	яблоки красные	шт.
-2144	яблоки моченые	шт.
-2145	яблоки нетвердых сортов	г
-2146	яблоки сладкие	г
-2147	яблоки сушеные	г
-2148	яблочная эссенция	ч. л.
-2149	яблочное варенье	г
-2150	яблочное повидло	г
-2151	яблочное пюре	г
-2152	яблочные чипсы	стакан
-2153	яблочный джем	г
-2154	яблочный сироп	ст. л.
-2155	яблочный сок	г
-2156	яблочный соус	ст. л.
-2157	яблочный уксус	г
-2158	ягнятина	г
-2159	ягнятина кострец	г
-2160	ягнятина фарш	г
-2161	ягнячьи отбивные на косточке	шт.
-2162	ягнячья голень нарубленная	г
-2163	ягнячья корейка	г
-2164	ягодное варенье	ст. л.
-2165	ягодное желе	г
-2166	ягодный сироп	г
-2167	ягодный сок	г
-2168	ягодный соус кислый	г
-2169	ягоды	г
-2170	ягоды вяленые	по вкусу
-2171	ягоды замороженные	г
-2172	ягоды лесные	г
-2173	ягоды лесные замороженные	г
-2174	яичные белки	г
-2175	яичные желтки	г
-2176	яичные желтки вареные	шт.
-2177	яичные желтки крупные	г
-2178	яичный меланж	г
-2179	яичный порошок	ст. л.
-2180	яйца куриные	г
-2181	яйца куриные крупные	г
-2182	яйца перепелиные	г
-2183	японская крошка панко	г
-2184	ячменные хлопья	г
-2185	ячмень	г
-2186	ячневая крупа	г
 \.
 
 
 --
--- Data for Name: main_ingredientstorecipe; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: recipes_ingredientstorecipe; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.main_ingredientstorecipe (id, amount, ingredient_id, recipe_id) FROM stdin;
+COPY public.recipes_ingredientstorecipe (id, amount, ingredient_id, recipe_id) FROM stdin;
+1	123	1185	1
+2	100	1210	2
 \.
 
 
 --
--- Data for Name: main_recipe; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: recipes_recipe; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.main_recipe (id, name, img, description, time_to_cook, author_id) FROM stdin;
+COPY public.recipes_recipe (id, name, img, description, time_to_cook, author_id) FROM stdin;
+1	Цезарь	recipes/salat-cezar-klassicheskii-s-kuricei_1611309331_16_max_JLbY2TA.jpg	Греческий салат	15	1
+2	Борщ	recipes/bb647ec7.jpg	Классический представитель русской кухни	12	3
 \.
 
 
 --
--- Data for Name: main_recipe_tags; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: recipes_recipe_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.main_recipe_tags (id, recipe_id, tags_id) FROM stdin;
+COPY public.recipes_recipe_tags (id, recipe_id, tags_id) FROM stdin;
+1	1	1
+2	1	2
+3	2	2
 \.
 
 
 --
--- Data for Name: main_subscriptions; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: recipes_tags; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.main_subscriptions (id, author_id, sub_id) FROM stdin;
-\.
-
-
---
--- Data for Name: main_tags; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.main_tags (id, name, color, slug) FROM stdin;
+COPY public.recipes_tags (id, name, color, slug) FROM stdin;
+1	Салат	#83FF4B	Salat
+2	Суп	#A346FF	Soup
 \.
 
 
@@ -3347,8 +2393,10 @@ COPY public.main_tags (id, name, color, slug) FROM stdin;
 -- Data for Name: users_reworkeduser; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.users_reworkeduser (id, password, last_login, is_superuser, first_name, last_name, is_staff, is_active, date_joined, email, username) FROM stdin;
-1	pbkdf2_sha256$260000$9v4jBAYREXIBBeO7kzpKM4$rSkeAXfbN0p7ShWV+3SI8PTxbSvYS642a7t0TLG3c60=	2023-04-07 12:59:27.225586+00	t			t	t	2023-04-07 12:59:24.489825+00	root@rt.rt	root
+COPY public.users_reworkeduser (id, password, last_login, is_superuser, is_staff, is_active, date_joined, email, username, first_name, last_name) FROM stdin;
+3	pbkdf2_sha256$260000$qcPnmRaxE9Vbk91rtWR2Km$BbgiX2xrz0EPBts/V4cpNkydS8YhzM+Cnk2Lexzv8ic=	\N	f	f	t	2023-04-29 09:33:01.349725+00	root3@rt.rt	Test2_tip_user	Vsev	Ryb
+2	pbkdf2_sha256$260000$wzQQq8M8cokxYZ5QVVsQcq$6UO3JAIzpRq/7JtiA+xCGuqCiRxlV+egbkMWvdONgAk=	2023-04-29 09:42:11.731138+00	f	f	t	2023-04-29 09:28:29.620832+00	root@rt.rt	Test_tip_user	Vsev	Ryb
+1	pbkdf2_sha256$260000$MQEIztOGYw0mvqKHtNDxjA$EAqSFWgrSA2M5m8pMLuFN+Dx0YY+zq95GEj4sZVyAqA=	2023-06-21 23:55:10.535867+00	t	t	t	2023-04-22 11:49:05.114261+00	root2@rt.rt	rot		
 \.
 
 
@@ -3365,6 +2413,14 @@ COPY public.users_reworkeduser_groups (id, reworkeduser_id, group_id) FROM stdin
 --
 
 COPY public.users_reworkeduser_user_permissions (id, reworkeduser_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- Data for Name: users_subscriptions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users_subscriptions (id, author_id, sub_id) FROM stdin;
 \.
 
 
@@ -3393,7 +2449,7 @@ SELECT pg_catalog.setval('public.auth_permission_id_seq', 60, true);
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.django_admin_log_id_seq', 1, false);
+SELECT pg_catalog.setval('public.django_admin_log_id_seq', 5, true);
 
 
 --
@@ -3411,59 +2467,52 @@ SELECT pg_catalog.setval('public.django_migrations_id_seq', 24, true);
 
 
 --
--- Name: main_basket_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: recipes_basket_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.main_basket_id_seq', 1, false);
-
-
---
--- Name: main_favorites_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.main_favorites_id_seq', 1, false);
+SELECT pg_catalog.setval('public.recipes_basket_id_seq', 1, false);
 
 
 --
--- Name: main_ingredients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: recipes_favorites_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.main_ingredients_id_seq', 2186, true);
-
-
---
--- Name: main_ingredientstorecipe_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.main_ingredientstorecipe_id_seq', 1, false);
+SELECT pg_catalog.setval('public.recipes_favorites_id_seq', 1, true);
 
 
 --
--- Name: main_recipe_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: recipes_ingredients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.main_recipe_id_seq', 1, false);
-
-
---
--- Name: main_recipe_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.main_recipe_tags_id_seq', 1, false);
+SELECT pg_catalog.setval('public.recipes_ingredients_id_seq', 1225, true);
 
 
 --
--- Name: main_subscriptions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: recipes_ingredientstorecipe_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.main_subscriptions_id_seq', 1, false);
+SELECT pg_catalog.setval('public.recipes_ingredientstorecipe_id_seq', 2, true);
 
 
 --
--- Name: main_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: recipes_recipe_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.main_tags_id_seq', 1, false);
+SELECT pg_catalog.setval('public.recipes_recipe_id_seq', 2, true);
+
+
+--
+-- Name: recipes_recipe_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.recipes_recipe_tags_id_seq', 3, true);
+
+
+--
+-- Name: recipes_tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.recipes_tags_id_seq', 2, true);
 
 
 --
@@ -3477,7 +2526,7 @@ SELECT pg_catalog.setval('public.users_reworkeduser_groups_id_seq', 1, false);
 -- Name: users_reworkeduser_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.users_reworkeduser_id_seq', 1, true);
+SELECT pg_catalog.setval('public.users_reworkeduser_id_seq', 3, true);
 
 
 --
@@ -3485,6 +2534,13 @@ SELECT pg_catalog.setval('public.users_reworkeduser_id_seq', 1, true);
 --
 
 SELECT pg_catalog.setval('public.users_reworkeduser_user_permissions_id_seq', 1, false);
+
+
+--
+-- Name: users_subscriptions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_subscriptions_id_seq', 1, false);
 
 
 --
@@ -3592,123 +2648,131 @@ ALTER TABLE ONLY public.django_session
 
 
 --
--- Name: main_basket main_basket_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: recipes_basket recipes_basket_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_basket
-    ADD CONSTRAINT main_basket_pkey PRIMARY KEY (id);
-
-
---
--- Name: main_basket main_basket_user_id_recipe_id_21d87b7e_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.main_basket
-    ADD CONSTRAINT main_basket_user_id_recipe_id_21d87b7e_uniq UNIQUE (user_id, recipe_id);
+ALTER TABLE ONLY public.recipes_basket
+    ADD CONSTRAINT recipes_basket_pkey PRIMARY KEY (id);
 
 
 --
--- Name: main_favorites main_favorites_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: recipes_basket recipes_basket_user_id_recipe_id_cbf4d751_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_favorites
-    ADD CONSTRAINT main_favorites_pkey PRIMARY KEY (id);
-
-
---
--- Name: main_favorites main_favorites_recipe_id_user_id_01f99c32_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.main_favorites
-    ADD CONSTRAINT main_favorites_recipe_id_user_id_01f99c32_uniq UNIQUE (recipe_id, user_id);
+ALTER TABLE ONLY public.recipes_basket
+    ADD CONSTRAINT recipes_basket_user_id_recipe_id_cbf4d751_uniq UNIQUE (user_id, recipe_id);
 
 
 --
--- Name: main_ingredients main_ingredients_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: recipes_favorites recipes_favorites_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_ingredients
-    ADD CONSTRAINT main_ingredients_name_key UNIQUE (name);
-
-
---
--- Name: main_ingredients main_ingredients_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.main_ingredients
-    ADD CONSTRAINT main_ingredients_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.recipes_favorites
+    ADD CONSTRAINT recipes_favorites_pkey PRIMARY KEY (id);
 
 
 --
--- Name: main_ingredientstorecipe main_ingredientstorecipe_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: recipes_favorites recipes_favorites_recipe_id_user_id_506d0671_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_ingredientstorecipe
-    ADD CONSTRAINT main_ingredientstorecipe_pkey PRIMARY KEY (id);
-
-
---
--- Name: main_recipe main_recipe_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.main_recipe
-    ADD CONSTRAINT main_recipe_pkey PRIMARY KEY (id);
+ALTER TABLE ONLY public.recipes_favorites
+    ADD CONSTRAINT recipes_favorites_recipe_id_user_id_506d0671_uniq UNIQUE (recipe_id, user_id);
 
 
 --
--- Name: main_recipe_tags main_recipe_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: recipes_ingredients recipes_ingredients_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_recipe_tags
-    ADD CONSTRAINT main_recipe_tags_pkey PRIMARY KEY (id);
-
-
---
--- Name: main_recipe_tags main_recipe_tags_recipe_id_tags_id_75c71394_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.main_recipe_tags
-    ADD CONSTRAINT main_recipe_tags_recipe_id_tags_id_75c71394_uniq UNIQUE (recipe_id, tags_id);
+ALTER TABLE ONLY public.recipes_ingredients
+    ADD CONSTRAINT recipes_ingredients_name_key UNIQUE (name);
 
 
 --
--- Name: main_subscriptions main_subscriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: recipes_ingredients recipes_ingredients_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_subscriptions
-    ADD CONSTRAINT main_subscriptions_pkey PRIMARY KEY (id);
-
-
---
--- Name: main_tags main_tags_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.main_tags
-    ADD CONSTRAINT main_tags_name_key UNIQUE (name);
+ALTER TABLE ONLY public.recipes_ingredients
+    ADD CONSTRAINT recipes_ingredients_pkey PRIMARY KEY (id);
 
 
 --
--- Name: main_tags main_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: recipes_ingredientstorecipe recipes_ingredientstorec_recipe_id_ingredient_id_a27c1fb4_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_tags
-    ADD CONSTRAINT main_tags_pkey PRIMARY KEY (id);
-
-
---
--- Name: main_tags main_tags_slug_key; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.main_tags
-    ADD CONSTRAINT main_tags_slug_key UNIQUE (slug);
+ALTER TABLE ONLY public.recipes_ingredientstorecipe
+    ADD CONSTRAINT recipes_ingredientstorec_recipe_id_ingredient_id_a27c1fb4_uniq UNIQUE (recipe_id, ingredient_id);
 
 
 --
--- Name: main_subscriptions unique_follow; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: recipes_ingredientstorecipe recipes_ingredientstorecipe_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_subscriptions
+ALTER TABLE ONLY public.recipes_ingredientstorecipe
+    ADD CONSTRAINT recipes_ingredientstorecipe_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: recipes_recipe recipes_recipe_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recipes_recipe
+    ADD CONSTRAINT recipes_recipe_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: recipes_recipe_tags recipes_recipe_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recipes_recipe_tags
+    ADD CONSTRAINT recipes_recipe_tags_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: recipes_recipe_tags recipes_recipe_tags_recipe_id_tags_id_c041d763_uniq; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recipes_recipe_tags
+    ADD CONSTRAINT recipes_recipe_tags_recipe_id_tags_id_c041d763_uniq UNIQUE (recipe_id, tags_id);
+
+
+--
+-- Name: recipes_tags recipes_tags_name_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recipes_tags
+    ADD CONSTRAINT recipes_tags_name_key UNIQUE (name);
+
+
+--
+-- Name: recipes_tags recipes_tags_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recipes_tags
+    ADD CONSTRAINT recipes_tags_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: recipes_tags recipes_tags_slug_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recipes_tags
+    ADD CONSTRAINT recipes_tags_slug_key UNIQUE (slug);
+
+
+--
+-- Name: users_subscriptions unique_follow; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_subscriptions
     ADD CONSTRAINT unique_follow UNIQUE (author_id, sub_id);
+
+
+--
+-- Name: users_reworkeduser users_reworkeduser_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_reworkeduser
+    ADD CONSTRAINT users_reworkeduser_email_key UNIQUE (email);
 
 
 --
@@ -3757,6 +2821,14 @@ ALTER TABLE ONLY public.users_reworkeduser_user_permissions
 
 ALTER TABLE ONLY public.users_reworkeduser
     ADD CONSTRAINT users_reworkeduser_username_key UNIQUE (username);
+
+
+--
+-- Name: users_subscriptions users_subscriptions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_subscriptions
+    ADD CONSTRAINT users_subscriptions_pkey PRIMARY KEY (id);
 
 
 --
@@ -3823,101 +2895,94 @@ CREATE INDEX django_session_session_key_c0390e0f_like ON public.django_session U
 
 
 --
--- Name: main_basket_recipe_id_ae6a2d9c; Type: INDEX; Schema: public; Owner: postgres
+-- Name: recipes_basket_recipe_id_d679c6f7; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX main_basket_recipe_id_ae6a2d9c ON public.main_basket USING btree (recipe_id);
-
-
---
--- Name: main_basket_user_id_98e99cea; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX main_basket_user_id_98e99cea ON public.main_basket USING btree (user_id);
+CREATE INDEX recipes_basket_recipe_id_d679c6f7 ON public.recipes_basket USING btree (recipe_id);
 
 
 --
--- Name: main_favorites_recipe_id_73eb79a4; Type: INDEX; Schema: public; Owner: postgres
+-- Name: recipes_basket_user_id_e80239b0; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX main_favorites_recipe_id_73eb79a4 ON public.main_favorites USING btree (recipe_id);
-
-
---
--- Name: main_favorites_user_id_728d716c; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX main_favorites_user_id_728d716c ON public.main_favorites USING btree (user_id);
+CREATE INDEX recipes_basket_user_id_e80239b0 ON public.recipes_basket USING btree (user_id);
 
 
 --
--- Name: main_ingredients_name_f824a24f_like; Type: INDEX; Schema: public; Owner: postgres
+-- Name: recipes_favorites_recipe_id_c32e4c09; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX main_ingredients_name_f824a24f_like ON public.main_ingredients USING btree (name varchar_pattern_ops);
-
-
---
--- Name: main_ingredientstorecipe_ingredient_id_3ea04b46; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX main_ingredientstorecipe_ingredient_id_3ea04b46 ON public.main_ingredientstorecipe USING btree (ingredient_id);
+CREATE INDEX recipes_favorites_recipe_id_c32e4c09 ON public.recipes_favorites USING btree (recipe_id);
 
 
 --
--- Name: main_ingredientstorecipe_recipe_id_45f1355a; Type: INDEX; Schema: public; Owner: postgres
+-- Name: recipes_favorites_user_id_c88637ac; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX main_ingredientstorecipe_recipe_id_45f1355a ON public.main_ingredientstorecipe USING btree (recipe_id);
-
-
---
--- Name: main_recipe_author_id_3b3e7443; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX main_recipe_author_id_3b3e7443 ON public.main_recipe USING btree (author_id);
+CREATE INDEX recipes_favorites_user_id_c88637ac ON public.recipes_favorites USING btree (user_id);
 
 
 --
--- Name: main_recipe_tags_recipe_id_a60f5405; Type: INDEX; Schema: public; Owner: postgres
+-- Name: recipes_ingredients_name_70161089_like; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX main_recipe_tags_recipe_id_a60f5405 ON public.main_recipe_tags USING btree (recipe_id);
-
-
---
--- Name: main_recipe_tags_tags_id_bca4c68f; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX main_recipe_tags_tags_id_bca4c68f ON public.main_recipe_tags USING btree (tags_id);
+CREATE INDEX recipes_ingredients_name_70161089_like ON public.recipes_ingredients USING btree (name varchar_pattern_ops);
 
 
 --
--- Name: main_subscriptions_author_id_416f03d8; Type: INDEX; Schema: public; Owner: postgres
+-- Name: recipes_ingredientstorecipe_ingredient_id_d0e1d3c0; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX main_subscriptions_author_id_416f03d8 ON public.main_subscriptions USING btree (author_id);
-
-
---
--- Name: main_subscriptions_sub_id_2bebea83; Type: INDEX; Schema: public; Owner: postgres
---
-
-CREATE INDEX main_subscriptions_sub_id_2bebea83 ON public.main_subscriptions USING btree (sub_id);
+CREATE INDEX recipes_ingredientstorecipe_ingredient_id_d0e1d3c0 ON public.recipes_ingredientstorecipe USING btree (ingredient_id);
 
 
 --
--- Name: main_tags_name_b21216e6_like; Type: INDEX; Schema: public; Owner: postgres
+-- Name: recipes_ingredientstorecipe_recipe_id_738d09c4; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX main_tags_name_b21216e6_like ON public.main_tags USING btree (name varchar_pattern_ops);
+CREATE INDEX recipes_ingredientstorecipe_recipe_id_738d09c4 ON public.recipes_ingredientstorecipe USING btree (recipe_id);
 
 
 --
--- Name: main_tags_slug_92646cf9_like; Type: INDEX; Schema: public; Owner: postgres
+-- Name: recipes_recipe_author_id_7274f74b; Type: INDEX; Schema: public; Owner: postgres
 --
 
-CREATE INDEX main_tags_slug_92646cf9_like ON public.main_tags USING btree (slug varchar_pattern_ops);
+CREATE INDEX recipes_recipe_author_id_7274f74b ON public.recipes_recipe USING btree (author_id);
+
+
+--
+-- Name: recipes_recipe_tags_recipe_id_e15a4132; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX recipes_recipe_tags_recipe_id_e15a4132 ON public.recipes_recipe_tags USING btree (recipe_id);
+
+
+--
+-- Name: recipes_recipe_tags_tags_id_b6dc311d; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX recipes_recipe_tags_tags_id_b6dc311d ON public.recipes_recipe_tags USING btree (tags_id);
+
+
+--
+-- Name: recipes_tags_name_f7c3aff1_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX recipes_tags_name_f7c3aff1_like ON public.recipes_tags USING btree (name varchar_pattern_ops);
+
+
+--
+-- Name: recipes_tags_slug_aab13707_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX recipes_tags_slug_aab13707_like ON public.recipes_tags USING btree (slug varchar_pattern_ops);
+
+
+--
+-- Name: users_reworkeduser_email_355107e5_like; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_reworkeduser_email_355107e5_like ON public.users_reworkeduser USING btree (email varchar_pattern_ops);
 
 
 --
@@ -3953,6 +3018,20 @@ CREATE INDEX users_reworkeduser_user_permissions_reworkeduser_id_e3cbc19b ON pub
 --
 
 CREATE INDEX users_reworkeduser_username_61cc1848_like ON public.users_reworkeduser USING btree (username varchar_pattern_ops);
+
+
+--
+-- Name: users_subscriptions_author_id_1be12ff7; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_subscriptions_author_id_1be12ff7 ON public.users_subscriptions USING btree (author_id);
+
+
+--
+-- Name: users_subscriptions_sub_id_7c3d102f; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX users_subscriptions_sub_id_7c3d102f ON public.users_subscriptions USING btree (sub_id);
 
 
 --
@@ -4004,91 +3083,75 @@ ALTER TABLE ONLY public.django_admin_log
 
 
 --
--- Name: main_basket main_basket_recipe_id_ae6a2d9c_fk_main_recipe_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: recipes_basket recipes_basket_recipe_id_d679c6f7_fk_recipes_recipe_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_basket
-    ADD CONSTRAINT main_basket_recipe_id_ae6a2d9c_fk_main_recipe_id FOREIGN KEY (recipe_id) REFERENCES public.main_recipe(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: main_basket main_basket_user_id_98e99cea_fk_users_reworkeduser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.main_basket
-    ADD CONSTRAINT main_basket_user_id_98e99cea_fk_users_reworkeduser_id FOREIGN KEY (user_id) REFERENCES public.users_reworkeduser(id) DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE ONLY public.recipes_basket
+    ADD CONSTRAINT recipes_basket_recipe_id_d679c6f7_fk_recipes_recipe_id FOREIGN KEY (recipe_id) REFERENCES public.recipes_recipe(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
--- Name: main_favorites main_favorites_recipe_id_73eb79a4_fk_main_recipe_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: recipes_basket recipes_basket_user_id_e80239b0_fk_users_reworkeduser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_favorites
-    ADD CONSTRAINT main_favorites_recipe_id_73eb79a4_fk_main_recipe_id FOREIGN KEY (recipe_id) REFERENCES public.main_recipe(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: main_favorites main_favorites_user_id_728d716c_fk_users_reworkeduser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.main_favorites
-    ADD CONSTRAINT main_favorites_user_id_728d716c_fk_users_reworkeduser_id FOREIGN KEY (user_id) REFERENCES public.users_reworkeduser(id) DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE ONLY public.recipes_basket
+    ADD CONSTRAINT recipes_basket_user_id_e80239b0_fk_users_reworkeduser_id FOREIGN KEY (user_id) REFERENCES public.users_reworkeduser(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
--- Name: main_ingredientstorecipe main_ingredientstore_ingredient_id_3ea04b46_fk_main_ingr; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: recipes_favorites recipes_favorites_recipe_id_c32e4c09_fk_recipes_recipe_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_ingredientstorecipe
-    ADD CONSTRAINT main_ingredientstore_ingredient_id_3ea04b46_fk_main_ingr FOREIGN KEY (ingredient_id) REFERENCES public.main_ingredients(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: main_ingredientstorecipe main_ingredientstorecipe_recipe_id_45f1355a_fk_main_recipe_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.main_ingredientstorecipe
-    ADD CONSTRAINT main_ingredientstorecipe_recipe_id_45f1355a_fk_main_recipe_id FOREIGN KEY (recipe_id) REFERENCES public.main_recipe(id) DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE ONLY public.recipes_favorites
+    ADD CONSTRAINT recipes_favorites_recipe_id_c32e4c09_fk_recipes_recipe_id FOREIGN KEY (recipe_id) REFERENCES public.recipes_recipe(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
--- Name: main_recipe main_recipe_author_id_3b3e7443_fk_users_reworkeduser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: recipes_favorites recipes_favorites_user_id_c88637ac_fk_users_reworkeduser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_recipe
-    ADD CONSTRAINT main_recipe_author_id_3b3e7443_fk_users_reworkeduser_id FOREIGN KEY (author_id) REFERENCES public.users_reworkeduser(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: main_recipe_tags main_recipe_tags_recipe_id_a60f5405_fk_main_recipe_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.main_recipe_tags
-    ADD CONSTRAINT main_recipe_tags_recipe_id_a60f5405_fk_main_recipe_id FOREIGN KEY (recipe_id) REFERENCES public.main_recipe(id) DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE ONLY public.recipes_favorites
+    ADD CONSTRAINT recipes_favorites_user_id_c88637ac_fk_users_reworkeduser_id FOREIGN KEY (user_id) REFERENCES public.users_reworkeduser(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
--- Name: main_recipe_tags main_recipe_tags_tags_id_bca4c68f_fk_main_tags_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: recipes_ingredientstorecipe recipes_ingredientst_ingredient_id_d0e1d3c0_fk_recipes_i; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_recipe_tags
-    ADD CONSTRAINT main_recipe_tags_tags_id_bca4c68f_fk_main_tags_id FOREIGN KEY (tags_id) REFERENCES public.main_tags(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- Name: main_subscriptions main_subscriptions_author_id_416f03d8_fk_users_reworkeduser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.main_subscriptions
-    ADD CONSTRAINT main_subscriptions_author_id_416f03d8_fk_users_reworkeduser_id FOREIGN KEY (author_id) REFERENCES public.users_reworkeduser(id) DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE ONLY public.recipes_ingredientstorecipe
+    ADD CONSTRAINT recipes_ingredientst_ingredient_id_d0e1d3c0_fk_recipes_i FOREIGN KEY (ingredient_id) REFERENCES public.recipes_ingredients(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
--- Name: main_subscriptions main_subscriptions_sub_id_2bebea83_fk_users_reworkeduser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: recipes_ingredientstorecipe recipes_ingredientst_recipe_id_738d09c4_fk_recipes_r; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.main_subscriptions
-    ADD CONSTRAINT main_subscriptions_sub_id_2bebea83_fk_users_reworkeduser_id FOREIGN KEY (sub_id) REFERENCES public.users_reworkeduser(id) DEFERRABLE INITIALLY DEFERRED;
+ALTER TABLE ONLY public.recipes_ingredientstorecipe
+    ADD CONSTRAINT recipes_ingredientst_recipe_id_738d09c4_fk_recipes_r FOREIGN KEY (recipe_id) REFERENCES public.recipes_recipe(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: recipes_recipe recipes_recipe_author_id_7274f74b_fk_users_reworkeduser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recipes_recipe
+    ADD CONSTRAINT recipes_recipe_author_id_7274f74b_fk_users_reworkeduser_id FOREIGN KEY (author_id) REFERENCES public.users_reworkeduser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: recipes_recipe_tags recipes_recipe_tags_recipe_id_e15a4132_fk_recipes_recipe_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recipes_recipe_tags
+    ADD CONSTRAINT recipes_recipe_tags_recipe_id_e15a4132_fk_recipes_recipe_id FOREIGN KEY (recipe_id) REFERENCES public.recipes_recipe(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: recipes_recipe_tags recipes_recipe_tags_tags_id_b6dc311d_fk_recipes_tags_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.recipes_recipe_tags
+    ADD CONSTRAINT recipes_recipe_tags_tags_id_b6dc311d_fk_recipes_tags_id FOREIGN KEY (tags_id) REFERENCES public.recipes_tags(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --
@@ -4121,6 +3184,22 @@ ALTER TABLE ONLY public.users_reworkeduser_user_permissions
 
 ALTER TABLE ONLY public.users_reworkeduser_user_permissions
     ADD CONSTRAINT users_reworkeduser_u_reworkeduser_id_e3cbc19b_fk_users_rew FOREIGN KEY (reworkeduser_id) REFERENCES public.users_reworkeduser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: users_subscriptions users_subscriptions_author_id_1be12ff7_fk_users_reworkeduser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_subscriptions
+    ADD CONSTRAINT users_subscriptions_author_id_1be12ff7_fk_users_reworkeduser_id FOREIGN KEY (author_id) REFERENCES public.users_reworkeduser(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: users_subscriptions users_subscriptions_sub_id_7c3d102f_fk_users_reworkeduser_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users_subscriptions
+    ADD CONSTRAINT users_subscriptions_sub_id_7c3d102f_fk_users_reworkeduser_id FOREIGN KEY (sub_id) REFERENCES public.users_reworkeduser(id) DEFERRABLE INITIALLY DEFERRED;
 
 
 --

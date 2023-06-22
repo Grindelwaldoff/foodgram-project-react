@@ -10,7 +10,10 @@ from users.validators import validate_username
 class ReworkedUser(AbstractUser):
     """Модель юзера с отредактированными полями."""
 
-    email = models.EmailField(max_length=settings.EMAIL_MAX_LENGTH, unique=True)
+    email = models.EmailField(
+        max_length=settings.EMAIL_MAX_LENGTH,
+        unique=True
+    )
     username = models.CharField(
         max_length=settings.NAME_MAX_LENGTH,
         unique=True,
@@ -37,7 +40,31 @@ class ReworkedUser(AbstractUser):
         ],
     )
 
+    class Meta:
+        ordering = ['-id']
 
+
+class Subscriptions(models.Model):
+    author = models.ForeignKey(
+        ReworkedUser,
+        on_delete=models.CASCADE,
+        related_name='author'
+    )
+    sub = models.ForeignKey(
+        ReworkedUser,
+        on_delete=models.ForeignKey,
+        related_name='sub'
+    )
 
     class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=['author', 'sub'],
+                name='unique_follow'
+            ),
+            models.CheckConstraint(
+                check=~models.Q(sub=models.F('author')),
+                name='its_not_allowed_to_follow_on_yourself'
+            )
+        ]
         ordering = ['-id']

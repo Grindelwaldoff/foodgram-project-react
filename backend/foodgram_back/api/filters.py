@@ -15,11 +15,11 @@ class IngredientFilter(SearchFilter):
 class RecipeFilter(filter.FilterSet):
     tags = filter.AllValuesMultipleFilter(field_name='tags__slug')
     author = filter.AllValuesFilter(field_name='author')
-    is_favorited = filter.BooleanFilter(
-        method='is_favorited_filter'
+    is_favorited = filter.ChoiceFilter(
+        method='is_favorited_filter', choices=(('1', True), ('0', False))
     )
     is_in_shopping_cart = filter.BooleanFilter(
-        method='cart_filter'
+        method='cart_filter', choices=(('1', True), ('0', False))
     )
 
     class Meta:
@@ -32,11 +32,11 @@ class RecipeFilter(filter.FilterSet):
         )
 
     def is_favorited_filter(self, queryset, name, value):
-        if self.request.user.is_authenticated and bool(value):
+        if self.request.user.is_authenticated and value:
             return queryset.filter(favorites__user=self.request.user)
         return queryset
 
     def cart_filter(self, queryset, name, value):
-        if self.request.user.is_authenticated and bool(value):
+        if self.request.user.is_authenticated and value:
             return queryset.filter(basket__user=self.request.user)
         return queryset

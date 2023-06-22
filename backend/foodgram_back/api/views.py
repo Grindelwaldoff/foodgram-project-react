@@ -1,8 +1,6 @@
-import os
 import pdfkit
 from django.template.loader import render_to_string
 from django.contrib.auth import get_user_model
-from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import get_list_or_404, get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
@@ -13,7 +11,7 @@ from rest_framework import status, pagination, permissions
 
 from recipes.models import (
     Tags, Recipe, Ingredients,
-    Favorites, Subscriptions,
+    Favorites,
     Basket
 )
 from api.filters import RecipeFilter, IngredientFilter
@@ -21,6 +19,7 @@ from api.serializers import (
     BasketSerializer, FavoriteSerializer, IngredientSerializer,
     RecipeSerializer, SubscriptionsSerializer, TagSerializer
 )
+from users.models import Subscriptions
 
 User = get_user_model()
 
@@ -67,6 +66,7 @@ class SubViewSet(ModelViewSet):
 
     def get_queryset(self):
         return Subscriptions.objects.filter(sub=self.request.user)
+
 
 class FollowViewSet(ModelViewSet):
     queryset = Subscriptions.objects.all()
@@ -142,7 +142,8 @@ class BasketViewSet(ModelViewSet):
         }
         pdf_file = pdfkit.from_string(html_string, False, options=options)
         response = HttpResponse(pdf_file, content_type='application/pdf')
-        response['Content-Disposition'] = 'attachment; filename="shopping_list.pdf"'
+        response['Content-Disposition'] = 'attachment; \
+            filename="shopping_list.pdf"'
         return response
 
     def perform_create(self, serializer):

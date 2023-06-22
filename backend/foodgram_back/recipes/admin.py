@@ -3,10 +3,10 @@ from django.forms import ModelForm
 
 from recipes.models import (
     Tags, Recipe, Ingredients,
-    Basket, Favorites, Subscriptions,
+    Basket, Favorites,
     IngredientsToRecipe
 )
-from users.models import ReworkedUser
+from users.models import ReworkedUser, Subscriptions
 
 
 class IngsToRecipeTab(admin.TabularInline):

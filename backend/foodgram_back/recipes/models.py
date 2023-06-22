@@ -1,6 +1,6 @@
 from colorfield.fields import ColorField
 from django.conf import settings
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MinValueValidator
 from django.db import models
 from django.contrib.auth import get_user_model
 
@@ -72,8 +72,8 @@ class Recipe(models.Model):
         Tags,
         related_name='recipes',
     )
-    time_to_cook = models.PositiveIntegerField(
-        validators=[MaxValueValidator(30000), MinValueValidator(5)]
+    time_to_cook = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(5)]
     )
 
     class Meta:
@@ -96,8 +96,8 @@ class IngredientsToRecipe(models.Model):
         on_delete=models.CASCADE,
         related_name='+'
     )
-    amount = models.PositiveIntegerField(
-        validators=[MaxValueValidator(30000), MinValueValidator(10)]
+    amount = models.PositiveSmallIntegerField(
+        validators=[MinValueValidator(10)]
     )
 
     class Meta:
@@ -140,30 +140,4 @@ class Favorites(models.Model):
 
     class Meta:
         unique_together = ['recipe', 'user']
-        ordering = ['-id']
-
-
-class Subscriptions(models.Model):
-    author = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name='author'
-    )
-    sub = models.ForeignKey(
-        User,
-        on_delete=models.ForeignKey,
-        related_name='sub'
-    )
-
-    class Meta:
-        constraints = [
-            models.UniqueConstraint(
-                fields=['author', 'sub'],
-                name='unique_follow'
-            ),
-            models.CheckConstraint(
-                check=~models.Q(sub=models.F('author')),
-                name='its_not_allowed_to_follow_on_yourself'
-            )
-        ]
         ordering = ['-id']
