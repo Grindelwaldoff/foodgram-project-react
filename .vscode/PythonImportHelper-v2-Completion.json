@@ -1304,7 +1304,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.api.serializers",
         "description": "backend.foodgram_back.api.serializers",
-        "peekOfCode": "class RecipeSerializer(serializers.ModelSerializer):\n    cooking_time = serializers.IntegerField(source='time_to_cook')\n    image = Base64ImageField(source='img')\n    text = serializers.CharField(source='description')\n    ingredients = IngredientToRecipeSerializer(\n        many=True, required=False\n    )\n    tags = serializers.SerializerMethodField()\n    author = UserSerializerWithAdditionalFields(read_only=True)\n    class Meta:",
+        "peekOfCode": "class RecipeSerializer(serializers.ModelSerializer):\n    cooking_time = serializers.IntegerField(source='time_to_cook')\n    image = Base64ImageField(source='img')\n    text = serializers.CharField(source='description')\n    ingredients = IngredientToRecipeSerializer(\n        many=True, required=False\n    )\n    tags = serializers.SerializerMethodField()\n    author = UserSerializerWithAdditionalFields(read_only=True)\n    is_favourited = serializers.SerializerMethodField()",
         "detail": "backend.foodgram_back.api.serializers",
         "documentation": {}
     },
