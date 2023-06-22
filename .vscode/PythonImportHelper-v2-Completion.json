@@ -749,6 +749,54 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -1271,7 +1319,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.api.filters",
         "description": "backend.foodgram_back.api.filters",
-        "peekOfCode": "class IngredientFilter(SearchFilter):\n    search_param = 'name'\nclass RecipeFilter(filter.FilterSet):\n    tags = filter.AllValuesMultipleFilter(field_name='tags__slug')\n    author = filter.AllValuesFilter(field_name='author')\n    is_favorited = filter.ChoiceFilter(\n        method='is_favorited_filter', choices=(('1', True), ('0', False))\n    )\n    is_in_shopping_cart = filter.BooleanFilter(\n        method='cart_filter', choices=(('1', True), ('0', False))",
+        "peekOfCode": "class IngredientFilter(SearchFilter):\n    search_param = 'name'\nclass RecipeFilter(filter.FilterSet):\n    tags = filter.AllValuesMultipleFilter(field_name='tags__slug')\n    author = filter.AllValuesFilter(field_name='author')\n    is_favorited = filter.ChoiceFilter(\n        method='is_favorited_filter', choices=(('1', True), ('0', False))\n    )\n    is_in_shopping_cart = filter.ChoiceFilter(\n        method='cart_filter', choices=(('1', True), ('0', False))",
         "detail": "backend.foodgram_back.api.filters",
         "documentation": {}
     },
@@ -1280,7 +1328,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.api.filters",
         "description": "backend.foodgram_back.api.filters",
-        "peekOfCode": "class RecipeFilter(filter.FilterSet):\n    tags = filter.AllValuesMultipleFilter(field_name='tags__slug')\n    author = filter.AllValuesFilter(field_name='author')\n    is_favorited = filter.ChoiceFilter(\n        method='is_favorited_filter', choices=(('1', True), ('0', False))\n    )\n    is_in_shopping_cart = filter.BooleanFilter(\n        method='cart_filter', choices=(('1', True), ('0', False))\n    )\n    class Meta:",
+        "peekOfCode": "class RecipeFilter(filter.FilterSet):\n    tags = filter.AllValuesMultipleFilter(field_name='tags__slug')\n    author = filter.AllValuesFilter(field_name='author')\n    is_favorited = filter.ChoiceFilter(\n        method='is_favorited_filter', choices=(('1', True), ('0', False))\n    )\n    is_in_shopping_cart = filter.ChoiceFilter(\n        method='cart_filter', choices=(('1', True), ('0', False))\n    )\n    class Meta:",
         "detail": "backend.foodgram_back.api.filters",
         "documentation": {}
     },
@@ -1289,7 +1337,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.api.filters",
         "description": "backend.foodgram_back.api.filters",
-        "peekOfCode": "User = get_user_model()\nclass IngredientFilter(SearchFilter):\n    search_param = 'name'\nclass RecipeFilter(filter.FilterSet):\n    tags = filter.AllValuesMultipleFilter(field_name='tags__slug')\n    author = filter.AllValuesFilter(field_name='author')\n    is_favorited = filter.ChoiceFilter(\n        method='is_favorited_filter', choices=(('1', True), ('0', False))\n    )\n    is_in_shopping_cart = filter.BooleanFilter(",
+        "peekOfCode": "User = get_user_model()\nclass IngredientFilter(SearchFilter):\n    search_param = 'name'\nclass RecipeFilter(filter.FilterSet):\n    tags = filter.AllValuesMultipleFilter(field_name='tags__slug')\n    author = filter.AllValuesFilter(field_name='author')\n    is_favorited = filter.ChoiceFilter(\n        method='is_favorited_filter', choices=(('1', True), ('0', False))\n    )\n    is_in_shopping_cart = filter.ChoiceFilter(",
         "detail": "backend.foodgram_back.api.filters",
         "documentation": {}
     },
@@ -1343,7 +1391,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.api.serializers",
         "description": "backend.foodgram_back.api.serializers",
-        "peekOfCode": "class UserSerializerWithAdditionalFields(\n    serializers.HyperlinkedModelSerializer\n):\n    email = serializers.EmailField()\n    class Meta(UserSerializer.Meta):\n        fields = (\n            'id', 'email',\n            'username', 'first_name',\n            'last_name', 'password',\n        )",
+        "peekOfCode": "class UserSerializerWithAdditionalFields(\n    UserSerializer\n):\n    is_subscribed = serializers.SerializerMethodField()\n    class Meta():\n        model = User\n        fields = ('username', 'email', 'last_name',\n                  'first_name', 'id', 'is_subscribed')\n    def get_is_subscribed(self, obj):\n        if Subscriptions.objects.filter(",
         "detail": "backend.foodgram_back.api.serializers",
         "documentation": {}
     },
@@ -1586,7 +1634,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.foodgram_back.settings",
         "description": "backend.foodgram_back.foodgram_back.settings",
-        "peekOfCode": "ROOT_URLCONF = 'foodgram_back.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [os.path.join(BASE_DIR, 'templates/'),],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',",
+        "peekOfCode": "ROOT_URLCONF = 'foodgram_back.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [os.path.join(BASE_DIR, 'templates/')],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',",
         "detail": "backend.foodgram_back.foodgram_back.settings",
         "documentation": {}
     },
@@ -1595,7 +1643,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.foodgram_back.settings",
         "description": "backend.foodgram_back.foodgram_back.settings",
-        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [os.path.join(BASE_DIR, 'templates/'),],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
+        "peekOfCode": "TEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [os.path.join(BASE_DIR, 'templates/')],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.debug',\n                'django.template.context_processors.request',\n                'django.contrib.auth.context_processors.auth',",
         "detail": "backend.foodgram_back.foodgram_back.settings",
         "documentation": {}
     },
@@ -1739,7 +1787,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.foodgram_back.settings",
         "description": "backend.foodgram_back.foodgram_back.settings",
-        "peekOfCode": "DJOSER = {\n    'SERIALIZERS': {\n        'user': 'api.serializers.UserSerializerWithAdditionalFields',\n        'user_create': 'api.serializers.UserSerializerWithAdditionalFields',\n        'current_user': 'api.serializers.UserSerializerWithAdditionalFields',\n    },\n    'HIDE_USERS': False,\n    'LOGIN_FIELD': 'email',\n    'PERMISSIONS': {\n        'activation': ['rest_framework.permissions.IsAdminUser'],",
+        "peekOfCode": "DJOSER = {\n    'SERIALIZERS': {\n        'user': 'api.serializers.UserSerializerWithAdditionalFields',\n        'user_create': 'djoser.serializers.UserCreateSerializer',\n        'current_user': 'djoser.serializers.UserSerializer',\n    },\n    'HIDE_USERS': False,\n    'LOGIN_FIELD': 'email',\n    'PERMISSIONS': {\n        'activation': ['rest_framework.permissions.IsAdminUser'],",
         "detail": "backend.foodgram_back.foodgram_back.settings",
         "documentation": {}
     },
@@ -1957,6 +2005,33 @@
         "description": "backend.foodgram_back.users.migrations.0001_initial",
         "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        ('auth', '0012_alter_user_first_name_max_length'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='ReworkedUser',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
         "detail": "backend.foodgram_back.users.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.foodgram_back.users.migrations.0002_alter_reworkeduser_username",
+        "description": "backend.foodgram_back.users.migrations.0002_alter_reworkeduser_username",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('users', '0001_initial'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='reworkeduser',\n            name='username',\n            field=models.CharField(error_messages={'unique': 'A user with that username already exists.'}, max_length=150, unique=True, validators=[django.contrib.auth.validators.UnicodeUsernameValidator, users.validators.validate_username]),\n        ),",
+        "detail": "backend.foodgram_back.users.migrations.0002_alter_reworkeduser_username",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.foodgram_back.users.migrations.0003_alter_reworkeduser_username",
+        "description": "backend.foodgram_back.users.migrations.0003_alter_reworkeduser_username",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('users', '0002_alter_reworkeduser_username'),\n    ]\n    operations = [\n        migrations.AlterField(\n            model_name='reworkeduser',\n            name='username',\n            field=models.CharField(error_messages={'unique': 'A user with that username already exists.'}, help_text='Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.', max_length=150, unique=True, validators=[django.contrib.auth.validators.UnicodeUsernameValidator()], verbose_name='username'),\n        ),",
+        "detail": "backend.foodgram_back.users.migrations.0003_alter_reworkeduser_username",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "backend.foodgram_back.users.migrations.0004_auto_20230622_1311",
+        "description": "backend.foodgram_back.users.migrations.0004_auto_20230622_1311",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('users', '0003_alter_reworkeduser_username'),\n    ]\n    operations = [\n        migrations.AlterModelManagers(\n            name='reworkeduser',\n            managers=[\n            ],\n        ),",
+        "detail": "backend.foodgram_back.users.migrations.0004_auto_20230622_1311",
         "documentation": {}
     },
     {

@@ -18,7 +18,7 @@ class RecipeFilter(filter.FilterSet):
     is_favorited = filter.ChoiceFilter(
         method='is_favorited_filter', choices=(('1', True), ('0', False))
     )
-    is_in_shopping_cart = filter.BooleanFilter(
+    is_in_shopping_cart = filter.ChoiceFilter(
         method='cart_filter', choices=(('1', True), ('0', False))
     )
 

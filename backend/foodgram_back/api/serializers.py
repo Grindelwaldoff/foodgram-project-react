@@ -72,44 +72,23 @@ class SubRecipeSerializer(serializers.ModelSerializer):
 
 
 class UserSerializerWithAdditionalFields(
-    serializers.HyperlinkedModelSerializer
+    UserSerializer
 ):
-    email = serializers.EmailField()
 
-    class Meta(UserSerializer.Meta):
-        fields = (
-            'id', 'email',
-            'username', 'first_name',
-            'last_name', 'password',
-        )
-        extra_kwargs = {
-            'password': {'write_only': True},
-            'first_name': {'required': True},
-            'last_name': {'required': True}
-        }
+    is_subscribed = serializers.SerializerMethodField()
 
-    def get_email(self, obj):
-        return obj.email
+    class Meta():
+        model = User
+        fields = ('username', 'email', 'last_name',
+                  'first_name', 'id', 'is_subscribed')
 
-    def create(self, validated_data):
-        password = validated_data.pop('password')
-        user = User(**validated_data)
-        user.set_password(password)
-        user.save()
-        return user
-
-    def to_representation(self, instance):
-        repr = super().to_representation(instance)
-        try:
-            repr.update({
-                'is_subscribed': bool(
-                    Subscriptions.objects.filter(
-                        sub=self.context['request'].user,
-                        author_id=instance.id).exists()
-                )
-            })
-        except Exception:
-            return repr
+    def get_is_subscribed(self, obj):
+        if Subscriptions.objects.filter(
+            author=obj,
+            sub=self.context.get('request').user
+        ).exists():
+            return True
+        return False
 
 
 class SubscriptionsSerializer(serializers.ModelSerializer):
@@ -135,12 +114,15 @@ class SubscriptionsSerializer(serializers.ModelSerializer):
             many=True
         ).data
         if "recipes_limit" in self.context['request'].query_params.keys():
-            recipes = SubRecipeSerializer(
-                instance.author.recipes.all(),
-                many=True
-            ).data[
-                :int(self.context['request'].query_params['recipes_limit'])
-            ]
+            try:
+                recipes = SubRecipeSerializer(
+                    instance.author.recipes.all(),
+                    many=True
+                ).data[
+                    :int(self.context['request'].query_params['recipes_limit'])
+                ]
+            except Exception:
+                raise ValueError('Recipes_limit value should be integer.')
         user_data.update({
             'recipe': recipes
         })

@@ -21,7 +21,7 @@ class ReworkedUser(AbstractUser):
             'unique': _("A user with that username already exists."),
         },
         validators=[
-            UnicodeUsernameValidator(),
+            UnicodeUsernameValidator,
             validate_username,
         ]
     )
@@ -39,6 +39,9 @@ class ReworkedUser(AbstractUser):
             validate_username,
         ],
     )
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username', 'last_name', 'first_name']
 
     class Meta:
         ordering = ['-id']
