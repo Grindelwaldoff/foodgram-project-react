@@ -153,10 +153,7 @@ class RecipeSerializer(serializers.ModelSerializer):
     ingredients = IngredientToRecipeSerializer(
         many=True, required=False
     )
-    tags = serializers.PrimaryKeyRelatedField(
-        many=True,
-        queryset=Tags.objects.all()
-    )
+    tags = serializers.SerializerMethodField()
     author = UserSerializerWithAdditionalFields(read_only=True)
 
     class Meta:
@@ -167,6 +164,11 @@ class RecipeSerializer(serializers.ModelSerializer):
             'image', 'text',
             'cooking_time', 'ingredients'
         )
+
+    def get_tags(self, obj):
+        return TagSerializer(
+            Recipe.objects.filter(recipe=obj).tags, many=True
+        ).data
 
     def get_tags(self, obj):
         return TagSerializer(obj.tags, many=True).data
