@@ -155,7 +155,7 @@ class RecipeSerializer(serializers.ModelSerializer):
     )
     tags = serializers.SerializerMethodField()
     author = UserSerializerWithAdditionalFields(read_only=True)
-    is_favourited = serializers.SerializerMethodField()
+    is_favorited = serializers.SerializerMethodField()
     is_in_shopping_cart = serializers.SerializerMethodField()
 
     class Meta:
@@ -165,10 +165,10 @@ class RecipeSerializer(serializers.ModelSerializer):
             'author', 'name',
             'image', 'text',
             'cooking_time', 'ingredients',
-            'is_favourited', 'is_in_shopping_cart'
+            'is_favorited', 'is_in_shopping_cart'
         )
 
-    def get_is_favourited(self, obj):
+    def get_is_favorited(self, obj):
         if Favorites.objects.filter(
             recipe=obj,
             user=self.context.get('request').user
