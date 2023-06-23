@@ -46,11 +46,6 @@ class IngredientsAdmin(admin.ModelAdmin):
     list_display = ('name', 'measurement_unit')
 
 
-# @admin.register(IngredientsToRecipe)
-# class IngredientsRecipeAdmin(admin.ModelAdmin):
-#     list_display = ['recipe', 'ingredient', 'amount']
-
-
 admin.site.register(Tags)
 admin.site.register(Favorites)
 admin.site.register(Basket)

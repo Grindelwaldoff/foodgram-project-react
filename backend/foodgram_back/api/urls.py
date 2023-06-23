@@ -4,7 +4,7 @@ from rest_framework.routers import SimpleRouter
 from api.views import (
     FavoriteViewSet, FollowViewSet,
     IgredientViewSet,
-    RecipeViewSet, SubViewSet, TagViewSet,
+    RecipeViewSet, TagViewSet,
     BasketViewSet
 )
 
@@ -23,7 +23,7 @@ router.register(
 )
 router.register(
     'users/subscriptions',
-    SubViewSet,
+    FollowViewSet,
     basename='subs'
 )
 

@@ -83,12 +83,9 @@ class UserSerializerWithAdditionalFields(
                   'first_name', 'id', 'is_subscribed')
 
     def get_is_subscribed(self, obj):
-        if Subscriptions.objects.filter(
-            author=obj,
+        return obj.author.filter(
             sub=self.context.get('request').user
-        ).exists():
-            return True
-        return False
+        ).exists()
 
 
 class SubscriptionsSerializer(serializers.ModelSerializer):
@@ -169,20 +166,14 @@ class RecipeSerializer(serializers.ModelSerializer):
         )
 
     def get_is_favorited(self, obj):
-        if Favorites.objects.filter(
-            recipe=obj,
+        return obj.favorites.filter(
             user=self.context.get('request').user
-        ).exists():
-            return True
-        return False
+        ).exists()
 
     def get_is_in_shopping_cart(self, obj):
-        if Basket.objects.filter(
-            recipe=obj,
+        return obj.basket.filter(
             user=self.context.get('request').user
-        ).exists():
-            return True
-        return False
+        ).exists()
 
     def get_tags(self, obj):
         return TagSerializer(obj.tags, many=True).data
