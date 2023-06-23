@@ -105,14 +105,6 @@
         "documentation": {}
     },
     {
-        "label": "Favorites",
-        "importPath": "recipes.models",
-        "description": "recipes.models",
-        "isExtraImport": true,
-        "detail": "recipes.models",
-        "documentation": {}
-    },
-    {
         "label": "IngredientsToRecipe",
         "importPath": "recipes.models",
         "description": "recipes.models",
@@ -345,14 +337,6 @@
         "documentation": {}
     },
     {
-        "label": "FavoriteViewSet",
-        "importPath": "api.views",
-        "description": "api.views",
-        "isExtraImport": true,
-        "detail": "api.views",
-        "documentation": {}
-    },
-    {
         "label": "FollowViewSet",
         "importPath": "api.views",
         "description": "api.views",
@@ -378,14 +362,6 @@
     },
     {
         "label": "TagViewSet",
-        "importPath": "api.views",
-        "description": "api.views",
-        "isExtraImport": true,
-        "detail": "api.views",
-        "documentation": {}
-    },
-    {
-        "label": "BasketViewSet",
         "importPath": "api.views",
         "description": "api.views",
         "isExtraImport": true,
@@ -450,14 +426,6 @@
         "documentation": {}
     },
     {
-        "label": "action",
-        "importPath": "rest_framework.decorators",
-        "description": "rest_framework.decorators",
-        "isExtraImport": true,
-        "detail": "rest_framework.decorators",
-        "documentation": {}
-    },
-    {
         "label": "ModelViewSet",
         "importPath": "rest_framework.viewsets",
         "description": "rest_framework.viewsets",
@@ -479,22 +447,6 @@
         "description": "api.filters",
         "isExtraImport": true,
         "detail": "api.filters",
-        "documentation": {}
-    },
-    {
-        "label": "BasketSerializer",
-        "importPath": "api.serializers",
-        "description": "api.serializers",
-        "isExtraImport": true,
-        "detail": "api.serializers",
-        "documentation": {}
-    },
-    {
-        "label": "FavoriteSerializer",
-        "importPath": "api.serializers",
-        "description": "api.serializers",
-        "isExtraImport": true,
-        "detail": "api.serializers",
         "documentation": {}
     },
     {
@@ -1253,15 +1205,6 @@
         "documentation": {}
     },
     {
-        "label": "FavoriteSerializer",
-        "kind": 6,
-        "importPath": "backend.foodgram_back.api.serializers",
-        "description": "backend.foodgram_back.api.serializers",
-        "peekOfCode": "class FavoriteSerializer(serializers.ModelSerializer):\n    class Meta:\n        model = Favorites\n        fields = ('id',)\n    def to_representation(self, instance):\n        representation = super().to_representation(instance)\n        representation.update({\n            'name': instance.recipe.name,\n            'image': self.context.get('request').build_absolute_uri(\n                instance.recipe.img.url",
-        "detail": "backend.foodgram_back.api.serializers",
-        "documentation": {}
-    },
-    {
         "label": "IngredientSerializer",
         "kind": 6,
         "importPath": "backend.foodgram_back.api.serializers",
@@ -1347,7 +1290,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.api.urls",
         "description": "backend.foodgram_back.api.urls",
-        "peekOfCode": "router = SimpleRouter()\nrouter.register('ingredients', IgredientViewSet, basename='ing')\nrouter.register('tags', TagViewSet, basename='tags')\nrouter.register('recipes', RecipeViewSet, basename='recipes')\nrouter.register(\n    r'users/(?P<user_id>\\d+)/subscribe',\n    FollowViewSet, basename='follow'\n)\nrouter.register(\n    r'recipes/(?P<recipe_id>\\d+)/favorite',",
+        "peekOfCode": "router = SimpleRouter()\nrouter.register('ingredients', IgredientViewSet, basename='ing')\nrouter.register('tags', TagViewSet, basename='tags')\nrouter.register('recipes', RecipeViewSet, basename='recipes')\nrouter.register(\n    r'users/(?P<user_id>\\d+)/subscribe',\n    FollowViewSet, basename='follow'\n)\nrouter.register(\n    'users/subscriptions',",
         "detail": "backend.foodgram_back.api.urls",
         "documentation": {}
     },
@@ -1356,7 +1299,7 @@
         "kind": 5,
         "importPath": "backend.foodgram_back.api.urls",
         "description": "backend.foodgram_back.api.urls",
-        "peekOfCode": "urlpatterns = [\n    path('auth/', include('djoser.urls.authtoken')),\n    path(\n        'recipes/<int:recipe_id>/shopping_cart/',\n        BasketViewSet.as_view({\n            'post': 'create',\n            'delete': 'delete'\n        })\n    ),\n    path(",
+        "peekOfCode": "urlpatterns = [\n    path(\n        'recipes/<int:recipe_id>/favorite/',\n        RecipeViewSet.as_view({\n            'post': 'post_favorites',\n            'delete': 'del_favorites'\n        })\n    ),\n    path('auth/', include('djoser.urls.authtoken')),\n    path(",
         "detail": "backend.foodgram_back.api.urls",
         "documentation": {}
     },
@@ -1365,16 +1308,7 @@
         "kind": 6,
         "importPath": "backend.foodgram_back.api.views",
         "description": "backend.foodgram_back.api.views",
-        "peekOfCode": "class IgredientViewSet(ModelViewSet):\n    queryset = Ingredients.objects.all()\n    serializer_class = IngredientSerializer\n    pagination_class = None\n    permission_classes = (permissions.AllowAny,)\n    http_method_names = ['get']\n    filter_backends = (DjangoFilterBackend, IngredientFilter)\n    search_fields = ('^name',)\nclass FavoriteViewSet(ModelViewSet):\n    queryset = Favorites.objects.all()",
-        "detail": "backend.foodgram_back.api.views",
-        "documentation": {}
-    },
-    {
-        "label": "FavoriteViewSet",
-        "kind": 6,
-        "importPath": "backend.foodgram_back.api.views",
-        "description": "backend.foodgram_back.api.views",
-        "peekOfCode": "class FavoriteViewSet(ModelViewSet):\n    queryset = Favorites.objects.all()\n    serializer_class = FavoriteSerializer\n    pagination_class = None\n    http_method_names = ['post', 'delete']\n    @action(detail=False, methods=['DELETE'])\n    def delete(self, request, *args, **kwargs):\n        Favorites.objects.get(\n            recipe=Recipe.objects.filter(\n                id=self.kwargs.get('recipe_id')",
+        "peekOfCode": "class IgredientViewSet(ModelViewSet):\n    queryset = Ingredients.objects.all()\n    serializer_class = IngredientSerializer\n    pagination_class = None\n    permission_classes = (permissions.AllowAny,)\n    http_method_names = ['get']\n    filter_backends = (DjangoFilterBackend, IngredientFilter)\n    search_fields = ('^name',)\nclass FollowViewSet(ModelViewSet):\n    queryset = Subscriptions.objects.all()",
         "detail": "backend.foodgram_back.api.views",
         "documentation": {}
     },
@@ -1406,20 +1340,11 @@
         "documentation": {}
     },
     {
-        "label": "BasketViewSet",
-        "kind": 6,
-        "importPath": "backend.foodgram_back.api.views",
-        "description": "backend.foodgram_back.api.views",
-        "peekOfCode": "class BasketViewSet(ModelViewSet):\n    queryset = Basket.objects.all()\n    serializer_class = BasketSerializer\n    permission_classes = ()\n    def download(self, request):\n        items_in_basket = get_list_or_404(\n            Basket,\n            user=User.objects.get(id=self.request.user.id)\n        )\n        shopping_cart = {}",
-        "detail": "backend.foodgram_back.api.views",
-        "documentation": {}
-    },
-    {
         "label": "User",
         "kind": 5,
         "importPath": "backend.foodgram_back.api.views",
         "description": "backend.foodgram_back.api.views",
-        "peekOfCode": "User = get_user_model()\nclass IgredientViewSet(ModelViewSet):\n    queryset = Ingredients.objects.all()\n    serializer_class = IngredientSerializer\n    pagination_class = None\n    permission_classes = (permissions.AllowAny,)\n    http_method_names = ['get']\n    filter_backends = (DjangoFilterBackend, IngredientFilter)\n    search_fields = ('^name',)\nclass FavoriteViewSet(ModelViewSet):",
+        "peekOfCode": "User = get_user_model()\nclass IgredientViewSet(ModelViewSet):\n    queryset = Ingredients.objects.all()\n    serializer_class = IngredientSerializer\n    pagination_class = None\n    permission_classes = (permissions.AllowAny,)\n    http_method_names = ['get']\n    filter_backends = (DjangoFilterBackend, IngredientFilter)\n    search_fields = ('^name',)\nclass FollowViewSet(ModelViewSet):",
         "detail": "backend.foodgram_back.api.views",
         "documentation": {}
     },

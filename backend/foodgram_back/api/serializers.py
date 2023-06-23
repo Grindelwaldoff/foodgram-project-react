@@ -5,7 +5,7 @@ from djoser.serializers import UserSerializer
 
 from recipes.models import (
     Tags, Recipe, Ingredients,
-    Favorites, IngredientsToRecipe, Basket
+    IngredientsToRecipe, Basket
 )
 from users.models import Subscriptions
 
@@ -25,24 +25,6 @@ class IngredientToRecipeSerializer(serializers.ModelSerializer):
         representation.update({
             'name': instance.ingredient.name,
             'measurement_unit': instance.ingredient.measurement_unit
-        })
-        return representation
-
-
-class FavoriteSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Favorites
-        fields = ('id',)
-
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        representation.update({
-            'name': instance.recipe.name,
-            'image': self.context.get('request').build_absolute_uri(
-                instance.recipe.img.url
-            ),
-            'cooking_time': instance.recipe.time_to_cook
         })
         return representation
 

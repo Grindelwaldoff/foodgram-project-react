@@ -2,10 +2,9 @@ from django.urls import path, include
 from rest_framework.routers import SimpleRouter
 
 from api.views import (
-    FavoriteViewSet, FollowViewSet,
+    FollowViewSet,
     IgredientViewSet,
     RecipeViewSet, TagViewSet,
-    BasketViewSet
 )
 
 router = SimpleRouter()
@@ -17,11 +16,6 @@ router.register(
     FollowViewSet, basename='follow'
 )
 router.register(
-    r'recipes/(?P<recipe_id>\d+)/favorite',
-    FavoriteViewSet,
-    basename='favorites'
-)
-router.register(
     'users/subscriptions',
     FollowViewSet,
     basename='subs'
@@ -29,18 +23,25 @@ router.register(
 
 
 urlpatterns = [
+    path(
+        'recipes/<int:recipe_id>/favorite/',
+        RecipeViewSet.as_view({
+            'post': 'post_favorites',
+            'delete': 'del_favorites'
+        })
+    ),
     path('auth/', include('djoser.urls.authtoken')),
     path(
         'recipes/<int:recipe_id>/shopping_cart/',
-        BasketViewSet.as_view({
-            'post': 'create',
-            'delete': 'delete'
+        RecipeViewSet.as_view({
+            'post': 'post_basket',
+            'delete': 'del_basket'
         })
     ),
     path(
         'recipes/download_shopping_cart/',
-        BasketViewSet.as_view({
-            'get': 'download'
+        RecipeViewSet.as_view({
+            'get': 'download_basket'
         })
     ),
     path(
