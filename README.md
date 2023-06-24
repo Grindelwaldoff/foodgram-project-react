@@ -11,5 +11,5 @@ Admin user
 ```
 Username: root
 Email: root@rt.rt
-pass: 1111
+pass: 2WWdq@^J4@G%$d+
 ```
