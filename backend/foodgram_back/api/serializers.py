@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from drf_extra_fields.fields import Base64ImageField
 from django.contrib.auth import get_user_model
-from djoser.serializers import UserSerializer
 
 from recipes.models import (
     Tags, Recipe, Ingredients,
@@ -54,7 +53,7 @@ class SubRecipeSerializer(serializers.ModelSerializer):
 
 
 class UserSerializerWithAdditionalFields(
-    UserSerializer
+    serializers.HyperlinkedModelSerializer
 ):
 
     is_subscribed = serializers.SerializerMethodField()
@@ -65,9 +64,12 @@ class UserSerializerWithAdditionalFields(
                   'first_name', 'id', 'is_subscribed')
 
     def get_is_subscribed(self, obj):
-        return obj.author.filter(
-            sub=self.context.get('request').user
-        ).exists()
+        return (
+            self.context.get('request').user.is_authenticated
+            and obj.author.filter(
+                sub=self.context.get('request').user
+            ).exists()
+        )
 
 
 class SubscriptionsSerializer(serializers.ModelSerializer):
@@ -148,14 +150,18 @@ class RecipeSerializer(serializers.ModelSerializer):
         )
 
     def get_is_favorited(self, obj):
-        return obj.favorites.filter(
-            user=self.context.get('request').user
-        ).exists()
+        if self.context.get('request').user.is_authenticated:
+            return obj.favorites.filter(
+                user=self.context.get('request').user
+            ).exists()
+        return False
 
     def get_is_in_shopping_cart(self, obj):
-        return obj.basket.filter(
-            user=self.context.get('request').user
-        ).exists()
+        if self.context.get('request').user.is_authenticated:
+            return obj.basket.filter(
+                user=self.context.get('request').user
+            ).exists()
+        return False
 
     def get_tags(self, obj):
         return TagSerializer(obj.tags, many=True).data

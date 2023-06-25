@@ -6,6 +6,7 @@ from django.shortcuts import get_list_or_404, get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
+from rest_framework.decorators import action
 from rest_framework import status, pagination, permissions
 
 from recipes.models import (
@@ -79,7 +80,10 @@ class RecipeViewSet(ModelViewSet):
             author=self.request.user
         )
 
-    def post_favorites(self, request, recipe_id):
+    @action(methods=['post'], detail=False,
+            permission_classes=(permissions.IsAuthenticated,),
+            url_path=r'(?P<recipe_id>\d+)/favorite')
+    def add_to_favorites(self, request, recipe_id):
         try:
             Favorites.objects.get_or_create(
                 user=request.user,
@@ -92,6 +96,9 @@ class RecipeViewSet(ModelViewSet):
         except Exception:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
+    @action(methods=['delete'], detail=False,
+            permission_classes=(permissions.IsAuthenticated,),
+            url_path=r'(?P<recipe_id>\d+)/favorite')
     def del_favorites(self, request, recipe_id):
         try:
             Favorites.objects.filter(
@@ -105,7 +112,10 @@ class RecipeViewSet(ModelViewSet):
         except Exception:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    def post_basket(self, request, recipe_id):
+    @action(methods=['post'], detail=False,
+            permission_classes=(permissions.IsAuthenticated,),
+            url_path=r'(?P<recipe_id>\d+)/shopping_cart')
+    def add_to_cart(self, request, recipe_id):
         try:
             Basket.objects.get_or_create(
                 user=request.user,
@@ -120,6 +130,9 @@ class RecipeViewSet(ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
+    @action(methods=['delete'], detail=False,
+            permission_classes=(permissions.IsAuthenticated,),
+            url_path=r'(?P<recipe_id>\d+)/shopping_cart')
     def del_basket(self, request, recipe_id):
         try:
             Basket.objects.filter(
@@ -132,6 +145,9 @@ class RecipeViewSet(ModelViewSet):
         except Exception:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
+    @action(methods=['get'], detail=False,
+            permission_classes=(permissions.IsAuthenticated,),
+            url_path=r'/download_shopping_cart')
     def download_basket(self, request):
         items_in_basket = get_list_or_404(
             Basket,

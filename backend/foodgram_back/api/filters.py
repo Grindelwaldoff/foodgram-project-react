@@ -1,8 +1,9 @@
 from django.contrib.auth import get_user_model
-import django_filters as filter
+import django_filters.rest_framework as filter
 from rest_framework.filters import SearchFilter
 
 from recipes.models import Recipe
+from users.models import ReworkedUser
 
 User = get_user_model()
 
@@ -13,12 +14,12 @@ class IngredientFilter(SearchFilter):
 
 class RecipeFilter(filter.FilterSet):
     tags = filter.AllValuesMultipleFilter(field_name='tags__slug')
-    author = filter.AllValuesFilter(field_name='author')
-    is_favorited = filter.ChoiceFilter(
-        method='is_favorited_filter', choices=(('1', True), ('0', False))
+    author = filter.ModelChoiceFilter(queryset=ReworkedUser.objects.all())
+    is_favorited = filter.BooleanFilter(
+        method='is_favorited_filter'
     )
-    is_in_shopping_cart = filter.ChoiceFilter(
-        method='cart_filter', choices=(('1', True), ('0', False))
+    is_in_shopping_cart = filter.BooleanFilter(
+        method='cart_filter'
     )
 
     class Meta:
