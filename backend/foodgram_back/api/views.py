@@ -147,7 +147,7 @@ class RecipeViewSet(ModelViewSet):
 
     @action(methods=['get'], detail=False,
             permission_classes=(permissions.IsAuthenticated,),
-            url_path=r'/download_shopping_cart')
+            url_path='download_shopping_cart')
     def download_basket(self, request):
         items_in_basket = get_list_or_404(
             Basket,
