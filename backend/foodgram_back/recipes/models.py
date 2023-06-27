@@ -1,9 +1,10 @@
 from colorfield.fields import ColorField
 from django.conf import settings
-from django.core.validators import MinValueValidator, RegexValidator
+from django.core.validators import MinValueValidator
 from django.db import models
-from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
+
+from users.validators import naming_validator_with_nums
 
 
 User = get_user_model()
@@ -18,13 +19,7 @@ class Tags(models.Model):
         verbose_name="Название:",
         help_text="Введите значение",
         validators=[
-            RegexValidator(
-                regex=r'^[a-zA-Z0-9]*$',
-                message=_(
-                    'Название тэга должно содержать '
-                    'только буквы и цифры',
-                )
-            ),
+            naming_validator_with_nums
         ]
     )
     color = ColorField(
@@ -80,13 +75,7 @@ class Recipe(models.Model):
     name = models.CharField(
         max_length=settings.NAME_MAX_LENGTH,
         validators=[
-            RegexValidator(
-                regex=r'^[a-zA-Z0-9]*$',
-                message=_(
-                    'Название рецепта должно содержать '
-                    'только буквы и цифры',
-                ),
-            ),
+            naming_validator_with_nums
         ],
         verbose_name="Название:",
         help_text="Введите значение",
