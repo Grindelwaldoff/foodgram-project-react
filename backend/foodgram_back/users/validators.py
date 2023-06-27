@@ -17,4 +17,3 @@ naming_validator_with_nums = RegexValidator(
         'только буквы и цифры',
     ),
 )
-# '!@#$%^'
