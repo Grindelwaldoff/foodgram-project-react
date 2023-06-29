@@ -10,7 +10,7 @@ from api.views import (
 router = SimpleRouter()
 router.register('ingredients', IgredientViewSet, basename='ing')
 router.register('tags', TagViewSet, basename='tags')
-router.register('recipes', RecipeViewSet, basename='recipes')
+router.register('recipes', RecipeViewSet)
 router.register(
     r'users/(?P<user_id>\d+)/subscribe',
     FollowViewSet, basename='follow'
