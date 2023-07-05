@@ -80,70 +80,58 @@ class RecipeViewSet(ModelViewSet):
             author=self.request.user
         )
 
-    @action(methods=['delete'], detail=False,
-            permission_classes=(permissions.IsAuthenticated,),
-            url_path=r'(?P<recipe_id>\d+)/favorite')
-    def del_favorites(self, request, recipe_id):
+    @action(methods=['delete', 'post'], detail=True,
+            permission_classes=(permissions.IsAuthenticated,))
+    def favorite(self, request, pk):
+        if request.method == 'POST':
+            try:
+                Favorites.objects.get_or_create(
+                    user=request.user,
+                    recipe=Recipe.objects.get(id=pk)
+                )
+                return Response(
+                    {'id': pk},
+                    status=status.HTTP_201_CREATED
+                )
+            except Exception:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
         try:
             Favorites.objects.filter(
                 user=request.user,
-                recipe=Recipe.objects.get(id=recipe_id)
+                recipe=Recipe.objects.get(id=pk)
             ).delete()
             return Response(
-                {'id': recipe_id},
                 status=status.HTTP_204_NO_CONTENT
             )
         except Exception:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-    @action(methods=['post'], detail=False,
-            permission_classes=(permissions.IsAuthenticated,),
-            url_path=r'(?P<recipe_id>\d+)/favorite')
-    def add_to_favorites(self, request, recipe_id):
+    @action(methods=['post', 'delete'], detail=True,
+            permission_classes=(permissions.IsAuthenticated,))
+    def shopping_cart(self, request, pk):
+        if request.method == 'POST':
+            try:
+                Basket.objects.get_or_create(
+                    user=request.user,
+                    recipe=Recipe.objects.get(id=pk)
+                )
+                return Response(
+                    {'id': pk},
+                    status=status.HTTP_201_CREATED
+                )
+            except Exception:
+                return Response(
+                    status=status.HTTP_400_BAD_REQUEST
+                )
         try:
-            Favorites.objects.get_or_create(
-                user=request.user,
-                recipe=Recipe.objects.get(id=recipe_id)
-            )
+            Basket.objects.filter(
+                user=request.user, recipe_id=pk
+            ).delete()
             return Response(
-                {'id': recipe_id},
-                status=status.HTTP_201_CREATED
+                status=status.HTTP_204_NO_CONTENT
             )
         except Exception:
             return Response(status=status.HTTP_400_BAD_REQUEST)
-
-    @action(methods=['post'], detail=False,
-            permission_classes=(permissions.IsAuthenticated,),
-            url_path=r'(?P<recipe_id>\d+)/shopping_cart')
-    def add_to_cart(self, request, recipe_id):
-        try:
-            Basket.objects.get_or_create(
-                user=request.user,
-                recipe=Recipe.objects.get(id=recipe_id)
-            )
-            return Response(
-                {'id': recipe_id},
-                status=status.HTTP_201_CREATED
-            )
-        except Exception:
-            return Response(
-                status=status.HTTP_400_BAD_REQUEST
-            )
-
-    # @action(methods=['delete'], detail=False,
-    #         permission_classes=(permissions.IsAuthenticated,),
-    #         url_path=r'(?P<recipe_id>\d+)/shopping_cart')
-    # def cart_rem(self, request, recipe_id):
-    #     try:
-    #         Basket.objects.filter(
-    #             user=request.user, recipe_id=recipe_id
-    #         ).delete()
-    #         return Response(
-    #             {'id': recipe_id},
-    #             status=status.HTTP_204_NO_CONTENT
-    #         )
-    #     except Exception:
-    #         return Response(status=status.HTTP_400_BAD_REQUEST)
 
     @action(methods=['get'], detail=False,
             permission_classes=(permissions.IsAuthenticated,),
