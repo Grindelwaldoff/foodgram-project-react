@@ -41,7 +41,7 @@ class IngredientSerializer(serializers.ModelSerializer):
 
 class SubRecipeSerializer(serializers.ModelSerializer):
     cooking_time = serializers.CharField(source='time_to_cook')
-    image = serializers.CharField(source='img')
+    image = Base64ImageField(source='img')
 
     class Meta:
         model = Recipe
@@ -91,7 +91,7 @@ class SubscriptionsSerializer(serializers.ModelSerializer):
         })
 
         recipes = SubRecipeSerializer(
-            instance.author.recipes.all(),
+            instance.author.recipes.all()[:1],
             many=True
         ).data
         if "recipes_limit" in self.context['request'].query_params.keys():
@@ -104,8 +104,14 @@ class SubscriptionsSerializer(serializers.ModelSerializer):
                 ]
             except Exception:
                 raise ValueError('Recipes_limit value should be integer.')
+        for recipe in recipes:
+            recipe.update({
+                'image': self.context.get('request').build_absolute_uri(
+                    recipe.get('image')
+                )
+            })
         user_data.update({
-            'recipe': recipes
+            'recipes': recipes
         })
         return user_data
 
