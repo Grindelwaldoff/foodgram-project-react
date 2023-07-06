@@ -77,7 +77,8 @@ class RecipeViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(
-            author=self.request.user
+            author=self.request.user,
+            tags=self.request.data.get('tags')
         )
 
     @action(methods=['delete', 'post'], detail=True,
